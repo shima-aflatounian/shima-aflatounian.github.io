@@ -12,11 +12,14 @@
             max-width: 100%;
             height: auto;
         }
+        .medium-img {
+            height: 225px;
+        }
         .large-img {
             height: 450px;
         }
-        .medium-img {
-            height: 300px;
+        .tall-img {
+            height: 600px;
         }
         pre {
             background-color: #f4f4f4;
@@ -29,6 +32,12 @@
         }
         article {
             margin-bottom: 3rem;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            padding: 2rem 1rem;
         }
     </style>
 </head>
@@ -47,9 +56,9 @@
             <h3>Slack vs Tech Care Hub Usage Analysis</h3>
             <p>I extracted a robust dataset using custom SQL from MS SQL Server containing assignment groups, caller personas, KB links, timestamps, and more. I created a ‘Hire Year Category’ to track employee tenure and built out demographic-based dashboards in Tableau, including a top 20 issues chart with filters for persona, band, and region. This helped uncover Slack usage trends and abandonment ratios.</p>
             <p>Survey results and chat durations were also integrated for a 360-degree view of user satisfaction and resolution paths. Outcome data from chatbot logs further revealed escalation vs. self-service behavior.</p>
-            <img src="image_page1_1.png" alt="Dashboard Overview" class="medium-img">
+            <!-- Removed image_page1_1.png -->
             <img src="image_page1_2.png" alt="Usage by Tenure" class="medium-img">
-            <img src="image_page2_1.png" alt="Survey Feedback Dashboard" class="medium-img">
+            <img src="image_page2_1.png" alt="Survey Feedback Dashboard" class="tall-img">
         </article>
 
         <article>
@@ -85,6 +94,7 @@
 
     <footer>
         <p>📫 Connect on <a href="https://www.linkedin.com/in/shimaaflatounian" target="_blank">LinkedIn</a> | 💻 View my <a href="https://github.com/shima-aflatounian" target="_blank">GitHub</a></p>
+        <p><em>This portfolio contains generalized project summaries. No confidential or proprietary data is disclosed.</em></p>
     </footer>
 </body>
 </html>
