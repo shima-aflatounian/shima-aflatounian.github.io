@@ -5,6 +5,26 @@
     <meta charset="UTF-8">
     <title>Shima Aflatounian | Data Analyst Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem 0;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+        article {
+            margin-bottom: 3rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,30 +33,45 @@
     </header>
 
     <section class="intro">
-        <p>Welcome to my project journal and data portfolio. Here, I document some of the work I’ve done in data analytics, automation, and AI integration across various tools including SQL, Python, and Tableau.</p>
+        <p>This site reflects my internal case studies from American Express, showcasing analytics solutions across chatbot behavior, Smart Hand support, and user engagement insights.</p>
     </section>
 
     <section class="projects">
-        <h3>Project Journal</h3>
-
         <article>
-            <h4>Slack vs Tech Care Hub Usage Analysis</h4>
-            <p>Analyzed employee support behavior across Slack and Tech Care Hub, integrating chatbot data, survey feedback, and engineering handoff details to create a dynamic dashboard in Tableau.</p>
+            <h3>Slack vs Tech Care Hub Usage Analysis</h3>
+            <p>This project integrated chatbot logs, user demographics, survey feedback, and chat duration metrics to understand user behavior across platforms.</p>
+            <img src="image_page1_1.png" alt="Dashboard Image 1">
+            <img src="image_page1_2.png" alt="Dashboard Image 2">
+            <img src="image_page2_1.png" alt="Dashboard Image 3">
         </article>
 
         <article>
-            <h4>LDA Topic Modeling for User-Bot Chat</h4>
-            <p>Used Python and LDA to discover latent topics from chatbot conversations, followed by hierarchical clustering and dendrogram visualization to identify major support themes.</p>
+            <h3>LDA Topic Modeling for User-Bot Chat</h3>
+            <p>Using TF-IDF and LDA, I performed topic extraction from user prompts. Clustering was visualized using a dendrogram for insights into conversation themes.</p>
+            <img src="image_page3_1.png" alt="LDA Topic Modeling Diagram">
         </article>
 
         <article>
-            <h4>User Behavior Categorization & Gaming Detection</h4>
-            <p>Developed a Python script to identify self-service willingness vs. system-gaming behaviors by parsing initial user prompts and chatbot outcomes. Labeled patterns and created a Tableau dashboard for leadership insights.</p>
+            <h3>User Behavior Categorization & Gaming Detection</h3>
+            <p>This Python function helped categorize chats into continued interaction, unwillingness to self-serve, or gaming behavior.</p>
+            <pre><code>def categorize_chat(row):
+    chats = str(row['Chats']).lower()
+    user_input_sentences = [s.strip() for s in chats.split('User:') if s.strip()]
+    first_user_part = ' '.join(user_input_sentences[0].split()[:35]) if user_input_sentences else ''
+    create_count = first_user_part.count('create')
+    ticket_count = first_user_part.count('ticket')
+    engineer_counts = sum(first_user_part.count(w) for w in ['connect to engineer', 'engineer', 'agent', 'representative'])
+    if 'Resolved' in row['End Result']:
+        return '01-Ngaming-Userb.will.to.Self.serve'
+    if 'Human Takeover' in row['End Result'] or 'Abandon' in row['End Result']:
+        return 'Unwilling or Gaming'</code></pre>
+            <img src="image_page4_1.png" alt="Behavior Categorization Illustration">
         </article>
 
         <article>
-            <h4>Smart Hand Project Dashboard</h4>
-            <p>Integrated ServiceNow data and Smart Hand Excel reports to create a Tableau dashboard tracking regional service requests, after-hours work, and country-specific metrics.</p>
+            <h3>Smart Hand Dashboard Project</h3>
+            <p>Created ServiceNow integrations and Tableau dashboards to track volume, timing, and assignment group metrics per country and category.</p>
+            <img src="image_page5_1.png" alt="Smart Hand Tableau View">
         </article>
     </section>
 
