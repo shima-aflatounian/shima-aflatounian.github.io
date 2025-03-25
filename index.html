@@ -8,7 +8,8 @@
     <style>
         img {
             max-width: 100%;
-            height: auto;
+            height: 300px;
+            object-fit: contain;
             display: block;
             margin: 1rem 0;
         }
@@ -33,27 +34,29 @@
     </header>
 
     <section class="intro">
-        <p>This site reflects my internal case studies from American Express, showcasing analytics solutions across chatbot behavior, Smart Hand support, and user engagement insights.</p>
+        <p>Welcome to my internal analytics portfolio at American Express. Here you’ll find case studies that explore user behavior, chatbot efficiency, and dashboard automation. All data and insights presented here were used to inform product support, engineering processes, and digital workplace optimization.</p>
     </section>
 
     <section class="projects">
         <article>
             <h3>Slack vs Tech Care Hub Usage Analysis</h3>
-            <p>This project integrated chatbot logs, user demographics, survey feedback, and chat duration metrics to understand user behavior across platforms.</p>
-            <img src="image_page1_1.png" alt="Dashboard Image 1">
-            <img src="image_page1_2.png" alt="Dashboard Image 2">
-            <img src="image_page2_1.png" alt="Dashboard Image 3">
+            <p>I extracted a robust dataset using custom SQL from MS SQL Server containing assignment groups, caller personas, KB links, timestamps, and more. I created a ‘Hire Year Category’ to track employee tenure and built out demographic-based dashboards in Tableau, including a top 20 issues chart with filters for persona, band, and region. This helped uncover Slack usage trends and abandonment ratios.</p>
+            <p>Survey results and chat durations were also integrated for a 360-degree view of user satisfaction and resolution paths. Outcome data from chatbot logs further revealed escalation vs. self-service behavior.</p>
+            <img src="image_page1_1.png" alt="Dashboard Overview">
+            <img src="image_page1_2.png" alt="Usage by Tenure">
+            <img src="image_page2_1.png" alt="Survey Feedback Dashboard">
         </article>
 
         <article>
             <h3>LDA Topic Modeling for User-Bot Chat</h3>
-            <p>Using TF-IDF and LDA, I performed topic extraction from user prompts. Clustering was visualized using a dendrogram for insights into conversation themes.</p>
-            <img src="image_page3_1.png" alt="LDA Topic Modeling Diagram">
+            <p>Using Python, I performed topic modeling on chatbot conversations with LDA. After vectorizing the text using TF-IDF, I extracted key terms and used Agglomerative Clustering to group related topics. The dendrogram helped reveal topic overlap, and I was able to surface common pain points across departments.</p>
+            <p>This topic extraction was used to recommend Knowledge Base (KB) article improvements and improve virtual agent design.</p>
+            <img src="image_page3_1.png" alt="Topic Dendrogram">
         </article>
 
         <article>
             <h3>User Behavior Categorization & Gaming Detection</h3>
-            <p>This Python function helped categorize chats into continued interaction, unwillingness to self-serve, or gaming behavior.</p>
+            <p>I developed a Python-based logic to categorize chat behaviors into ‘continued engagement,’ ‘unwilling to self-serve,’ and ‘gaming the system.’ The script analyzed the first 35 words in user messages and flagged repeated phrases like “connect to agent” or “create ticket.” The output labeled patterns and fed into a Tableau utilization dashboard.</p>
             <pre><code>def categorize_chat(row):
     chats = str(row['Chats']).lower()
     user_input_sentences = [s.strip() for s in chats.split('User:') if s.strip()]
@@ -65,13 +68,13 @@
         return '01-Ngaming-Userb.will.to.Self.serve'
     if 'Human Takeover' in row['End Result'] or 'Abandon' in row['End Result']:
         return 'Unwilling or Gaming'</code></pre>
-            <img src="image_page4_1.png" alt="Behavior Categorization Illustration">
+            <img src="image_page4_1.png" alt="Behavior Pattern Screenshot">
         </article>
 
         <article>
             <h3>Smart Hand Dashboard Project</h3>
-            <p>Created ServiceNow integrations and Tableau dashboards to track volume, timing, and assignment group metrics per country and category.</p>
-            <img src="image_page5_1.png" alt="Smart Hand Tableau View">
+            <p>I integrated ServiceNow and Excel files to build dashboards for Smart Hand services. I created new tables to support fields like after-hours effort and request volume. Tableau dashboards were enhanced with dynamic filters and parameters, allowing account managers to view country-specific metrics, YTD summaries, and request trends by category.</p>
+            <img src="image_page5_1.png" alt="Smart Hand Dashboard Sample">
         </article>
     </section>
 
