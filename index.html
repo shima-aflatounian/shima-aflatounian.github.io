@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <style>
         img {
-            max-width: 100%;
-            height: 300px;
-            object-fit: contain;
             display: block;
-            margin: 1rem 0;
+            margin: 1rem auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .large-img {
+            height: 450px;
+        }
+        .medium-img {
+            height: 300px;
         }
         pre {
             background-color: #f4f4f4;
@@ -42,16 +47,16 @@
             <h3>Slack vs Tech Care Hub Usage Analysis</h3>
             <p>I extracted a robust dataset using custom SQL from MS SQL Server containing assignment groups, caller personas, KB links, timestamps, and more. I created a ‘Hire Year Category’ to track employee tenure and built out demographic-based dashboards in Tableau, including a top 20 issues chart with filters for persona, band, and region. This helped uncover Slack usage trends and abandonment ratios.</p>
             <p>Survey results and chat durations were also integrated for a 360-degree view of user satisfaction and resolution paths. Outcome data from chatbot logs further revealed escalation vs. self-service behavior.</p>
-            <img src="image_page1_1.png" alt="Dashboard Overview">
-            <img src="image_page1_2.png" alt="Usage by Tenure">
-            <img src="image_page2_1.png" alt="Survey Feedback Dashboard">
+            <img src="image_page1_1.png" alt="Dashboard Overview" class="medium-img">
+            <img src="image_page1_2.png" alt="Usage by Tenure" class="medium-img">
+            <img src="image_page2_1.png" alt="Survey Feedback Dashboard" class="medium-img">
         </article>
 
         <article>
             <h3>LDA Topic Modeling for User-Bot Chat</h3>
             <p>Using Python, I performed topic modeling on chatbot conversations with LDA. After vectorizing the text using TF-IDF, I extracted key terms and used Agglomerative Clustering to group related topics. The dendrogram helped reveal topic overlap, and I was able to surface common pain points across departments.</p>
             <p>This topic extraction was used to recommend Knowledge Base (KB) article improvements and improve virtual agent design.</p>
-            <img src="image_page3_1.png" alt="Topic Dendrogram">
+            <img src="image_page3_1.png" alt="Topic Dendrogram" class="large-img">
         </article>
 
         <article>
@@ -68,13 +73,13 @@
         return '01-Ngaming-Userb.will.to.Self.serve'
     if 'Human Takeover' in row['End Result'] or 'Abandon' in row['End Result']:
         return 'Unwilling or Gaming'</code></pre>
-            <img src="image_page4_1.png" alt="Behavior Pattern Screenshot">
+            <img src="image_page4_1.png" alt="Behavior Pattern Screenshot" class="large-img">
         </article>
 
         <article>
             <h3>Smart Hand Dashboard Project</h3>
             <p>I integrated ServiceNow and Excel files to build dashboards for Smart Hand services. I created new tables to support fields like after-hours effort and request volume. Tableau dashboards were enhanced with dynamic filters and parameters, allowing account managers to view country-specific metrics, YTD summaries, and request trends by category.</p>
-            <img src="image_page5_1.png" alt="Smart Hand Dashboard Sample">
+            <img src="image_page5_1.png" alt="Smart Hand Dashboard Sample" class="large-img">
         </article>
     </section>
 
