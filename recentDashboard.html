@@ -7,44 +7,23 @@
   <style>
     body {
       margin: 0;
-      background-color: #0b1220;
+      background-color: #071225;
       color: #e5e7eb;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
     }
 
     .container {
-      max-width: 1050px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 60px 24px;
-    }
-
-    .hero {
-      padding: 70px 0 30px 0;
-    }
-
-    .hero h1 {
-      font-size: 52px;
-      line-height: 1.1;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin: 0 0 20px 0;
-      color: #ffffff;
-    }
-
-    .hero p {
-      font-size: 22px;
-      line-height: 1.6;
-      color: #cbd5e1;
-      max-width: 900px;
-      margin: 0 0 18px 0;
+      padding: 20px 20px 40px 20px;
     }
 
     .back-link {
       display: inline-block;
-      margin-bottom: 30px;
+      margin-bottom: 8px;
       color: #93c5fd;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
     }
 
@@ -52,49 +31,35 @@
       text-decoration: underline;
     }
 
-    .card {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 18px;
-      padding: 34px;
-      margin-top: 28px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    .hero {
+      padding: 10px 0 8px 0;
     }
 
-    h2 {
-      font-size: 34px;
-      line-height: 1.2;
+    .hero h1 {
+      font-size: 38px;
+      line-height: 1.15;
       font-weight: 650;
-      margin: 0 0 12px 0;
-      letter-spacing: -0.02em;
-      color: #c4b5fd;
-    }
-
-    h3 {
-      font-size: 24px;
-      line-height: 1.3;
-      font-weight: 650;
-      margin: 38px 0 14px 0;
-      color: #ffffff;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #d1d5db;
+      letter-spacing: -0.03em;
       margin: 0 0 14px 0;
+      color: #ffffff;
+      max-width: 850px;
     }
 
-    ul {
-      margin: 16px 0 18px 0;
-      padding-left: 22px;
-    }
-
-    li {
+    .hero p {
       font-size: 17px;
-      line-height: 1.7;
-      color: #d1d5db;
-      margin-bottom: 10px;
+      line-height: 1.65;
+      color: #cbd5e1;
+      max-width: 920px;
+      margin: 0 0 12px 0;
+    }
+
+    .card {
+      background: #0b1830;
+      border: 1px solid #1b2940;
+      border-radius: 20px;
+      padding: 26px;
+      margin-top: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 
     .label {
@@ -103,57 +68,84 @@
       font-weight: 700;
       color: #0b1220;
       background: #c4b5fd;
-      padding: 8px 12px;
+      padding: 8px 14px;
       border-radius: 999px;
       margin-bottom: 18px;
     }
 
+    h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 650;
+      margin: 0 0 14px 0;
+      color: #c4b5fd;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #d1d5db;
+      margin: 0 0 12px 0;
+    }
+
+    ul {
+      margin: 12px 0 18px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #d1d5db;
+      margin-bottom: 8px;
+    }
+
     .dashboard-img {
       width: 100%;
+      max-width: 920px;
       height: auto;
       display: block;
+      margin: 20px auto 0 auto;
       border-radius: 14px;
-      margin-top: 22px;
-      border: 1px solid #243041;
-      background: #0f172a;
+      border: 1px solid #23324a;
+      background: #081121;
     }
 
     .section-divider {
       height: 1px;
-      background: #263244;
-      margin: 38px 0;
+      background: #22324a;
       border: 0;
+      margin: 30px 0;
     }
 
-    .top-note {
-      font-size: 15px;
+    .note {
+      font-size: 14px;
       color: #94a3b8;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 38px;
+      .container {
+        padding: 16px 16px 30px 16px;
       }
 
-      .hero p {
-        font-size: 19px;
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero p,
+      p,
+      li {
+        font-size: 15px;
       }
 
       .card {
-        padding: 24px;
+        padding: 20px;
       }
 
       h2 {
-        font-size: 28px;
-      }
-
-      h3 {
-        font-size: 22px;
-      }
-
-      p, li {
-        font-size: 16px;
+        font-size: 24px;
       }
     }
   </style>
@@ -165,13 +157,12 @@
     <div class="hero">
       <h1>Operational Risk &amp; Remediation Dashboards</h1>
       <p>
-        This project shows how data can be used to identify operational risk,
-        monitor backlog health, and support remediation planning through clear,
-        decision-oriented dashboards.
+        This project shows how data can be used to identify operational risk, monitor backlog health,
+        and support remediation planning through clear, decision-oriented dashboards.
       </p>
       <p>
-        It combines two complementary views: a KRI dashboard for ongoing risk monitoring
-        and a remediation dashboard for tracking whether document transfer targets can be achieved within a fixed deadline.
+        It combines two complementary views: a KRI dashboard for ongoing risk monitoring and a
+        remediation dashboard for tracking whether document transfer targets can be achieved within a fixed deadline.
       </p>
     </div>
 
@@ -180,8 +171,8 @@
 
       <h2>KRI Dashboard</h2>
       <p>
-        <strong>KRI</strong> stands for <strong>Key Risk Indicator</strong>. This dashboard was designed
-        to help teams monitor backlog behavior over time and quickly identify where risk is increasing.
+        <strong>KRI</strong> stands for <strong>Key Risk Indicator</strong>. This dashboard was designed to help teams
+        monitor backlog behavior over time and quickly identify where risk is increasing.
       </p>
 
       <ul>
@@ -222,7 +213,7 @@
 
       <img src="remediation-dashboard.png" alt="Document Remediation Dashboard" class="dashboard-img">
 
-      <p class="top-note">
+      <p class="note">
         Note: Example visuals are shown for portfolio presentation purposes.
       </p>
     </div>
