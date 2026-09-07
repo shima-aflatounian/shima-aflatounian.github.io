@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Business Analytics & Decision Dashboards</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #071225;
+      color: #e5e7eb;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+        "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 42px 20px 40px 20px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 10px 0 18px 0;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 18px 0;
+      color: #ffffff;
+      max-width: 900px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: #cbd5e1;
+      max-width: 920px;
+      margin: 0 0 14px 0;
+    }
+
+    /* MAIN CARD */
+    .card {
+      background: #0b1830;
+      border: 1px solid #1b2940;
+      border-radius: 20px;
+      padding: 26px;
+      margin-top: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0b1220;
+      background: #c4b5fd;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 650;
+      margin: 0 0 14px 0;
+      color: #c4b5fd;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #d1d5db;
+      margin: 0 0 12px 0;
+    }
+
+    ul {
+      margin: 12px 0 18px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #d1d5db;
+      margin-bottom: 8px;
+    }
+
+    .dashboard-img {
+      width: 100%;
+      max-width: 920px;
+      height: auto;
+      display: block;
+      margin: 20px auto 0 auto;
+      border-radius: 14px;
+      border: 1px solid #23324a;
+      background: #081121;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: #22324a;
+      border: 0;
+      margin: 34px 0;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-top: 14px;
+    }
+
+    /* BOTTOM PROJECT NAVIGATION */
+    .project-nav {
+      margin-top: 52px;
+      padding: 42px 26px;
+      border: 1px solid #1b2940;
+      border-radius: 20px;
+      background: #09162b;
+      text-align: center;
+    }
+
+    .project-nav-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #93c5fd;
+      margin-bottom: 10px;
+    }
+
+    .project-nav h3 {
+      font-size: 30px;
+      line-height: 1.2;
+      color: #ffffff;
+      margin: 0 0 14px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .project-nav p {
+      max-width: 690px;
+      margin: 0 auto 24px auto;
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .project-nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .project-button {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 999px;
+      background: #93c5fd;
+      color: #071225;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .project-button:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .project-button.secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid #334155;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+      margin-top: 34px;
+      padding-bottom: 12px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 16px 30px 16px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p,
+      p,
+      li {
+        font-size: 15px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .project-nav {
+        padding: 32px 20px;
+      }
+
+      .project-nav h3 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+
+      <h1>Business Analytics &amp; Decision Dashboards</h1>
+
+      <p>
+        This project shows how operational data can be translated into
+        decision-oriented dashboards that help leaders monitor performance,
+        identify emerging issues, and plan against business targets.
+      </p>
+
+      <p>
+        It combines two complementary views: a KPI/KRI dashboard for ongoing
+        performance monitoring and a planning dashboard for evaluating progress,
+        capacity, and whether execution is on track to meet a fixed deadline.
+      </p>
+
+    </div>
+
+
+    <!-- MAIN PROJECT -->
+    <div class="card">
+
+      <div class="label">
+        SQL • Tableau • Business Analytics • Decision Support
+      </div>
+
+
+      <!-- DASHBOARD 1 -->
+      <h2>KPI &amp; KRI Performance Dashboard</h2>
+
+      <p>
+        This dashboard was designed to help teams monitor operational performance
+        over time and quickly identify where attention or intervention may be required.
+      </p>
+
+      <ul>
+        <li>
+          Tracks backlog and processing-volume trends across the last 12 months
+        </li>
+
+        <li>
+          Highlights increases and decreases using clear visual trend indicators
+        </li>
+
+        <li>
+          Compares performance across 1-day, 30-day, 90-day, and 1-year timeframes
+        </li>
+
+        <li>
+          Surfaces unfavorable movements so teams can prioritize the areas
+          requiring management attention
+        </li>
+
+        <li>
+          Helps managers focus recurring meetings on the most important issues
+          instead of manually reviewing every metric
+        </li>
+      </ul>
+
+      <p>
+        The capacity section compares remaining versus used capacity to help
+        identify operational pressure early. Forecast views extend the analysis
+        by estimating when facilities or processes may reach capacity constraints,
+        allowing teams to plan ahead rather than react after a threshold is reached.
+      </p>
+
+      <img
+        src="kri_dashboard_public_sample.png"
+        alt="KPI and KRI Performance Dashboard"
+        class="dashboard-img"
+      />
+
+
+      <hr class="section-divider" />
+
+
+      <!-- DASHBOARD 2 -->
+      <h2>Business Planning &amp; Remediation Dashboard</h2>
+
+      <p>
+        This is a hypothetical dashboard created with dummy data to prepare for
+        a client project before kickoff.
+      </p>
+
+      <p>
+        The business question was:
+        given a large backlog and a fixed completion deadline, is the current
+        processing rate sufficient to reach the target — and if not, how much
+        additional throughput would be required?
+      </p>
+
+      <ul>
+        <li>
+          Shows current progress against a fixed business deadline
+        </li>
+
+        <li>
+          Compares actual performance with an ideal completion trajectory
+        </li>
+
+        <li>
+          Estimates whether the current processing rate is sufficient to reduce
+          the backlog to the target level
+        </li>
+
+        <li>
+          Quantifies how much additional capacity or throughput may be required
+          when current performance is insufficient
+        </li>
+
+        <li>
+          Supports management conversations around planning, execution,
+          resourcing, and delivery risk
+        </li>
+      </ul>
+
+      <p>
+        The goal is not simply to report current performance. The dashboard is
+        designed to support a management decision: whether the team is on track,
+        off track, or needs to adjust capacity and execution to meet the target.
+      </p>
+
+      <img
+        src="remediation_dashboard_public_sample.png"
+        alt="Business Planning and Remediation Dashboard"
+        class="dashboard-img"
+      />
+
+
+      <p class="note">
+        Note: All figures, metric names, and site names shown are synthetic.
+        Visuals are personal reconstructions created for portfolio presentation.
+      </p>
+
+    </div>
+
+
+    <!-- NEXT PROJECT / PORTFOLIO NAVIGATION -->
+    <div class="project-nav">
+
+      <div class="project-nav-label">
+        Explore Another Project
+      </div>
+
+      <h3>Product Experimentation &amp; Growth Strategy</h3>
+
+      <p>
+        Explore my FinWise product case study, where I developed an activation
+        strategy, defined measurable Aha moments, designed retention mechanics,
+        and used experimentation to connect product behavior with growth and
+        conversion.
+      </p>
+
+      <div class="project-nav-buttons">
+
+        <a
+          class="project-button"
+          href="finwise-product-experimentation.html"
+        >
+          View FinWise Product Case Study →
+        </a>
+
+        <a
+          class="project-button secondary"
+          href="index.html"
+        >
+          Back to Portfolio
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <footer>
+      Shima Aflatounian · Business Analytics &amp; Decision Support
+    </footer>
+
+  </div>
+
+</body>
+</html>
