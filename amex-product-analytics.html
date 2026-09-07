@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Digital Product Adoption &amp; Self-Service Analytics — Shima Aflatounian</title>
+<meta name="description" content="A product analytics case study on why two conversational support assistants resolved under 12% of conversations without a human." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#07162C; --fg:#fff; --muted:#aebed3; --deep:#06111f;
+  --acc:#60a5fa; --acc2:#93c5fd;
+  --green:#46d6a0; --yellow:#f6c453; --red:#ff7b72; --purple:#a984ff;
+  --line:rgba(255,255,255,.10); --card:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font-family:'Lato',sans-serif;overflow-x:hidden}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(ellipse 85% 55% at 20% 0%,rgba(96,165,250,.13),transparent 58%),
+    radial-gradient(ellipse 70% 50% at 92% 22%,rgba(169,132,255,.08),transparent 60%),
+    radial-gradient(ellipse 60% 45% at 60% 100%,rgba(70,214,160,.06),transparent 62%);
+}
+main{max-width:1080px;margin:auto;padding:66px 34px 0}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;margin:0}
+a{text-decoration:none}
+
+.hero{padding:20px 0 66px}
+.badge{
+  display:inline-block;padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(96,165,250,.32);background:rgba(96,165,250,.08);color:var(--acc2);
+  font-family:'Poppins';font-size:10.5px;font-weight:900;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:24px;
+}
+.hero h1{
+  font-size:clamp(38px,6.4vw,68px);font-weight:900;line-height:1.03;letter-spacing:-.032em;
+  background:linear-gradient(135deg,#fff 8%,#d7e8ff 55%,#79c0ff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:24px;max-width:17ch;
+}
+.hero .lead{font-size:clamp(16.5px,2vw,20px);line-height:1.65;color:#eef5ff;max-width:66ch;margin:0 0 16px}
+.hero .meta{font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:26px}
+
+.jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.jump a{
+  padding:8px 13px;border:1px solid var(--line);border-radius:999px;
+  font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);transition:.18s ease;
+}
+.jump a:hover{color:#fff;border-color:rgba(255,255,255,.28)}
+
+.block{margin:0 0 84px;scroll-margin-top:24px}
+.eyebrow{
+  font-family:'Poppins';font-size:11px;font-weight:900;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--acc2);margin-bottom:10px;
+}
+.block h2{font-size:clamp(27px,4vw,42px);font-weight:800;line-height:1.16;letter-spacing:-.025em;margin-bottom:18px;max-width:20ch}
+.block h3{font-size:19px;font-weight:700;color:#fff;margin:34px 0 10px}
+p{font-size:16.5px;line-height:1.72;color:#cfdcec;margin:0 0 14px;max-width:70ch}
+ul{margin:14px 0 18px;padding-left:22px;max-width:70ch}
+li{font-size:16.5px;line-height:1.7;color:#cfdcec;margin-bottom:10px}
+
+.callout{
+  border-left:3px solid var(--acc);
+  background:linear-gradient(90deg,rgba(96,165,250,.10),transparent 85%);
+  border-radius:0 16px 16px 0;padding:22px 26px;margin:26px 0;
+}
+.callout p{margin:0;color:#e8f1ff;font-size:17px;max-width:66ch}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:14px;margin:28px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px 20px}
+.stat b{display:block;font-family:'Poppins';font-size:34px;font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--acc2)}
+.stat span{display:block;font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:10px}
+
+/* panels */
+.panel{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);margin:28px 0}
+.panel-bar{display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(255,255,255,.035);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.panel-bar b{font-family:'Poppins';font-size:14.5px;font-weight:700;color:#fff}
+.panel-bar .chip{margin-left:auto}
+.panel-body{padding:22px 20px 18px}
+.panel-body > p.sub{font-size:13.5px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:74ch}
+.panel svg{display:block;width:100%;height:auto}
+.panel figcaption{padding:15px 20px;font-size:13.5px;line-height:1.65;color:var(--muted);border-top:1px solid var(--line);margin:0}
+
+.chip{
+  font-family:'IBM Plex Mono';font-size:9.5px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;padding:5px 11px;border-radius:999px;white-space:nowrap;
+}
+.chip.m{color:#9df0cd;background:rgba(70,214,160,.10);border:1px solid rgba(70,214,160,.36)}
+.chip.f{color:#cbd5e1;background:transparent;border:1px dashed rgba(255,255,255,.28)}
+
+.legend{display:flex;flex-wrap:wrap;gap:9px 20px;margin-top:16px;font-size:13px;color:var(--muted)}
+.legend em{display:inline-flex;align-items:center;gap:8px;font-style:normal}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 22px}
+.pane h4{font-family:'Poppins';font-size:15px;font-weight:800;margin-bottom:9px}
+.pane p{font-size:15px;margin:0;color:#cfdcec}
+
+.note{font-size:13.5px;line-height:1.7;color:#8fa3b9;max-width:74ch;border-top:1px solid var(--line);padding-top:20px;margin-top:36px}
+
+.pnav{border:1px solid var(--line);border-radius:22px;background:var(--card);padding:48px 34px;text-align:center;margin-bottom:60px;position:relative;overflow:hidden}
+.pnav:before{content:"";position:absolute;left:0;top:0;right:0;height:2px;background:linear-gradient(90deg,var(--yellow),transparent 70%)}
+.pnav .eyebrow{color:var(--muted)}
+.pnav h3{font-size:clamp(24px,3.4vw,33px);font-weight:800;letter-spacing:-.02em;color:#fff;margin:0 0 14px}
+.pnav p{max-width:62ch;margin:0 auto 26px;color:var(--muted);font-size:15.5px}
+.pnav-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;background:var(--yellow);color:#07162C;font-family:'Poppins';font-weight:800;font-size:13.5px;transition:.18s ease}
+.btn:hover{transform:translateY(-2px);opacity:.94}
+.btn.alt{background:transparent;border:1px solid var(--line);color:#fff}
+
+footer{border-top:1px solid var(--line);padding:28px 0 44px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#7f93ab}
+
+@media(max-width:820px){
+  main{padding:42px 20px 0}
+  .block{margin-bottom:60px}
+  .split{grid-template-columns:1fr}
+  .panel-body{padding:16px 14px 14px}
+  .callout{padding:18px 20px}
+  p,li{font-size:15.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<main>
+
+  <header class="hero">
+    <div class="badge">American Express · Digital workplace products</div>
+
+    <h1>Digital product adoption &amp; self-service analytics</h1>
+
+    <p class="lead">
+      American Express ran two conversational assistants for internal technical
+      support: one embedded in the chat tool colleagues already used all day, and
+      one inside the dedicated support portal. Both were positioned as
+      self-service products. Neither was behaving like one.
+    </p>
+
+    <p class="lead">
+      I analysed several hundred thousand assistant conversations to answer a
+      product question rather than a reporting question: where in the journey do
+      users stop trying to solve their own problem, and which of those drop-off
+      points can the product actually fix?
+    </p>
+
+    <div class="jump">
+      <a href="#finding">The finding</a>
+      <a href="#journey">Journey</a>
+      <a href="#who">Who uses what</a>
+      <a href="#intent">Intent</a>
+      <a href="#needs">Recurring needs</a>
+      <a href="#decisions">Product decisions</a>
+    </div>
+
+    <p class="meta">Product analytics · User behavior · Conversational AI · SQL &amp; Tableau</p>
+  </header>
+
+  <!-- ============ 1 ============ -->
+  <section class="block" id="finding">
+    <p class="eyebrow">01 · The product question</p>
+    <h2>Adoption was fine. Completion was not.</h2>
+
+    <p>
+      Volume was high in both channels and had been for months, so the programme
+      was reported as healthy. But the product almost never finished the job it
+      existed to do — and nothing in the existing reporting made that the
+      headline.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><b>4.5%</b><span>of support-portal assistant conversations resolved without a human</span></div>
+      <div class="stat"><b>11.1%</b><span>of chat-embedded assistant conversations resolved without a human</span></div>
+      <div class="stat"><b>~2 in 3</b><span>portal conversations handed over to a live agent</span></div>
+      <div class="stat"><b>~1 in 3</b><span>chat conversations abandoned before any resolution</span></div>
+    </div>
+
+    <div class="callout">
+      <p>
+        A self-service product that resolves under 12% of contacts is not a
+        self-service product — it is a queue with extra steps in front of it. And
+        the lighter-weight channel resolved roughly 2.5&times; better than the
+        purpose-built one, which pointed the investigation at friction and
+        context rather than at content coverage.
+      </p>
+    </div>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>Self-service completion by channel</b>
+        <span class="chip m">Measured</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          Every conversation ends in exactly one of three states. The green arc is
+          the only one where the product did its job.
+        </p>
+
+        <svg viewBox="0 0 700 260" role="img" aria-label="Donut charts. Support portal assistant: 4.46 percent resolved, 67.19 percent escalated, 28.46 percent abandoned. Chat-embedded assistant: 11.05 percent resolved, 56.60 percent escalated, 32.77 percent abandoned.">
+          <g transform="translate(180,116)">
+            <g transform="rotate(-90)" fill="none" stroke-width="24">
+              <circle r="52" stroke="#46d6a0" stroke-dasharray="14.6 312.1" stroke-dashoffset="0"/>
+              <circle r="52" stroke="#f6c453" stroke-dasharray="219.5 107.2" stroke-dashoffset="-14.6"/>
+              <circle r="52" stroke="#ff7b72" stroke-dasharray="93.0 233.7" stroke-dashoffset="-234.1"/>
+            </g>
+            <text y="2" font-family="Poppins" font-size="30" font-weight="900" fill="#46d6a0" text-anchor="middle">4.5%</text>
+            <text y="22" font-family="Lato" font-size="12" fill="#aebed3" text-anchor="middle">resolved</text>
+          </g>
+          <text x="180" y="212" font-family="Poppins" font-size="14.5" font-weight="700" fill="#fff" text-anchor="middle">Support portal assistant</text>
+          <text x="180" y="234" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="middle">67.2% escalated · 28.5% abandoned</text>
+
+          <line x1="350" y1="40" x2="350" y2="200" stroke="rgba(255,255,255,.10)"/>
+
+          <g transform="translate(520,116)">
+            <g transform="rotate(-90)" fill="none" stroke-width="24">
+              <circle r="52" stroke="#46d6a0" stroke-dasharray="36.1 290.6" stroke-dashoffset="0"/>
+              <circle r="52" stroke="#f6c453" stroke-dasharray="184.9 141.8" stroke-dashoffset="-36.1"/>
+              <circle r="52" stroke="#ff7b72" stroke-dasharray="107.1 219.6" stroke-dashoffset="-221.0"/>
+            </g>
+            <text y="2" font-family="Poppins" font-size="30" font-weight="900" fill="#46d6a0" text-anchor="middle">11.1%</text>
+            <text y="22" font-family="Lato" font-size="12" fill="#aebed3" text-anchor="middle">resolved</text>
+          </g>
+          <text x="520" y="212" font-family="Poppins" font-size="14.5" font-weight="700" fill="#fff" text-anchor="middle">Chat-embedded assistant</text>
+          <text x="520" y="234" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="middle">56.6% escalated · 32.8% abandoned</text>
+        </svg>
+
+        <div class="legend">
+          <em><i style="background:#46d6a0"></i>Resolved by the assistant</em>
+          <em><i style="background:#f6c453"></i>Handed to a human agent</em>
+          <em><i style="background:#ff7b72"></i>Abandoned</em>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>The same outcomes, side by side</b>
+        <span class="chip m">Measured</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          The channels differ less in whether users get help than in how they give
+          up: the portal escalates, chat abandons.
+        </p>
+
+        <svg viewBox="0 0 700 180" role="img" aria-label="Stacked bars of the same outcome split for both channels.">
+          <text x="0" y="34" font-family="Lato" font-size="13.5" font-weight="700" fill="#e8f1ff">Support portal</text>
+          <rect x="150" y="18" width="24" height="46" rx="3" fill="#46d6a0"/>
+          <rect x="176" y="18" width="354" height="46" fill="#f6c453"/>
+          <rect x="532" y="18" width="148" height="46" rx="3" fill="#ff7b72"/>
+          <text x="353" y="46" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">67.19%</text>
+          <text x="606" y="46" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">28.46%</text>
+          <text x="162" y="82" font-family="Lato" font-size="12.5" font-weight="700" fill="#9df0cd" text-anchor="middle">4.46%</text>
+
+          <text x="0" y="130" font-family="Lato" font-size="13.5" font-weight="700" fill="#e8f1ff">Chat-embedded</text>
+          <rect x="150" y="114" width="58" height="46" rx="3" fill="#46d6a0"/>
+          <rect x="210" y="114" width="298" height="46" fill="#f6c453"/>
+          <rect x="510" y="114" width="170" height="46" rx="3" fill="#ff7b72"/>
+          <text x="179" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">11.05%</text>
+          <text x="359" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">56.60%</text>
+          <text x="595" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">32.77%</text>
+        </svg>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section class="block" id="journey">
+    <p class="eyebrow">02 · The journey</p>
+    <h2>Two failures that look the same in a report</h2>
+
+    <p>
+      Before segmenting anything, I mapped the support journey end to end so
+      every metric had a place to sit. That made something obvious: existing
+      reporting measured entry and volume well, and measured the middle of the
+      journey — the part where the product either works or doesn't — barely at all.
+    </p>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>Support journey and its two failure modes</b>
+        <span class="chip f">Framework</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          A structural map, not a measured funnel. It defines where each outcome
+          is produced and which stages had no instrumentation behind them.
+        </p>
+
+        <svg viewBox="0 0 700 250" role="img" aria-label="Journey framework: enter support, engage assistant, attempt self-service, then resolve, escalate or abandon.">
+          <defs>
+            <marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#5a7196"/>
+            </marker>
+          </defs>
+          <rect x="2" y="40" width="146" height="58" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.16)"/>
+          <text x="75" y="66" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff" text-anchor="middle">Enter support</text>
+          <text x="75" y="84" font-family="Lato" font-size="11.5" fill="#aebed3" text-anchor="middle">chat tool or portal</text>
+
+          <line x1="152" y1="69" x2="182" y2="69" stroke="#5a7196" stroke-width="1.5" marker-end="url(#arw)"/>
+
+          <rect x="188" y="40" width="146" height="58" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.16)"/>
+          <text x="261" y="66" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff" text-anchor="middle">Engage assistant</text>
+          <text x="261" y="84" font-family="Lato" font-size="11.5" fill="#aebed3" text-anchor="middle">state the problem</text>
+
+          <line x1="338" y1="69" x2="368" y2="69" stroke="#5a7196" stroke-width="1.5" marker-end="url(#arw)"/>
+
+          <rect x="374" y="40" width="160" height="58" rx="12" fill="rgba(96,165,250,.14)" stroke="#60a5fa"/>
+          <text x="454" y="66" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff" text-anchor="middle">Attempt self-service</text>
+          <text x="454" y="84" font-family="Lato" font-size="11.5" fill="#aebed3" text-anchor="middle">largely unmeasured</text>
+
+          <path d="M534 69 L560 69 L560 31" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+          <path d="M534 69 L560 69 L560 151" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+          <path d="M534 69 L560 69 L560 206" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+
+          <rect x="568" y="8" width="130" height="46" rx="12" fill="rgba(70,214,160,.12)" stroke="#46d6a0"/>
+          <text x="633" y="30" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff" text-anchor="middle">Resolved</text>
+          <text x="633" y="46" font-family="Lato" font-size="11.5" fill="#aebed3" text-anchor="middle">the intended path</text>
+
+          <rect x="568" y="128" width="130" height="46" rx="12" fill="rgba(246,196,83,.12)" stroke="#f6c453"/>
+          <text x="633" y="150" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff" text-anchor="middle">Escalated</text>
+          <text x="633" y="166" font-family="Lato" font-size="11.5" fill="#aebed3" text-anchor="middle">costly but served</text>
+
+          <rect x="568" y="183" width="130" height="46" rx="12" fill="rgba(255,123,114,.12)" stroke="#ff7b72"/>
+          <text x="633" y="205" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff" text-anchor="middle">Abandoned</text>
+          <text x="633" y="221" font-family="Lato" font-size="11.5" fill="#aebed3" text-anchor="middle">need still unmet</text>
+
+          <text x="2" y="150" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff">Two different failures</text>
+          <text x="2" y="174" font-family="Lato" font-size="11.5" fill="#aebed3">Escalation is a cost problem: the user is</text>
+          <text x="2" y="191" font-family="Lato" font-size="11.5" fill="#aebed3">served, expensively.</text>
+          <text x="2" y="215" font-family="Lato" font-size="11.5" fill="#aebed3">Abandonment is a product problem: the</text>
+          <text x="2" y="232" font-family="Lato" font-size="11.5" fill="#aebed3">need leaves without being met at all.</text>
+        </svg>
+      </div>
+    </figure>
+
+    <div class="split">
+      <div class="pane" style="border-color:rgba(246,196,83,.32)">
+        <h4 style="color:#f6c453">Escalation — a cost problem</h4>
+        <p>The user gets an answer, just not from the product. Expensive, but the need is served and the outcome is recorded.</p>
+      </div>
+      <div class="pane" style="border-color:rgba(255,123,114,.32)">
+        <h4 style="color:#ff7b72">Abandonment — a product problem</h4>
+        <p>The need walks away unmet and untracked. This was the larger risk and the one nobody was reporting on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section class="block" id="who">
+    <p class="eyebrow">03 · Segmentation</p>
+    <h2>One product, two entirely different audiences</h2>
+
+    <p>
+      Both assistants were built as one experience for one audience. The usage
+      data disagreed. I derived a tenure band for every conversation, and channel
+      preference turned out to track strongly with it: newer colleagues
+      concentrated in the chat-embedded assistant, while the portal drew a
+      materially more experienced population.
+    </p>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>Tenure mix of each channel's users</b>
+        <span class="chip m">Measured</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          Share of each channel's conversations by the tenure band of the person
+          who opened them, computed from underlying counts and rounded to whole
+          percentage points.
+        </p>
+
+        <svg viewBox="0 0 700 180" role="img" aria-label="Tenure mix by channel. Chat-embedded: 73 percent one to five years, 13 percent five to ten, 6 percent ten to twenty, 8 percent other. Support portal: 56, 23, 12 and 9 percent.">
+          <text x="0" y="34" font-family="Lato" font-size="13.5" font-weight="700" fill="#e8f1ff">Chat-embedded</text>
+          <rect x="150" y="18" width="387" height="46" rx="3" fill="#3b82f6"/>
+          <rect x="539" y="18" width="69" height="46" fill="#7dabf8"/>
+          <rect x="610" y="18" width="32" height="46" fill="#b9d1fb"/>
+          <rect x="644" y="18" width="36" height="46" rx="3" fill="#3f5573"/>
+          <text x="343" y="46" font-family="Lato" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">73%</text>
+          <text x="573" y="46" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">13%</text>
+
+          <text x="0" y="130" font-family="Lato" font-size="13.5" font-weight="700" fill="#e8f1ff">Support portal</text>
+          <rect x="150" y="114" width="297" height="46" rx="3" fill="#3b82f6"/>
+          <rect x="449" y="114" width="122" height="46" fill="#7dabf8"/>
+          <rect x="573" y="114" width="64" height="46" fill="#b9d1fb"/>
+          <rect x="639" y="114" width="41" height="46" rx="3" fill="#3f5573"/>
+          <text x="298" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">56%</text>
+          <text x="510" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">23%</text>
+          <text x="605" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">12%</text>
+        </svg>
+
+        <div class="legend">
+          <em><i style="background:#3b82f6"></i>1–5 years</em>
+          <em><i style="background:#7dabf8"></i>5–10 years</em>
+          <em><i style="background:#b9d1fb"></i>10–20 years</em>
+          <em><i style="background:#3f5573"></i>All other tenure bands</em>
+        </div>
+      </div>
+      <figcaption>
+        The portal's user base skews almost twice as heavily toward 5–20 year
+        tenure. That single split is what turned one support metric into two
+        distinct product audiences with different jobs to be done.
+      </figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>
+        Newer colleagues don't know the support system, so they ask wherever they
+        already are. Experienced colleagues go to the portal because they already
+        know the assistant probably won't help and they want the ticket. Same
+        product, two different jobs being hired for — and the portal's much lower
+        resolution rate is exactly what you'd expect if users arrive already
+        intending to escalate.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section class="block" id="intent">
+    <p class="eyebrow">04 · Intent</p>
+    <h2>Separating a failed product from an unwilling user</h2>
+
+    <p>
+      Outcome alone couldn't distinguish "the assistant failed the user" from
+      "the user never intended to use the assistant." So I built a classification
+      that reads the opening turns of each conversation — whether the user
+      described a problem or went straight to asking for an agent or a ticket —
+      and crosses that with how the conversation actually ended.
+    </p>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>How each conversation was classified</b>
+        <span class="chip f">Framework</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          Opening intent on one axis, final outcome on the other. Four segments
+          fall out of the crossing, and each one implies a different fix.
+        </p>
+
+        <svg viewBox="0 0 700 270" role="img" aria-label="Classification matrix. Opening intent describes a problem crossed with resolved, escalated or abandoned gives self-served, continued engagement and disengaged. Opening intent asks for an agent immediately gives the requested-agent segment.">
+          <text x="150" y="26" font-family="Lato" font-size="12" font-weight="700" fill="#aebed3" text-anchor="middle">Resolved</text>
+          <text x="330" y="26" font-family="Lato" font-size="12" font-weight="700" fill="#aebed3" text-anchor="middle">Escalated to a human</text>
+          <text x="540" y="26" font-family="Lato" font-size="12" font-weight="700" fill="#aebed3" text-anchor="middle">Abandoned</text>
+          <text x="640" y="26" font-family="Lato" font-size="11" fill="#7f93ab" text-anchor="middle">outcome &rarr;</text>
+
+          <text x="8" y="88" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff">User describes</text>
+          <text x="8" y="106" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff">a problem</text>
+
+          <rect x="112" y="44" width="150" height="88" rx="12" fill="rgba(70,214,160,.13)" stroke="#46d6a0"/>
+          <text x="187" y="82" font-family="Lato" font-size="12.5" font-weight="700" fill="#9df0cd" text-anchor="middle">Self-served</text>
+          <text x="187" y="100" font-family="Lato" font-size="12.5" font-weight="700" fill="#9df0cd" text-anchor="middle">successfully</text>
+
+          <rect x="272" y="44" width="150" height="88" rx="12" fill="rgba(59,130,246,.15)" stroke="#3b82f6"/>
+          <text x="347" y="82" font-family="Lato" font-size="12.5" font-weight="700" fill="#bfd8fd" text-anchor="middle">Continued</text>
+          <text x="347" y="100" font-family="Lato" font-size="12.5" font-weight="700" fill="#bfd8fd" text-anchor="middle">engagement</text>
+
+          <rect x="432" y="44" width="150" height="88" rx="12" fill="rgba(246,196,83,.13)" stroke="#f6c453"/>
+          <text x="507" y="74" font-family="Lato" font-size="12.5" font-weight="700" fill="#f8d47a" text-anchor="middle">Disengaged</text>
+          <text x="507" y="92" font-family="Lato" font-size="12.5" font-weight="700" fill="#f8d47a" text-anchor="middle">before</text>
+          <text x="507" y="110" font-family="Lato" font-size="12.5" font-weight="700" fill="#f8d47a" text-anchor="middle">self-serving</text>
+
+          <text x="8" y="196" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff">User asks for an</text>
+          <text x="8" y="214" font-family="Lato" font-size="12.5" font-weight="700" fill="#e8f1ff">agent up front</text>
+
+          <rect x="112" y="152" width="470" height="88" rx="12" fill="rgba(255,123,114,.12)" stroke="#ff7b72"/>
+          <text x="347" y="188" font-family="Lato" font-size="12.5" font-weight="700" fill="#ff9d96" text-anchor="middle">Requested an agent immediately</text>
+          <text x="347" y="210" font-family="Lato" font-size="11.5" fill="#cfdcec" text-anchor="middle">outcome is irrelevant — the product was never given a turn</text>
+
+          <text x="600" y="188" font-family="Lato" font-size="11.5" fill="#7f93ab">opening</text>
+          <text x="600" y="204" font-family="Lato" font-size="11.5" fill="#7f93ab">intent &darr;</text>
+        </svg>
+      </div>
+      <figcaption>
+        Replacing a raw keyword script with an explicit two-axis rule made the
+        segmentation reviewable by people who don't read code — which is what let
+        it be argued about, corrected and eventually trusted.
+      </figcaption>
+    </figure>
+
+    <p>
+      Roughly three quarters of conversations in both channels contained a
+      genuine, valid issue. The self-service product was failing real needs, not
+      being worked around.
+    </p>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>Conversations by intent to self-serve</b>
+        <span class="chip m">Measured</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          The four segments applied to both channels. The portal's smallest
+          segment is calculated as the remainder of the other three.
+        </p>
+
+        <svg viewBox="0 0 700 180" role="img" aria-label="Intent segmentation. Chat-embedded: 49.1 percent continued engagement, 31.2 percent disengaged, 11.0 percent self-served, 8.7 percent requested an agent. Support portal: 36.7, 47.7, 4.4 and 11.3 percent.">
+          <text x="0" y="34" font-family="Lato" font-size="13.5" font-weight="700" fill="#e8f1ff">Chat-embedded</text>
+          <rect x="150" y="18" width="260" height="46" rx="3" fill="#3b82f6"/>
+          <rect x="412" y="18" width="165" height="46" fill="#f6c453"/>
+          <rect x="579" y="18" width="58" height="46" fill="#46d6a0"/>
+          <rect x="639" y="18" width="41" height="46" rx="3" fill="#ff7b72"/>
+          <text x="280" y="46" font-family="Lato" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">49.1%</text>
+          <text x="494" y="46" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">31.2%</text>
+
+          <text x="0" y="130" font-family="Lato" font-size="13.5" font-weight="700" fill="#e8f1ff">Support portal</text>
+          <rect x="150" y="114" width="194" height="46" rx="3" fill="#3b82f6"/>
+          <rect x="346" y="114" width="253" height="46" fill="#f6c453"/>
+          <rect x="601" y="114" width="23" height="46" fill="#46d6a0"/>
+          <rect x="626" y="114" width="54" height="46" rx="3" fill="#ff7b72"/>
+          <text x="247" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">36.7%</text>
+          <text x="472" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">47.7%</text>
+          <text x="653" y="142" font-family="Lato" font-size="12.5" font-weight="700" fill="#07162c" text-anchor="middle">11.3%</text>
+        </svg>
+
+        <div class="legend">
+          <em><i style="background:#3b82f6"></i>Continued engagement</em>
+          <em><i style="background:#f6c453"></i>Disengaged before self-serving</em>
+          <em><i style="background:#46d6a0"></i>Self-served successfully</em>
+          <em><i style="background:#ff7b72"></i>Requested an agent immediately</em>
+        </div>
+      </div>
+    </figure>
+
+    <p>
+      The portal inverts the chat channel: nearly half of its conversations
+      disengage before the assistant gets a chance, against 31% in chat. Combined
+      with its older-tenure user base, that is the signature of a channel users
+      have already learned not to trust.
+    </p>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section class="block" id="needs">
+    <p class="eyebrow">05 · Recurring needs</p>
+    <h2>What users were actually asking for</h2>
+
+    <p>
+      To understand the content side, I clustered conversation text to group
+      recurring requests instead of reading them one at a time. The method
+      matters less than the result: demand was heavily concentrated, and it was
+      concentrated in exactly the categories a well-built assistant should own.
+    </p>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>Recurring need clusters and what each one requires</b>
+        <span class="chip f">Framework</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          Clusters are grouped by the kind of fix they need, not by size. No
+          quantitative encoding is implied by the shapes below.
+        </p>
+
+        <svg viewBox="0 0 700 250" role="img" aria-label="Three need clusters: access and sign-in failures, remote connectivity and sessions, and account and data provisioning. The first two are solvable with better content and flow. The third needs a system capability the product lacks.">
+          <rect x="2" y="10" width="222" height="150" rx="14" fill="rgba(70,214,160,.10)" stroke="rgba(70,214,160,.42)"/>
+          <text x="22" y="42" font-family="Poppins" font-size="14" font-weight="800" fill="#9df0cd">Access &amp; sign-in</text>
+          <text x="22" y="70" font-family="Lato" font-size="12" fill="#cfdcec">High volume, low variety.</text>
+          <text x="22" y="90" font-family="Lato" font-size="12" fill="#cfdcec">Consistent phrasing across</text>
+          <text x="22" y="110" font-family="Lato" font-size="12" fill="#cfdcec">thousands of conversations.</text>
+          <text x="22" y="140" font-family="Lato" font-size="11.5" font-style="italic" fill="#aebed3">Largest single cluster</text>
+
+          <rect x="239" y="10" width="222" height="150" rx="14" fill="rgba(70,214,160,.10)" stroke="rgba(70,214,160,.42)"/>
+          <text x="259" y="42" font-family="Poppins" font-size="14" font-weight="800" fill="#9df0cd">Remote connectivity</text>
+          <text x="259" y="70" font-family="Lato" font-size="12" fill="#cfdcec">Session drops and access</text>
+          <text x="259" y="90" font-family="Lato" font-size="12" fill="#cfdcec">from outside the office.</text>
+          <text x="259" y="110" font-family="Lato" font-size="12" fill="#cfdcec">Dense, repeatable group.</text>
+          <text x="259" y="140" font-family="Lato" font-size="11.5" font-style="italic" fill="#aebed3">Second dense cluster</text>
+
+          <rect x="476" y="10" width="222" height="150" rx="14" fill="rgba(255,123,114,.10)" stroke="rgba(255,123,114,.42)"/>
+          <text x="496" y="42" font-family="Poppins" font-size="14" font-weight="800" fill="#ff9d96">Account provisioning</text>
+          <text x="496" y="70" font-family="Lato" font-size="12" fill="#cfdcec">Requests that need a system</text>
+          <text x="496" y="90" font-family="Lato" font-size="12" fill="#cfdcec">action downstream, not an</text>
+          <text x="496" y="110" font-family="Lato" font-size="12" fill="#cfdcec">answer from a document.</text>
+          <text x="496" y="140" font-family="Lato" font-size="11.5" font-style="italic" fill="#aebed3">Distinct third group</text>
+
+          <rect x="2" y="180" width="459" height="58" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(70,214,160,.30)"/>
+          <text x="22" y="205" font-family="Lato" font-size="12.5" font-weight="700" fill="#9df0cd">Solvable by the product</text>
+          <text x="22" y="226" font-family="Lato" font-size="12" fill="#cfdcec">Better knowledge and a real end-to-end resolution flow.</text>
+
+          <rect x="476" y="180" width="222" height="58" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(255,123,114,.30)"/>
+          <text x="496" y="205" font-family="Lato" font-size="12.5" font-weight="700" fill="#ff9d96">Capability gap</text>
+          <text x="496" y="226" font-family="Lato" font-size="12" fill="#cfdcec">No content fixes a missing action.</text>
+        </svg>
+      </div>
+      <figcaption>
+        The most common knowledge-base category attached to conversations was the
+        one covering abandoned chats — meaning the most frequently documented
+        outcome in the system was the absence of an outcome.
+      </figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>
+        This separates the backlog cleanly. The first two clusters are knowledge
+        and flow problems the assistant can be built to solve. The third is a
+        capability gap: no amount of better content resolves a request that needs
+        a system action the product cannot take.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 6 ============ -->
+  <section class="block" id="decisions">
+    <p class="eyebrow">06 · Product decisions</p>
+    <h2>What I recommended</h2>
+
+    <h3>Change what the assistant is for, by channel</h3>
+    <p>
+      Stop shipping one experience to two audiences. The chat-embedded assistant
+      should be optimised for newer colleagues and first-time problems: guided
+      resolution, plain-language prompts, obvious next steps. The portal should
+      stop pretending an escalation-intent user wants a conversation, and instead
+      route them faster while capturing structured context on the way through.
+    </p>
+
+    <h3>Build depth in the top two clusters before adding breadth</h3>
+    <p>
+      Access and connectivity concentrate enough volume that a genuine end-to-end
+      resolution flow for those two categories moves the resolution rate more
+      than broad content expansion across every topic.
+    </p>
+
+    <h3>Treat abandonment as the priority metric, not escalation</h3>
+    <p>
+      Escalation is expensive but the user is served. Abandonment means the need
+      walked away. Roughly a third of chat conversations ended that way, and
+      nothing in the existing reporting made it visible.
+    </p>
+
+    <h3>Instrument the middle of the journey</h3>
+    <p>
+      The stages between engagement and outcome were effectively unmeasured, so
+      it was impossible to say whether users abandoned because the answer was
+      wrong, slow, or never offered. Without those events, any improvement can be
+      shipped but not evaluated.
+    </p>
+
+    <h3>Close the loop where the product cannot act</h3>
+    <p>
+      For provisioning-type requests, the honest product decision is a fast,
+      well-labelled handoff rather than a failed self-service attempt that costs
+      the user time before escalating anyway.
+    </p>
+
+    <p class="note">
+      Scope note: this case study covers the analysis and the recommendations
+      that came from it. The product changes described are proposals supported by
+      the evidence above; they are not presented as shipped work, and no
+      post-change results are claimed. All visuals are original, built for this
+      portfolio from relative distributions and rates. Absolute volumes,
+      organisational breakdowns, internal system names and source data are
+      deliberately excluded. This portfolio contains generalized project
+      summaries.
+    </p>
+  </section>
+
+  <div class="pnav">
+    <p class="eyebrow">Next case study</p>
+    <h3>GTM funnel &amp; demand analytics</h3>
+    <p>
+      At Keysight Technologies, pipeline was beating target while
+      marketing-qualified leads kept stalling. Same shape of problem, different
+      funnel: the failure was in qualification, not in selling.
+    </p>
+    <div class="pnav-btns">
+      <a class="btn" href="keysight-growth-analytics.html">View Keysight case study &rarr;</a>
+      <a class="btn alt" href="index.html">Back to portfolio</a>
+    </div>
+  </div>
+
+  <footer>Shima Aflatounian · Product analytics &amp; experimentation</footer>
+
+</main>
+
+</body>
+</html>

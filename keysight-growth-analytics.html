@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GTM Funnel &amp; Demand Analytics — Shima Aflatounian</title>
+<meta name="description" content="A go-to-market case study on why marketing-qualified leads stalled while pipeline beat its target." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#07162C; --fg:#fff; --muted:#aebed3; --deep:#06111f;
+  --acc:#f6c453; --acc2:#f8d47a;
+  --green:#46d6a0; --blue:#60a5fa; --red:#ff7b72;
+  --line:rgba(255,255,255,.10); --card:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font-family:'Lato',sans-serif;overflow-x:hidden}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(ellipse 85% 55% at 20% 0%,rgba(246,196,83,.10),transparent 58%),
+    radial-gradient(ellipse 70% 50% at 92% 20%,rgba(96,165,250,.10),transparent 60%),
+    radial-gradient(ellipse 60% 45% at 55% 100%,rgba(169,132,255,.07),transparent 62%);
+}
+main{max-width:1080px;margin:auto;padding:66px 34px 0}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;margin:0}
+a{text-decoration:none}
+
+.hero{padding:20px 0 66px}
+.badge{
+  display:inline-block;padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(246,196,83,.34);background:rgba(246,196,83,.08);color:var(--acc2);
+  font-family:'Poppins';font-size:10.5px;font-weight:900;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:24px;
+}
+.hero h1{
+  font-size:clamp(38px,6.4vw,68px);font-weight:900;line-height:1.03;letter-spacing:-.032em;
+  background:linear-gradient(135deg,#fff 8%,#ffeec4 55%,#f6c453 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:24px;max-width:16ch;
+}
+.hero .lead{font-size:clamp(16.5px,2vw,20px);line-height:1.65;color:#eef5ff;max-width:66ch;margin:0 0 16px}
+.hero .meta{font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:26px}
+
+.jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.jump a{
+  padding:8px 13px;border:1px solid var(--line);border-radius:999px;
+  font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);transition:.18s ease;
+}
+.jump a:hover{color:#fff;border-color:rgba(255,255,255,.28)}
+
+.block{margin:0 0 84px;scroll-margin-top:24px}
+.eyebrow{
+  font-family:'Poppins';font-size:11px;font-weight:900;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--acc2);margin-bottom:10px;
+}
+.block h2{font-size:clamp(27px,4vw,42px);font-weight:800;line-height:1.16;letter-spacing:-.025em;margin-bottom:18px;max-width:20ch}
+.block h3{font-size:19px;font-weight:700;color:#fff;margin:34px 0 10px}
+p{font-size:16.5px;line-height:1.72;color:#cfdcec;margin:0 0 14px;max-width:70ch}
+
+.callout{
+  border-left:3px solid var(--acc);
+  background:linear-gradient(90deg,rgba(246,196,83,.10),transparent 85%);
+  border-radius:0 16px 16px 0;padding:22px 26px;margin:26px 0;
+}
+.callout p{margin:0;color:#fff6e2;font-size:17px;max-width:66ch}
+
+.fig{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 22px 20px;margin:28px 0}
+.fig-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fig-title{font-family:'Poppins';font-size:15.5px;font-weight:700;color:#fff}
+.fig-sub{font-size:13.5px;line-height:1.6;color:var(--muted);margin:8px 0 18px;max-width:72ch}
+.fig svg{display:block;width:100%;height:auto}
+.chip{
+  font-family:'IBM Plex Mono';font-size:9.5px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;padding:5px 11px;border-radius:999px;white-space:nowrap;
+}
+.chip.m{color:#9df0cd;background:rgba(70,214,160,.10);border:1px solid rgba(70,214,160,.36)}
+.chip.f{color:#cbd5e1;background:transparent;border:1px dashed rgba(255,255,255,.28)}
+
+.panel{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);margin:28px 0}
+.panel-bar{display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(255,255,255,.035);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.panel-bar b{font-family:'Poppins';font-size:14.5px;font-weight:700;color:#fff}
+.panel-bar .chip{margin-left:auto}
+.panel-body{padding:22px 20px 18px}
+.panel-body > p.sub{font-size:13.5px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:74ch}
+.panel svg{display:block;width:100%;height:auto}
+.panel figcaption{padding:15px 20px;font-size:13.5px;line-height:1.65;color:var(--muted);border-top:1px solid var(--line);margin:0}
+
+.owners{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:28px 0}
+.owner{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 22px}
+.owner h4{font-family:'Poppins';font-size:16px;font-weight:800;color:var(--acc);margin-bottom:4px}
+.owner .who{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:16px}
+.owner ul{margin:0 0 16px;padding-left:18px}
+.owner li{font-size:14.5px;line-height:1.6;color:#cfdcec;margin-bottom:7px}
+.owner p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.6}
+
+.note{font-size:13.5px;line-height:1.7;color:#8fa3b9;max-width:74ch;border-top:1px solid var(--line);padding-top:20px;margin-top:36px}
+
+.pnav{border:1px solid var(--line);border-radius:22px;background:var(--card);padding:48px 34px;text-align:center;margin-bottom:60px;position:relative;overflow:hidden}
+.pnav:before{content:"";position:absolute;left:0;top:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent 70%)}
+.pnav .eyebrow{color:var(--muted)}
+.pnav h3{font-size:clamp(24px,3.4vw,33px);font-weight:800;letter-spacing:-.02em;color:#fff;margin:0 0 14px}
+.pnav p{max-width:62ch;margin:0 auto 26px;color:var(--muted);font-size:15.5px}
+.pnav-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;background:var(--green);color:#07162C;font-family:'Poppins';font-weight:800;font-size:13.5px;transition:.18s ease}
+.btn:hover{transform:translateY(-2px);opacity:.94}
+.btn.alt{background:transparent;border:1px solid var(--line);color:#fff}
+
+footer{border-top:1px solid var(--line);padding:28px 0 44px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#7f93ab}
+
+@media(max-width:820px){
+  main{padding:42px 20px 0}
+  .block{margin-bottom:60px}
+  .fig{padding:18px 15px 16px}
+  .panel-body{padding:16px 14px 14px}
+  .callout{padding:18px 20px}
+  p{font-size:15.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<main>
+
+  <header class="hero">
+    <div class="badge">Keysight Technologies · Demand generation</div>
+
+    <h1>GTM funnel &amp; demand analytics</h1>
+
+    <p class="lead">
+      Keysight's marketing organisation had a target: grow sales-qualified leads
+      10% year over year. Through FY22 the pipeline was clearing that target
+      comfortably. At the same time, sales kept rejecting marketing-qualified
+      leads and marketing kept generating more of them.
+    </p>
+
+    <p class="lead">
+      Both things were true, which meant the headline number was hiding the
+      actual constraint. I worked the funnel backwards to find where qualified
+      demand was being created, where it was being lost, and whether the regions
+      producing it matched the regions the business wanted to grow.
+    </p>
+
+    <div class="jump">
+      <a href="#target">The target</a>
+      <a href="#loss">Where leads are lost</a>
+      <a href="#regions">Regional demand</a>
+      <a href="#recs">Recommendations</a>
+    </div>
+
+    <p class="meta">GTM · Funnel analytics · Segmentation · Marketing operations</p>
+  </header>
+
+  <!-- 1 -->
+  <section class="block" id="target">
+    <p class="eyebrow">01 · The GTM challenge</p>
+    <h2>Hitting the target and missing the problem</h2>
+
+    <p>
+      Measured against the year-to-month goal, qualified pipeline value ran
+      between 121% and 126% every single month from March through July 2022.
+      That consistency is itself the finding: a funnel that beats its target by
+      roughly the same margin for five straight months is not being driven by
+      anything marketing changed month to month.
+    </p>
+
+    <div class="fig">
+      <div class="fig-head">
+        <span class="fig-title">Qualified pipeline value against year-to-month goal</span>
+        <span class="chip m">Measured</span>
+      </div>
+      <p class="fig-sub">
+        FY22 year-to-date value as a percentage of the year-to-month goal, where
+        the goal was set at a 10% increase over FY21. Indexed to goal; absolute
+        values are withheld.
+      </p>
+
+      <svg viewBox="0 0 700 260" role="img" aria-label="Percent of year-to-month goal: March 121.2, April 123.7, May 126.3, June 120.9, July 121.0.">
+        <line x1="60" y1="210" x2="660" y2="210" stroke="rgba(255,255,255,.14)"/>
+        <line x1="60" y1="142" x2="660" y2="142" stroke="rgba(255,255,255,.09)" stroke-dasharray="2 4"/>
+        <line x1="60" y1="74"  x2="660" y2="74"  stroke="#ff7b72" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+        <text x="52" y="214" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="end">0</text>
+        <text x="52" y="146" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="end">50</text>
+        <text x="52" y="78"  font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="end">100</text>
+        <text x="666" y="70" font-family="Lato" font-size="12" fill="#ff7b72">goal</text>
+
+        <rect x="70"  y="46" width="70" height="164" rx="5" fill="#f6c453"/>
+        <rect x="180" y="42" width="70" height="168" rx="5" fill="#f6c453"/>
+        <rect x="290" y="39" width="70" height="171" rx="5" fill="#f6c453"/>
+        <rect x="400" y="46" width="70" height="164" rx="5" fill="#f6c453"/>
+        <rect x="510" y="46" width="70" height="164" rx="5" fill="#f6c453"/>
+
+        <text x="105" y="70" font-family="Lato" font-size="12.5" font-weight="700" fill="#2a1f05" text-anchor="middle">121.2%</text>
+        <text x="215" y="66" font-family="Lato" font-size="12.5" font-weight="700" fill="#2a1f05" text-anchor="middle">123.7%</text>
+        <text x="325" y="63" font-family="Lato" font-size="12.5" font-weight="700" fill="#2a1f05" text-anchor="middle">126.3%</text>
+        <text x="435" y="70" font-family="Lato" font-size="12.5" font-weight="700" fill="#2a1f05" text-anchor="middle">120.9%</text>
+        <text x="545" y="70" font-family="Lato" font-size="12.5" font-weight="700" fill="#2a1f05" text-anchor="middle">121.0%</text>
+
+        <text x="105" y="232" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="middle">Mar</text>
+        <text x="215" y="232" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="middle">Apr</text>
+        <text x="325" y="232" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="middle">May</text>
+        <text x="435" y="232" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="middle">Jun</text>
+        <text x="545" y="232" font-family="Lato" font-size="12.5" fill="#aebed3" text-anchor="middle">Jul</text>
+        <text x="360" y="252" font-family="Lato" font-size="12" fill="#7f93ab" text-anchor="middle">FY22</text>
+      </svg>
+    </div>
+
+    <div class="callout">
+      <p>
+        A flat 20-point cushion across five months points to a goal calibrated
+        against the wrong baseline, not to marketing performance improving. It
+        also meant nobody upstream was being asked why so much
+        marketing-qualified volume never became pipeline at all.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="block" id="loss">
+    <p class="eyebrow">02 · The funnel leak</p>
+    <h2>The leak was in qualification, not in selling</h2>
+
+    <p>
+      I pulled every rejected marketing-qualified lead with its stated rejection
+      reason and regrouped the reasons by who could act on them. That regrouping
+      is the whole insight: the losses were not spread evenly across the
+      organisation, and almost none of them were a sales execution failure.
+    </p>
+
+    <div class="owners">
+      <div class="owner">
+        <h4>Lead readiness</h4>
+        <span class="who">Owned by nurture strategy</span>
+        <ul>
+          <li>Not sales ready</li>
+          <li>Timing</li>
+          <li>Need not established</li>
+        </ul>
+        <p>The lead is real, but it was handed over too early to be worked.</p>
+      </div>
+      <div class="owner">
+        <h4>Data &amp; targeting</h4>
+        <span class="who">Owned by campaign design</span>
+        <ul>
+          <li>Incomplete details</li>
+          <li>Wrong persona</li>
+          <li>No buying authority</li>
+          <li>Duplicate lead</li>
+        </ul>
+        <p>The form captured someone who was never going to be able to buy.</p>
+      </div>
+      <div class="owner">
+        <h4>Process &amp; timing</h4>
+        <span class="who">Owned by marketing operations</span>
+        <ul>
+          <li>Unreachable, no response</li>
+          <li>Routed incorrectly</li>
+        </ul>
+        <p>The lead was valid and was simply never properly worked.</p>
+      </div>
+    </div>
+
+    <p>
+      Read this way, the funnel's problem becomes legible. Marketing was measured
+      on volume of qualified leads, so it optimised for what produced volume —
+      gated content downloads and event registrations. Those channels reliably
+      produce contact records. They do not reliably produce people with a need, a
+      budget and authority, which is exactly why the rejection reasons cluster on
+      readiness and targeting rather than on selling.
+    </p>
+
+    <figure class="panel">
+      <div class="panel-bar">
+        <b>Where marketing-qualified leads are lost</b>
+        <span class="chip f">Framework</span>
+      </div>
+      <div class="panel-body">
+        <p class="sub">
+          A structural view of the handoff, showing which team owns each exit.
+          Widths are illustrative and carry no quantitative meaning.
+        </p>
+
+        <svg viewBox="0 0 700 270" role="img" aria-label="Funnel framework. Marketing-qualified leads pass to sales, losing volume to lead readiness, data and targeting, and process and timing before becoming sales-qualified leads.">
+          <defs>
+            <linearGradient id="fg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#f6c453" stop-opacity=".85"/>
+              <stop offset="1" stop-color="#f6c453" stop-opacity=".3"/>
+            </linearGradient>
+          </defs>
+
+          <path d="M20 40 L640 92 L640 148 L20 130 Z" fill="url(#fg)"/>
+
+          <text x="30" y="30" font-family="Poppins" font-size="13.5" font-weight="800" fill="#f8d47a">Marketing-qualified leads</text>
+          <text x="30" y="76" font-family="Lato" font-size="12" font-weight="700" fill="#2a1f05">generated by content and events</text>
+
+          <text x="655" y="112" font-family="Poppins" font-size="13.5" font-weight="800" fill="#46d6a0" text-anchor="end">SQL</text>
+          <text x="655" y="132" font-family="Lato" font-size="11.5" fill="#cfdcec" text-anchor="end">accepted</text>
+
+          <line x1="150" y1="130" x2="150" y2="180" stroke="#ff7b72" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <rect x="42" y="184" width="216" height="70" rx="12" fill="rgba(255,123,114,.10)" stroke="rgba(255,123,114,.38)"/>
+          <text x="60" y="208" font-family="Lato" font-size="12.5" font-weight="700" fill="#ff9d96">Lead readiness</text>
+          <text x="60" y="228" font-family="Lato" font-size="11.5" fill="#cfdcec">Not sales ready · timing · no</text>
+          <text x="60" y="244" font-family="Lato" font-size="11.5" fill="#cfdcec">established need</text>
+
+          <line x1="350" y1="136" x2="350" y2="180" stroke="#ff7b72" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <rect x="272" y="184" width="216" height="70" rx="12" fill="rgba(255,123,114,.10)" stroke="rgba(255,123,114,.38)"/>
+          <text x="290" y="208" font-family="Lato" font-size="12.5" font-weight="700" fill="#ff9d96">Data &amp; targeting</text>
+          <text x="290" y="228" font-family="Lato" font-size="11.5" fill="#cfdcec">Wrong persona · no authority ·</text>
+          <text x="290" y="244" font-family="Lato" font-size="11.5" fill="#cfdcec">incomplete or duplicate details</text>
+
+          <line x1="550" y1="142" x2="550" y2="180" stroke="#ff7b72" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <rect x="502" y="184" width="196" height="70" rx="12" fill="rgba(255,123,114,.10)" stroke="rgba(255,123,114,.38)"/>
+          <text x="520" y="208" font-family="Lato" font-size="12.5" font-weight="700" fill="#ff9d96">Process &amp; timing</text>
+          <text x="520" y="228" font-family="Lato" font-size="11.5" fill="#cfdcec">Unreachable ·</text>
+          <text x="520" y="244" font-family="Lato" font-size="11.5" fill="#cfdcec">routed incorrectly</text>
+
+          <text x="20" y="172" font-family="Lato" font-size="11" fill="#7f93ab">Every exit below belongs to marketing, not to sales execution</text>
+        </svg>
+      </div>
+      <figcaption>
+        Grouped this way, the funnel stops looking like a sales problem. The
+        composition of rejection reasons stayed stable as volume grew, which is
+        what confirmed this was structural rather than a run of bad campaigns.
+      </figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>
+        The recommendation that follows is uncomfortable but simple: the
+        qualification definition was the defect. A bar set at "downloaded
+        something" guarantees a rejection queue that no amount of sales follow-up
+        can clear.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="block" id="regions">
+    <p class="eyebrow">03 · Regional demand</p>
+    <h2>Demand sat in three markets. The plan assumed more.</h2>
+
+    <p>
+      If we were going to tighten qualification, we needed to know which markets
+      could absorb it — so I looked at where web engagement was concentrated
+      across the region, using three-month rolling averages to strip out campaign
+      spikes and reporting noise.
+    </p>
+
+    <div class="fig">
+      <div class="fig-head">
+        <span class="fig-title">Web visits by market, three-month rolling average</span>
+        <span class="chip m">Measured</span>
+      </div>
+      <p class="fig-sub">
+        Rolling average of monthly web visits per market as of July 2022. Rolling
+        averages are a smoothing method here, not a finding in themselves.
+      </p>
+
+      <svg viewBox="0 0 700 310" role="img" aria-label="Three-month rolling average web visits July 2022: France 131,909; United Kingdom 123,449; Germany 112,454; Russian Federation 28,063; Spain 21,255; Finland 20,998; Ireland 20,694; Italy 17,065; Sweden 9,362; other markets 3,622; India 2,603.">
+        <text x="140" y="28"  font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">France</text>
+        <rect x="150" y="16" width="450" height="16" rx="4" fill="#f6c453"/>
+        <text x="608" y="28"  font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">131,909</text>
+
+        <text x="140" y="54"  font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">United Kingdom</text>
+        <rect x="150" y="42" width="421" height="16" rx="4" fill="#f6c453"/>
+        <text x="579" y="54"  font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">123,449</text>
+
+        <text x="140" y="80"  font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">Germany</text>
+        <rect x="150" y="68" width="383" height="16" rx="4" fill="#f6c453"/>
+        <text x="541" y="80"  font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">112,454</text>
+
+        <text x="140" y="106" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">Russian Federation</text>
+        <rect x="150" y="94" width="96" height="16" rx="4" fill="#8a7434"/>
+        <text x="254" y="106" font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">28,063</text>
+
+        <text x="140" y="132" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">Spain</text>
+        <rect x="150" y="120" width="72" height="16" rx="4" fill="#8a7434"/>
+        <text x="230" y="132" font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">21,255</text>
+
+        <text x="140" y="158" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">Finland</text>
+        <rect x="150" y="146" width="72" height="16" rx="4" fill="#8a7434"/>
+        <text x="230" y="158" font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">20,998</text>
+
+        <text x="140" y="184" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">Ireland</text>
+        <rect x="150" y="172" width="71" height="16" rx="4" fill="#8a7434"/>
+        <text x="229" y="184" font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">20,694</text>
+
+        <text x="140" y="210" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">Italy</text>
+        <rect x="150" y="198" width="58" height="16" rx="4" fill="#8a7434"/>
+        <text x="216" y="210" font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">17,065</text>
+
+        <text x="140" y="236" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">Sweden</text>
+        <rect x="150" y="224" width="32" height="16" rx="4" fill="#8a7434"/>
+        <text x="190" y="236" font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">9,362</text>
+
+        <text x="140" y="262" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">All other markets</text>
+        <rect x="150" y="250" width="12" height="16" rx="4" fill="#5c4f26"/>
+        <text x="170" y="262" font-family="Lato" font-size="12.5" font-weight="700" fill="#cfdcec">3,622</text>
+
+        <text x="140" y="288" font-family="Lato" font-size="13" fill="#e8f1ff" text-anchor="end">India</text>
+        <rect x="150" y="276" width="9" height="16" rx="4" fill="#ff7b72"/>
+        <text x="167" y="288" font-family="Lato" font-size="12.5" font-weight="700" fill="#ff9d96">2,603</text>
+      </svg>
+    </div>
+
+    <p>
+      France, the United Kingdom and Germany accounted for the overwhelming
+      majority of engagement, each an order of magnitude above the next tier.
+      India registered roughly 2,600 visits against France's 132,000 — a ratio
+      that does not resemble the market opportunity and looks far more like a
+      measurement or coverage gap than a demand gap.
+    </p>
+
+    <div class="callout">
+      <p>
+        That distinction is commercially decisive. If the number is real, India is
+        being under-invested in. If it is a tagging or domain-attribution problem,
+        part of the region's demand has been invisible to planning for years.
+        Either answer changes where budget goes, and it costs almost nothing to
+        check before spending anything.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="block" id="recs">
+    <p class="eyebrow">04 · GTM recommendations</p>
+    <h2>What marketing and sales should do differently</h2>
+
+    <h3>Redefine what qualifies a lead</h3>
+    <p>
+      Move the bar from content consumption to demonstrated fit and intent.
+      Persona and authority signals belong inside the qualification rule, not in
+      a rejection reason recorded after sales has already spent time on the
+      record.
+    </p>
+
+    <h3>Stop rewarding volume alone</h3>
+    <p>
+      A qualified-lead count with no acceptance rate attached will always drive
+      the wrong behavior. Pairing volume with a sales-acceptance rate makes the
+      cost of loose qualification visible to the team creating it.
+    </p>
+
+    <h3>Route by readiness instead of rejecting</h3>
+    <p>
+      The largest recoverable group is leads that were real but early. Those
+      should return to nurture with their timing signal attached, rather than
+      being discarded and re-acquired later at full cost.
+    </p>
+
+    <h3>Fix reachability before adding volume</h3>
+    <p>
+      Unreachable and misrouted leads are an operations problem with a far
+      cheaper fix than net-new demand generation, and they sit entirely within
+      marketing operations' control.
+    </p>
+
+    <h3>Verify the regional gap before reallocating budget</h3>
+    <p>
+      Confirm whether low-engagement markets reflect genuine absence of demand or
+      a tracking gap. Small piece of work; gates a large prioritisation decision.
+    </p>
+
+    <h3>Rebase the target</h3>
+    <p>
+      A goal beaten by roughly 20% every month for five months is no longer
+      steering anything. Rebasing it restores its ability to signal when
+      something is actually going wrong.
+    </p>
+
+    <p class="note">
+      Scope note: this work was completed as part of a marketing analytics
+      engagement at Keysight Technologies. The recommendations above are analysis
+      outputs; no implementation results are claimed. Charts are rebuilt from
+      rates, rolling averages and goal-relative indices, and every visual is original artwork built for this portfolio. Absolute revenue,
+      pipeline values and campaign identifiers are deliberately excluded. This
+      portfolio contains generalized project summaries.
+    </p>
+  </section>
+
+  <div class="pnav">
+    <p class="eyebrow">Next case study</p>
+    <h3>Product experimentation &amp; growth strategy</h3>
+    <p>
+      A financial SaaS product stuck at roughly 2% trial-to-paid. Defining
+      activation as a measurable moment, building a retention mechanic around it,
+      and designing the experiment to test whether it causes anything at all.
+    </p>
+    <div class="pnav-btns">
+      <a class="btn" href="finwise-product-experimentation.html">View FinWise case study &rarr;</a>
+      <a class="btn alt" href="index.html">Back to portfolio</a>
+    </div>
+  </div>
+
+  <footer>Shima Aflatounian · Go-to-market &amp; growth analytics</footer>
+
+</main>
+
+</body>
+</html>
