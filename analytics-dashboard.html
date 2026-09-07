@@ -4,14 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Business Analytics & Decision Dashboards</title>
+  <title>Business Analytics &amp; Decision Dashboards — Shima Aflatounian</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+    h1, h2, h3, .label, .project-button, .project-nav-label {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
     body {
       margin: 0;
       background-color: #071225;
       color: #e5e7eb;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont,
         "Helvetica Neue", Arial, sans-serif;
     }
 
@@ -24,6 +30,24 @@
     /* HERO */
     .hero {
       padding: 10px 0 18px 0;
+    }
+
+    .company-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #c4b5fd;
+      margin-bottom: 12px;
+    }
+
+    .disclosure {
+      font-size: 13.5px;
+      color: #94a3b8;
+      border-left: 2px solid #2f3f5c;
+      padding-left: 12px;
+      max-width: 620px;
+      margin: 4px 0 14px 0;
     }
 
     .hero h1 {
@@ -110,6 +134,103 @@
       border: 0;
       margin: 34px 0;
     }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+      margin: 22px 0 6px 0;
+    }
+
+    .kpi {
+      background: #0f2141;
+      border: 1px solid #22324a;
+      border-radius: 14px;
+      padding: 18px 18px 16px 18px;
+    }
+
+    .kpi .cap {
+      font-size: 12.5px;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .kpi .val {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .kpi .val.accent { color: #c4b5fd; }
+    .kpi .val.good { color: #4ade80; }
+    .kpi .unit {
+      font-size: 12.5px;
+      color: #94a3b8;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .fig {
+      background: #0f2141;
+      border: 1px solid #22324a;
+      border-radius: 14px;
+      padding: 22px 20px 18px 20px;
+      margin: 22px 0;
+    }
+
+    .fig .flag {
+      float: right;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #cbd5e1;
+      border: 1px dashed #3a4c6e;
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+
+    .fig h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 6px 0;
+    }
+
+    .fig p.sub {
+      font-size: 13.5px;
+      color: #94a3b8;
+      margin: 0 0 16px 0;
+      line-height: 1.6;
+    }
+
+    .fig svg { display: block; width: 100%; height: auto; }
+
+    .fig .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .fig .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .fig .legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+    .limitation {
+      border-left: 3px solid #f6c453;
+      background: rgba(246, 196, 83, 0.07);
+      border-radius: 0 14px 14px 0;
+      padding: 18px 22px;
+      margin: 24px 0;
+    }
+
+    .limitation p { margin: 0; color: #e8e2cf; }
 
     .note {
       font-size: 14px;
@@ -233,7 +354,14 @@
     <!-- HERO -->
     <div class="hero">
 
+      <div class="company-eyebrow">Deutsche Bank &middot; Banking operations</div>
+
       <h1>Business Analytics &amp; Decision Dashboards</h1>
+
+      <p class="disclosure">
+        Visuals on this page are personal reconstructions built with synthetic
+        data. No proprietary information is disclosed.
+      </p>
 
       <p>
         This project shows how operational data can be translated into
@@ -242,9 +370,10 @@
       </p>
 
       <p>
-        It combines two complementary views: a KPI/KRI dashboard for ongoing
-        performance monitoring and a planning dashboard for evaluating progress,
-        capacity, and whether execution is on track to meet a fixed deadline.
+        It combines three complementary views: a monitoring view that surfaces
+        early-warning signals, a planning model that tests delivery against a
+        fixed deadline, and a fleet capacity model built to answer a
+        specific capital question.
       </p>
 
     </div>
@@ -259,7 +388,7 @@
 
 
       <!-- DASHBOARD 1 -->
-      <h2>KPI &amp; KRI Performance Dashboard</h2>
+      <h2>Performance Monitoring &amp; Early-Warning Signals</h2>
 
       <p>
         This dashboard was designed to help teams monitor operational performance
@@ -297,18 +426,274 @@
         allowing teams to plan ahead rather than react after a threshold is reached.
       </p>
 
-      <img
-        src="kri_dashboard_public_sample.png"
-        alt="KPI and KRI Performance Dashboard"
-        class="dashboard-img"
-      />
+      <div class="fig">
+        <span class="flag">Framework</span>
+        <h4>How a metric becomes a management action</h4>
+        <p class="sub">
+          The dashboard's job is not to show every number. It is to decide which
+          numbers deserve someone's attention this week.
+        </p>
 
+        <svg viewBox="0 0 920 210" role="img" aria-label="Flow: every tracked metric is compared across four time horizons, classified as stable, improving or deteriorating, and only deteriorating metrics reach the review agenda.">
+          <defs>
+            <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#5a7196"/>
+            </marker>
+          </defs>
+
+          <rect x="8" y="72" width="176" height="62" rx="12" fill="#16294a" stroke="#2f4266"/>
+          <text x="96" y="100" font-family="Arial" font-size="13" font-weight="700" fill="#e5e7eb" text-anchor="middle">Every tracked metric</text>
+          <text x="96" y="119" font-family="Arial" font-size="12" fill="#94a3b8" text-anchor="middle">volume, backlog, ageing</text>
+
+          <line x1="188" y1="103" x2="222" y2="103" stroke="#5a7196" stroke-width="1.5" marker-end="url(#a1)"/>
+
+          <rect x="228" y="72" width="196" height="62" rx="12" fill="#241c47" stroke="#c4b5fd"/>
+          <text x="326" y="100" font-family="Arial" font-size="13" font-weight="700" fill="#e5e7eb" text-anchor="middle">Compared across</text>
+          <text x="326" y="119" font-family="Arial" font-size="12" fill="#c4b5fd" text-anchor="middle">1 day · 30 · 90 · 1 year</text>
+
+          <path d="M428 103 L462 103 L462 34" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+          <path d="M428 103 L462 103 L462 103" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+          <path d="M428 103 L462 103 L462 172" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+
+          <rect x="470" y="10" width="212" height="48" rx="11" fill="rgba(148,163,184,.10)" stroke="#475569"/>
+          <text x="486" y="40" font-family="Arial" font-size="12.5" font-weight="700" fill="#cbd5e1">Stable &mdash; no action</text>
+
+          <rect x="470" y="79" width="212" height="48" rx="11" fill="rgba(74,222,128,.10)" stroke="#4ade80"/>
+          <text x="486" y="109" font-family="Arial" font-size="12.5" font-weight="700" fill="#86efac">Improving &mdash; note only</text>
+
+          <rect x="470" y="148" width="212" height="48" rx="11" fill="rgba(248,113,113,.12)" stroke="#f87171"/>
+          <text x="486" y="178" font-family="Arial" font-size="12.5" font-weight="700" fill="#fca5a5">Deteriorating &mdash; escalate</text>
+
+          <line x1="686" y1="172" x2="724" y2="172" stroke="#5a7196" stroke-width="1.5" marker-end="url(#a1)"/>
+
+          <rect x="730" y="140" width="182" height="64" rx="12" fill="#16294a" stroke="#2f4266"/>
+          <text x="821" y="167" font-family="Arial" font-size="13" font-weight="700" fill="#e5e7eb" text-anchor="middle">This week's agenda</text>
+          <text x="821" y="187" font-family="Arial" font-size="12" fill="#94a3b8" text-anchor="middle">a short, ranked list</text>
+
+          <text x="730" y="46" font-family="Arial" font-size="12.5" fill="#94a3b8">Most metrics never reach a</text>
+          <text x="730" y="65" font-family="Arial" font-size="12.5" fill="#94a3b8">human. That is the point.</text>
+        </svg>
+      </div>
+
+      <div class="fig">
+        <span class="flag">Dashboard design</span>
+        <h4>Monitoring view as built</h4>
+        <p class="sub">
+          Layout, hierarchy and interaction model reproduced here in full. All
+          metric names, groupings, ageing bands and figures are invented for this
+          portfolio.
+        </p>
+
+        <svg viewBox="0 0 920 706" role="img" aria-label="Operations monitoring dashboard mockup with three queue panels, a capacity and exposure row, and an as-of-date change table.">
+          <rect x="0" y="0" width="920" height="706" rx="14" fill="#0d1c38" stroke="#22324a"/>
+          <rect x="14" y="14" width="34" height="34" rx="9" fill="#1b2f55" stroke="#3a5285"/>
+          <circle cx="31" cy="31" r="7" fill="none" stroke="#93c5fd" stroke-width="2"/>
+          <text x="58" y="30" font-family="Poppins, Arial" font-size="16" font-weight="700" fill="#ffffff" text-anchor="start">Operations Monitoring Dashboard</text>
+          <text x="58" y="47" font-family="Arial" font-size="10.5" font-weight="normal" fill="#93c5fd" text-anchor="start">Rolling 12 months  ·  synthetic sample data</text>
+          <rect x="676" y="14" width="110" height="34" rx="7" fill="#132747" stroke="#2f4266"/>
+          <text x="686" y="29" font-family="Arial" font-size="8" font-weight="700" fill="#64748b" text-anchor="start">VIEW</text>
+          <text x="686" y="42" font-family="Arial" font-size="10" font-weight="normal" fill="#cbd5e1" text-anchor="start">All groups</text>
+          <rect x="796" y="14" width="110" height="34" rx="7" fill="#132747" stroke="#2f4266"/>
+          <text x="806" y="29" font-family="Arial" font-size="8" font-weight="700" fill="#64748b" text-anchor="start">STATUS</text>
+          <text x="806" y="42" font-family="Arial" font-size="10" font-weight="normal" fill="#cbd5e1" text-anchor="start">Grand total</text>
+          <rect x="14" y="62" width="282" height="232" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="30" y="86" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start">Inbound Queue</text>
+          <text x="280" y="86" font-family="Arial" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">UNITS</text>
+          <line x1="30" y1="94" x2="280" y2="94" stroke="#233a63" stroke-width="1"/>
+          <text x="30" y="124" font-family="Poppins, Arial" font-size="24" font-weight="700" fill="#ffffff" text-anchor="start">4,182</text>
+          <text x="30" y="143" font-family="Arial" font-size="9.5" font-weight="700" fill="#fca5a5" text-anchor="start">&#9650; 64% vs last year · 3 of 4 rising</text>
+          <text x="30" y="171" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 1</text>
+          <polygon points="154.0,177.0 162.9,176.2 171.7,175.4 180.6,173.7 189.4,171.3 198.3,168.0 207.1,163.9 216.0,159.0 216,177 154,177" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="154.0,177.0 162.9,176.2 171.7,175.4 180.6,173.7 189.4,171.3 198.3,168.0 207.1,163.9 216.0,159.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="280" y="167" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">2,410</text>
+          <text x="280" y="179" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">&#9650; 148%</text>
+          <text x="30" y="204" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 2</text>
+          <polygon points="154.0,192.0 162.9,194.2 171.7,197.6 180.6,201.0 189.4,204.4 198.3,206.6 207.1,208.9 216.0,210.0 216,210 154,210" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="154.0,192.0 162.9,194.2 171.7,197.6 180.6,201.0 189.4,204.4 198.3,206.6 207.1,208.9 216.0,210.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="280" y="200" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">640</text>
+          <text x="280" y="212" font-family="Arial" font-size="9" font-weight="700" fill="#86efac" text-anchor="end">&#9660; 72%</text>
+          <text x="30" y="237" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 3</text>
+          <polygon points="154.0,243.0 162.9,241.4 171.7,239.7 180.6,236.5 189.4,234.8 198.3,231.5 207.1,228.3 216.0,225.0 216,243 154,243" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="154.0,243.0 162.9,241.4 171.7,239.7 180.6,236.5 189.4,234.8 198.3,231.5 207.1,228.3 216.0,225.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="280" y="233" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">890</text>
+          <text x="280" y="245" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">&#9650; 58%</text>
+          <text x="30" y="270" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 4</text>
+          <polygon points="154.0,276.0 162.9,276.0 171.7,272.4 180.6,272.4 189.4,268.8 198.3,265.2 207.1,261.6 216.0,258.0 216,276 154,276" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="154.0,276.0 162.9,276.0 171.7,272.4 180.6,272.4 189.4,268.8 198.3,265.2 207.1,261.6 216.0,258.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="280" y="266" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">242</text>
+          <text x="280" y="278" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">&#9650; 31%</text>
+          <rect x="312" y="62" width="282" height="232" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="328" y="86" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start">In Process</text>
+          <text x="578" y="86" font-family="Arial" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">UNITS</text>
+          <line x1="328" y1="94" x2="578" y2="94" stroke="#233a63" stroke-width="1"/>
+          <text x="328" y="124" font-family="Poppins, Arial" font-size="24" font-weight="700" fill="#ffffff" text-anchor="start">26,940</text>
+          <text x="328" y="143" font-family="Arial" font-size="9.5" font-weight="700" fill="#86efac" text-anchor="start">&#9660; 9% vs last year · 2 of 4 rising</text>
+          <text x="328" y="171" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 1</text>
+          <polygon points="452.0,159.0 460.9,163.5 469.7,163.5 478.6,168.0 487.4,172.5 496.3,172.5 505.1,177.0 514.0,177.0 514,177 452,177" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="452.0,159.0 460.9,163.5 469.7,163.5 478.6,168.0 487.4,172.5 496.3,172.5 505.1,177.0 514.0,177.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="578" y="167" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">14,200</text>
+          <text x="578" y="179" font-family="Arial" font-size="9" font-weight="700" fill="#86efac" text-anchor="end">&#9660; 6%</text>
+          <text x="328" y="204" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 2</text>
+          <polygon points="452.0,210.0 460.9,207.0 469.7,207.0 478.6,204.0 487.4,201.0 496.3,198.0 505.1,195.0 514.0,192.0 514,210 452,210" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="452.0,210.0 460.9,207.0 469.7,207.0 478.6,204.0 487.4,201.0 496.3,198.0 505.1,195.0 514.0,192.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="578" y="200" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">6,310</text>
+          <text x="578" y="212" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">&#9650; 17%</text>
+          <text x="328" y="237" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 3</text>
+          <polygon points="452.0,225.0 460.9,228.6 469.7,230.4 478.6,234.0 487.4,237.6 496.3,239.4 505.1,241.2 514.0,243.0 514,243 452,243" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="452.0,225.0 460.9,228.6 469.7,230.4 478.6,234.0 487.4,237.6 496.3,239.4 505.1,241.2 514.0,243.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="578" y="233" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">4,880</text>
+          <text x="578" y="245" font-family="Arial" font-size="9" font-weight="700" fill="#86efac" text-anchor="end">&#9660; 28%</text>
+          <text x="328" y="270" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 4</text>
+          <polygon points="452.0,276.0 460.9,274.0 469.7,272.0 478.6,270.0 487.4,266.0 496.3,264.0 505.1,260.0 514.0,258.0 514,276 452,276" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="452.0,276.0 460.9,274.0 469.7,272.0 478.6,270.0 487.4,266.0 496.3,264.0 505.1,260.0 514.0,258.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="578" y="266" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">1,550</text>
+          <text x="578" y="278" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">&#9650; 44%</text>
+          <rect x="610" y="62" width="282" height="232" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="626" y="86" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start">Ready to Release</text>
+          <text x="876" y="86" font-family="Arial" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">FILES</text>
+          <line x1="626" y1="94" x2="876" y2="94" stroke="#233a63" stroke-width="1"/>
+          <text x="626" y="124" font-family="Poppins, Arial" font-size="24" font-weight="700" fill="#ffffff" text-anchor="start">12,310</text>
+          <text x="626" y="143" font-family="Arial" font-size="9.5" font-weight="700" fill="#86efac" text-anchor="start">&#9660; 21% vs last year · 2 of 4 rising</text>
+          <text x="626" y="171" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 1</text>
+          <polygon points="750.0,159.0 758.9,162.6 767.7,164.4 776.6,168.0 785.4,169.8 794.3,173.4 803.1,175.2 812.0,177.0 812,177 750,177" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="750.0,159.0 758.9,162.6 767.7,164.4 776.6,168.0 785.4,169.8 794.3,173.4 803.1,175.2 812.0,177.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="876" y="167" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">7,420</text>
+          <text x="876" y="179" font-family="Arial" font-size="9" font-weight="700" fill="#86efac" text-anchor="end">&#9660; 30%</text>
+          <text x="626" y="204" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 2</text>
+          <polygon points="750.0,210.0 758.9,205.5 767.7,210.0 776.6,201.0 785.4,205.5 794.3,196.5 803.1,201.0 812.0,192.0 812,210 750,210" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="750.0,210.0 758.9,205.5 767.7,210.0 776.6,201.0 785.4,205.5 794.3,196.5 803.1,201.0 812.0,192.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="876" y="200" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">2,650</text>
+          <text x="876" y="212" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">&#9650; 11%</text>
+          <text x="626" y="237" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 3</text>
+          <polygon points="750.0,225.0 758.9,228.9 767.7,232.7 776.6,235.3 785.4,237.9 794.3,240.4 803.1,241.7 812.0,243.0 812,243 750,243" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="750.0,225.0 758.9,228.9 767.7,232.7 776.6,235.3 785.4,237.9 794.3,240.4 803.1,241.7 812.0,243.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="876" y="233" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">1,480</text>
+          <text x="876" y="245" font-family="Arial" font-size="9" font-weight="700" fill="#86efac" text-anchor="end">&#9660; 61%</text>
+          <text x="626" y="270" font-family="Arial" font-size="10.5" font-weight="normal" fill="#e5e7eb" text-anchor="start">Doc Type 4</text>
+          <polygon points="750.0,276.0 758.9,271.5 767.7,276.0 776.6,267.0 785.4,271.5 794.3,262.5 803.1,267.0 812.0,258.0 812,276 750,276" fill="#7c93c4" opacity="0.30"/>
+          <polyline points="750.0,276.0 758.9,271.5 767.7,276.0 776.6,267.0 785.4,271.5 794.3,262.5 803.1,267.0 812.0,258.0" fill="none" stroke="#7c93c4" stroke-width="1.6"/>
+          <text x="876" y="266" font-family="Arial" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end">760</text>
+          <text x="876" y="278" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">&#9650; 9%</text>
+          <rect x="14" y="306" width="892" height="178" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="30" y="330" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start">Capacity & Exposure</text>
+          <text x="890" y="330" font-family="Arial" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">ALL REGIONS</text>
+          <line x1="30" y1="338" x2="890" y2="338" stroke="#233a63" stroke-width="1"/>
+          <text x="30" y="360" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="start">Utilisation vs capacity</text>
+          <line x1="40" y1="452" x2="300" y2="452" stroke="#233a63" stroke-width="1"/>
+          <line x1="40" y1="372" x2="300" y2="372" stroke="#233a63" stroke-width="1"/>
+          <text x="34" y="376" font-family="Arial" font-size="8.5" font-weight="normal" fill="#64748b" text-anchor="end">120%</text>
+          <text x="34" y="456" font-family="Arial" font-size="8.5" font-weight="normal" fill="#64748b" text-anchor="end">0%</text>
+          <polyline points="40,378 105,376 170,374 235,372 300,370" fill="none" stroke="#f87171" stroke-width="2"/>
+          <polyline points="40,432 105,430 170,427 235,424 300,420" fill="none" stroke="#4ade80" stroke-width="2"/>
+          <polyline points="40,441 105,440 170,438 235,436 300,433" fill="none" stroke="#60a5fa" stroke-width="2"/>
+          <rect x="40" y="462" width="9" height="9" rx="2" fill="#f87171"/>
+          <text x="54" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#cbd5e1" text-anchor="start">Region 1</text>
+          <text x="54" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#cbd5e1" text-anchor="start"> </text>
+          <rect x="130" y="462" width="9" height="9" rx="2" fill="#4ade80"/>
+          <text x="144" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#cbd5e1" text-anchor="start">Region 2</text>
+          <text x="144" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#cbd5e1" text-anchor="start"> </text>
+          <rect x="220" y="462" width="9" height="9" rx="2" fill="#60a5fa"/>
+          <text x="234" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#cbd5e1" text-anchor="start">Region 3</text>
+          <text x="234" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#cbd5e1" text-anchor="start"> </text>
+          <text x="40" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#cbd5e1" text-anchor="start"></text>
+          <text x="53" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Region 1  118% over</text>
+          <text x="190" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Region 2  54%</text>
+          <text x="280" y="470" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Region 3  41%</text>
+          <rect x="40" y="462" width="9" height="9" rx="2" fill="#f87171"/>
+          <rect x="177" y="462" width="9" height="9" rx="2" fill="#4ade80"/>
+          <rect x="267" y="462" width="9" height="9" rx="2" fill="#60a5fa"/>
+          <text x="340" y="360" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="start">Remaining capacity forecast</text>
+          <line x1="350" y1="452" x2="650" y2="452" stroke="#233a63" stroke-width="1"/>
+          <polyline points="350,372 400,388 450,402 500,414 550,426 600,436 640,446" fill="none" stroke="#93c5fd" stroke-width="2"/>
+          <circle cx="640" cy="446" r="4" fill="#f87171"/>
+          <text x="636" y="438" font-family="Arial" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="end">Q4 2027</text>
+          <text x="636" y="428" font-family="Arial" font-size="8.5" font-weight="normal" fill="#fca5a5" text-anchor="end">capacity exhausted</text>
+          <text x="350" y="470" font-family="Arial" font-size="8.5" font-weight="normal" fill="#64748b" text-anchor="start">today</text>
+          <text x="650" y="470" font-family="Arial" font-size="8.5" font-weight="normal" fill="#64748b" text-anchor="end">+18 months</text>
+          <text x="700" y="360" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="start">Runway</text>
+          <text x="700" y="404" font-family="Poppins, Arial" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start">14</text>
+          <text x="748" y="404" font-family="Arial" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">months</text>
+          <text x="700" y="426" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="start">1.8M units remaining</text>
+          <text x="700" y="442" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="start">consumption ~128K per month</text>
+          <text x="700" y="462" font-family="Arial" font-size="10" font-weight="700" fill="#fca5a5" text-anchor="start">Reaches zero Oct 2027</text>
+          <rect x="14" y="496" width="892" height="196" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="30" y="520" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start">As of Date</text>
+          <text x="890" y="520" font-family="Arial" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">CHANGE VS PRIOR PERIOD</text>
+          <text x="30" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="start">Metric group</text>
+          <text x="190" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="start">Metric</text>
+          <text x="340" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="start">Ageing band</text>
+          <text x="530" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="end">Count</text>
+          <text x="620" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="end">vs 1 day</text>
+          <text x="710" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="end">vs 30 day</text>
+          <text x="800" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="end">vs 90 day</text>
+          <text x="890" y="542" font-family="Arial" font-size="9" font-weight="700" fill="#64748b" text-anchor="end">vs 1 year</text>
+          <line x1="30" y1="550" x2="890" y2="550" stroke="#233a63" stroke-width="1"/>
+          <text x="30" y="570" font-family="Arial" font-size="9.5" font-weight="700" fill="#e5e7eb" text-anchor="start">Inbound Queue</text>
+          <text x="190" y="570" font-family="Arial" font-size="9.5" font-weight="700" fill="#cbd5e1" text-anchor="start">Doc Type 1</text>
+          <text x="340" y="570" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Grand total</text>
+          <text x="530" y="570" font-family="Arial" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="end">2,410</text>
+          <text x="620" y="570" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 4%</text>
+          <text x="710" y="570" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 12%</text>
+          <text x="800" y="570" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 31%</text>
+          <text x="890" y="570" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 148%</text>
+          <text x="340" y="585" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">0–30 days</text>
+          <text x="530" y="585" font-family="Arial" font-size="9.5" font-weight="normal" fill="#ffffff" text-anchor="end">1,640</text>
+          <text x="620" y="585" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 6%</text>
+          <text x="710" y="585" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 15%</text>
+          <text x="800" y="585" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 27%</text>
+          <text x="890" y="585" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 96%</text>
+          <text x="190" y="600" font-family="Arial" font-size="9.5" font-weight="700" fill="#cbd5e1" text-anchor="start">Doc Type 2</text>
+          <text x="340" y="600" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Grand total</text>
+          <text x="530" y="600" font-family="Arial" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="end">640</text>
+          <text x="620" y="600" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 3%</text>
+          <text x="710" y="600" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 18%</text>
+          <text x="800" y="600" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 44%</text>
+          <text x="890" y="600" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 72%</text>
+          <text x="30" y="615" font-family="Arial" font-size="9.5" font-weight="700" fill="#e5e7eb" text-anchor="start">In Process</text>
+          <text x="190" y="615" font-family="Arial" font-size="9.5" font-weight="700" fill="#cbd5e1" text-anchor="start">Doc Type 1</text>
+          <text x="340" y="615" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Grand total</text>
+          <text x="530" y="615" font-family="Arial" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="end">14,200</text>
+          <text x="620" y="615" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 1%</text>
+          <text x="710" y="615" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 2%</text>
+          <text x="800" y="615" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 4%</text>
+          <text x="890" y="615" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 6%</text>
+          <text x="340" y="630" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">31–60 days</text>
+          <text x="530" y="630" font-family="Arial" font-size="9.5" font-weight="normal" fill="#ffffff" text-anchor="end">3,180</text>
+          <text x="620" y="630" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 2%</text>
+          <text x="710" y="630" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 7%</text>
+          <text x="800" y="630" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 11%</text>
+          <text x="890" y="630" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 19%</text>
+          <text x="190" y="645" font-family="Arial" font-size="9.5" font-weight="700" fill="#cbd5e1" text-anchor="start">Doc Type 3</text>
+          <text x="340" y="645" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Grand total</text>
+          <text x="530" y="645" font-family="Arial" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="end">4,880</text>
+          <text x="620" y="645" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 2%</text>
+          <text x="710" y="645" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 9%</text>
+          <text x="800" y="645" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 17%</text>
+          <text x="890" y="645" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 28%</text>
+          <text x="30" y="660" font-family="Arial" font-size="9.5" font-weight="700" fill="#e5e7eb" text-anchor="start">Ready to Release</text>
+          <text x="190" y="660" font-family="Arial" font-size="9.5" font-weight="700" fill="#cbd5e1" text-anchor="start">Doc Type 1</text>
+          <text x="340" y="660" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Grand total</text>
+          <text x="530" y="660" font-family="Arial" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="end">7,420</text>
+          <text x="620" y="660" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 4%</text>
+          <text x="710" y="660" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 11%</text>
+          <text x="800" y="660" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 22%</text>
+          <text x="890" y="660" font-family="Arial" font-size="9" font-weight="normal" fill="#86efac" text-anchor="end">&#9660; 30%</text>
+          <text x="190" y="675" font-family="Arial" font-size="9.5" font-weight="700" fill="#cbd5e1" text-anchor="start">Doc Type 4</text>
+          <text x="340" y="675" font-family="Arial" font-size="9" font-weight="normal" fill="#94a3b8" text-anchor="start">Grand total</text>
+          <text x="530" y="675" font-family="Arial" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="end">760</text>
+          <text x="620" y="675" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 1%</text>
+          <text x="710" y="675" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 3%</text>
+          <text x="800" y="675" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 6%</text>
+          <text x="890" y="675" font-family="Arial" font-size="9" font-weight="normal" fill="#fca5a5" text-anchor="end">&#9650; 9%</text>
+          <text x="30" y="684" font-family="Arial" font-size="8.5" font-weight="normal" fill="#4f6182" text-anchor="start">Synthetic sample data · dashboard design and build by Shima</text>
+        </svg>
+      </div>
 
       <hr class="section-divider" />
 
 
       <!-- DASHBOARD 2 -->
-      <h2>Business Planning &amp; Remediation Dashboard</h2>
+      <h2>Backlog Burn-Down &amp; Capacity Planning Model</h2>
 
       <p>
         This is a hypothetical dashboard created with dummy data to prepare for
@@ -353,16 +738,396 @@
         off track, or needs to adjust capacity and execution to meet the target.
       </p>
 
-      <img
-        src="remediation_dashboard_public_sample.png"
-        alt="Business Planning and Remediation Dashboard"
-        class="dashboard-img"
-      />
+      <div class="fig">
+        <span class="flag">Framework</span>
+        <h4>The question, decomposed</h4>
+        <p class="sub">
+          A deadline and a backlog are two facts. Everything that matters sits in
+          the arithmetic between them.
+        </p>
 
+        <svg viewBox="0 0 920 250" role="img" aria-label="Backlog and fixed deadline produce a required rate; the observed rate is compared against it; the gap drives a capacity decision.">
+          <defs>
+            <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#5a7196"/>
+            </marker>
+          </defs>
+
+          <rect x="8" y="18" width="216" height="56" rx="12" fill="#16294a" stroke="#2f4266"/>
+          <text x="116" y="42" font-family="Arial" font-size="13" font-weight="700" fill="#e5e7eb" text-anchor="middle">Backlog to clear</text>
+          <text x="116" y="62" font-family="Arial" font-size="12.5" fill="#c4b5fd" text-anchor="middle">240,000 items</text>
+
+          <rect x="8" y="90" width="216" height="56" rx="12" fill="#16294a" stroke="#2f4266"/>
+          <text x="116" y="114" font-family="Arial" font-size="13" font-weight="700" fill="#e5e7eb" text-anchor="middle">Fixed deadline</text>
+          <text x="116" y="134" font-family="Arial" font-size="12.5" fill="#c4b5fd" text-anchor="middle">47 weeks away</text>
+
+          <path d="M228 46 L256 46 L256 118" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+          <path d="M228 118 L262 118" stroke="#5a7196" stroke-width="1.5" fill="none" marker-end="url(#a2)"/>
+
+          <rect x="270" y="90" width="216" height="56" rx="12" fill="#241c47" stroke="#c4b5fd"/>
+          <text x="378" y="114" font-family="Arial" font-size="13" font-weight="700" fill="#e5e7eb" text-anchor="middle">Required rate</text>
+          <text x="378" y="134" font-family="Arial" font-size="12.5" fill="#c4b5fd" text-anchor="middle">5,100 items per week</text>
+
+          <rect x="270" y="176" width="216" height="56" rx="12" fill="#16294a" stroke="#2f4266"/>
+          <text x="378" y="200" font-family="Arial" font-size="13" font-weight="700" fill="#e5e7eb" text-anchor="middle">Observed rate</text>
+          <text x="378" y="220" font-family="Arial" font-size="12.5" fill="#94a3b8" text-anchor="middle">3,200 items per week</text>
+
+          <path d="M490 118 L518 118 L518 152" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+          <path d="M490 204 L518 204 L518 170" stroke="#5a7196" stroke-width="1.5" fill="none"/>
+          <path d="M518 161 L552 161" stroke="#5a7196" stroke-width="1.5" fill="none" marker-end="url(#a2)"/>
+
+          <rect x="560" y="132" width="200" height="58" rx="12" fill="rgba(248,113,113,.12)" stroke="#f87171"/>
+          <text x="660" y="157" font-family="Arial" font-size="13" font-weight="700" fill="#fca5a5" text-anchor="middle">Gap</text>
+          <text x="660" y="177" font-family="Arial" font-size="12.5" fill="#fca5a5" text-anchor="middle">1,900 per week short</text>
+
+          <line x1="764" y1="161" x2="798" y2="161" stroke="#5a7196" stroke-width="1.5" marker-end="url(#a2)"/>
+
+          <rect x="804" y="120" width="110" height="82" rx="12" fill="#16294a" stroke="#2f4266"/>
+          <text x="859" y="150" font-family="Arial" font-size="12.5" font-weight="700" fill="#e5e7eb" text-anchor="middle">Capacity</text>
+          <text x="859" y="168" font-family="Arial" font-size="12.5" font-weight="700" fill="#e5e7eb" text-anchor="middle">decision</text>
+          <text x="859" y="188" font-family="Arial" font-size="12" fill="#94a3b8" text-anchor="middle">or move the</text>
+
+          <text x="560" y="40" font-family="Arial" font-size="12.5" fill="#94a3b8">Only three levers exist: raise throughput,</text>
+          <text x="560" y="59" font-family="Arial" font-size="12.5" fill="#94a3b8">reduce scope, or move the date. The model</text>
+          <text x="560" y="78" font-family="Arial" font-size="12.5" fill="#94a3b8">prices each one instead of arguing about them.</text>
+        </svg>
+      </div>
+
+      <div class="fig">
+        <span class="flag">Dashboard design</span>
+        <h4>Planning view as built</h4>
+        <p class="sub">
+          The same layout language applied to a delivery question: completion
+          gauges above, the reduction metrics and their trajectories below. Every
+          name and figure is invented.
+        </p>
+
+        <svg viewBox="0 0 920 596" role="img" aria-label="Backlog reduction programme dashboard mockup with three gauge cards, five KPI tiles and five actual-versus-required trend charts.">
+          <rect x="0" y="0" width="920" height="596" rx="14" fill="#0d1c38" stroke="#22324a"/>
+          <rect x="14" y="14" width="34" height="34" rx="9" fill="#1b2f55" stroke="#3a5285"/>
+          <circle cx="31" cy="31" r="7" fill="none" stroke="#93c5fd" stroke-width="2"/>
+          <text x="58" y="28" font-family="Poppins, Arial" font-size="16" font-weight="700" fill="#ffffff" text-anchor="start">Programme Vega</text>
+          <text x="196" y="28" font-family="Poppins, Arial" font-size="14" font-weight="normal" fill="#cbd5e1" text-anchor="start">|  Backlog Reduction Programme</text>
+          <text x="58" y="46" font-family="Arial" font-size="10" font-weight="normal" fill="#93c5fd" text-anchor="start">Synthetic sample data  ·  47-week delivery window</text>
+          <line x1="700" y1="24" x2="726" y2="24" stroke="#f87171" stroke-width="2"/>
+          <text x="732" y="28" font-family="Arial" font-size="9.5" font-weight="normal" fill="#94a3b8" text-anchor="start">Actual trajectory</text>
+          <line x1="700" y1="42" x2="726" y2="42" stroke="#93c5fd" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="732" y="46" font-family="Arial" font-size="9.5" font-weight="normal" fill="#94a3b8" text-anchor="start">Required path</text>
+          <rect x="14" y="62" width="282" height="186" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="30" y="86" font-family="Poppins, Arial" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="start">Batch Handovers</text>
+          <text x="280" y="86" font-family="Arial" font-size="8" font-weight="700" fill="#64748b" text-anchor="end">TO DATE</text>
+          <line x1="30" y1="94" x2="280" y2="94" stroke="#233a63"/>
+          <path d="M 50 178 A 46 46 0 0 1 142 178" fill="none" stroke="#1e3a63" stroke-width="13" stroke-linecap="round"/>
+          <path d="M 50 178 A 46 46 0 0 1 142 178" fill="none" stroke="#4ade80" stroke-width="13" stroke-linecap="round" stroke-dasharray="127.2 144.5"/>
+          <text x="96" y="176" font-family="Poppins, Arial" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">88%</text>
+          <text x="96" y="196" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="middle">162 / 184</text>
+          <rect x="164" y="108" width="116" height="40" rx="7" fill="#16294a" stroke="#2b4270"/>
+          <text x="222" y="120" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">Batches delivered</text>
+          <text x="222" y="129" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">to processor</text>
+          <text x="222" y="141" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">184</text>
+          <rect x="164" y="154" width="116" height="40" rx="7" fill="#16294a" stroke="#2b4270"/>
+          <text x="222" y="166" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">Exceptions logged</text>
+          <text x="222" y="187" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">7</text>
+          <rect x="164" y="200" width="116" height="40" rx="7" fill="#16294a" stroke="#2b4270"/>
+          <text x="222" y="212" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">Items moved</text>
+          <text x="222" y="221" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">Stage 1 → Stage 2</text>
+          <text x="222" y="233" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1.1m</text>
+          <rect x="312" y="62" width="282" height="186" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="328" y="86" font-family="Poppins, Arial" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="start">Quality Control</text>
+          <text x="578" y="86" font-family="Arial" font-size="8" font-weight="700" fill="#64748b" text-anchor="end">TO DATE</text>
+          <line x1="328" y1="94" x2="578" y2="94" stroke="#233a63"/>
+          <path d="M 348 178 A 46 46 0 0 1 440 178" fill="none" stroke="#1e3a63" stroke-width="13" stroke-linecap="round"/>
+          <path d="M 348 178 A 46 46 0 0 1 440 178" fill="none" stroke="#4ade80" stroke-width="13" stroke-linecap="round" stroke-dasharray="131.5 144.5"/>
+          <text x="394" y="176" font-family="Poppins, Arial" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">91%</text>
+          <text x="394" y="196" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="middle">203 / 223</text>
+          <rect x="462" y="108" width="116" height="40" rx="7" fill="#16294a" stroke="#2b4270"/>
+          <text x="520" y="120" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">Items with verified</text>
+          <text x="520" y="129" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">location</text>
+          <text x="520" y="141" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">640K</text>
+          <rect x="462" y="154" width="116" height="40" rx="7" fill="#16294a" stroke="#2b4270"/>
+          <text x="520" y="166" font-family="Arial" font-size="7.5" font-weight="normal" fill="#94a3b8" text-anchor="middle">Requiring rework</text>
+          <text x="520" y="187" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">28</text>
+          <rect x="610" y="62" width="282" height="186" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="626" y="86" font-family="Poppins, Arial" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="start">Priority Segment</text>
+          <text x="876" y="86" font-family="Arial" font-size="8" font-weight="700" fill="#64748b" text-anchor="end">PROGRESS</text>
+          <line x1="626" y1="94" x2="876" y2="94" stroke="#233a63"/>
+          <path d="M 705 178 A 46 46 0 0 1 797 178" fill="none" stroke="#1e3a63" stroke-width="13" stroke-linecap="round"/>
+          <path d="M 705 178 A 46 46 0 0 1 797 178" fill="none" stroke="#93c5fd" stroke-width="13" stroke-linecap="round" stroke-dasharray="24.6 144.5"/>
+          <text x="751" y="176" font-family="Poppins, Arial" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">17%</text>
+          <text x="751" y="196" font-family="Arial" font-size="10" font-weight="normal" fill="#94a3b8" text-anchor="middle">0.4m / 2.4m</text>
+          <rect x="14" y="260" width="892" height="318" rx="12" fill="#12244a" stroke="#233a63"/>
+          <text x="30" y="284" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start">Backlog Reduction</text>
+          <text x="890" y="284" font-family="Arial" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">WEEK 0 — WEEK 47</text>
+          <line x1="30" y1="292" x2="890" y2="292" stroke="#233a63"/>
+          <rect x="30" y="304" width="163" height="74" rx="8" fill="#16294a" stroke="#2b4270"/>
+          <text x="111" y="320" font-family="Arial" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">On-Hand Backlog</text>
+          <text x="111" y="348" font-family="Poppins, Arial" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">240k</text>
+          <text x="38" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#86efac" text-anchor="start">&#9660; 3.2k cleared per week</text>
+          <text x="185" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#64748b" text-anchor="end">target 0</text>
+          <text x="185" y="373" font-family="Arial" font-size="7.5" font-weight="700" fill="#fca5a5" text-anchor="end">Required 5.1k/wk</text>
+          <line x1="36" y1="548" x2="187" y2="548" stroke="#233a63"/>
+          <polyline points="36,406 187,502" fill="none" stroke="#f87171" stroke-width="1.8"/>
+          <polyline points="36,406 187,548" fill="none" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <text x="36" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="start">wk 0</text>
+          <text x="187" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="end">wk 47</text>
+          <rect x="203" y="304" width="163" height="74" rx="8" fill="#16294a" stroke="#2b4270"/>
+          <text x="284" y="320" font-family="Arial" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">Released Backlog</text>
+          <text x="284" y="348" font-family="Poppins, Arial" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">118k</text>
+          <text x="211" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#86efac" text-anchor="start">&#9660; 2.6k cleared per week</text>
+          <text x="358" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#64748b" text-anchor="end">target 0</text>
+          <text x="358" y="373" font-family="Arial" font-size="7.5" font-weight="700" fill="#fca5a5" text-anchor="end">Required 3.9k/wk</text>
+          <line x1="209" y1="548" x2="360" y2="548" stroke="#233a63"/>
+          <polyline points="209,406 360,502" fill="none" stroke="#f87171" stroke-width="1.8"/>
+          <polyline points="209,406 360,548" fill="none" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <text x="209" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="start">wk 0</text>
+          <text x="360" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="end">wk 47</text>
+          <rect x="376" y="304" width="163" height="74" rx="8" fill="#16294a" stroke="#2b4270"/>
+          <text x="457" y="320" font-family="Arial" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">Handed To Processor</text>
+          <text x="457" y="348" font-family="Poppins, Arial" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">96k</text>
+          <text x="384" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#93c5fd" text-anchor="start">&#9650; 2.1k moved per week</text>
+          <text x="531" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#64748b" text-anchor="end">target 240k</text>
+          <text x="531" y="373" font-family="Arial" font-size="7.5" font-weight="700" fill="#fca5a5" text-anchor="end">Required 4.4k/wk</text>
+          <line x1="382" y1="548" x2="533" y2="548" stroke="#233a63"/>
+          <polyline points="382,548 533,448" fill="none" stroke="#f87171" stroke-width="1.8"/>
+          <polyline points="382,548 533,406" fill="none" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <text x="382" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="start">wk 0</text>
+          <text x="533" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="end">wk 47</text>
+          <rect x="549" y="304" width="163" height="74" rx="8" fill="#16294a" stroke="#2b4270"/>
+          <text x="630" y="320" font-family="Arial" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">% Reduction Complete</text>
+          <text x="630" y="348" font-family="Poppins, Arial" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">14%</text>
+          <text x="557" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#93c5fd" text-anchor="start">&#9650; 0.4pt gained per week</text>
+          <text x="704" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#64748b" text-anchor="end">target 100%</text>
+          <text x="704" y="373" font-family="Arial" font-size="7.5" font-weight="700" fill="#fca5a5" text-anchor="end">Ideal 31%</text>
+          <line x1="555" y1="548" x2="706" y2="548" stroke="#233a63"/>
+          <polyline points="555,548 706,448" fill="none" stroke="#f87171" stroke-width="1.8"/>
+          <polyline points="555,548 706,406" fill="none" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <text x="555" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="start">wk 0</text>
+          <text x="706" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="end">wk 47</text>
+          <rect x="722" y="304" width="163" height="74" rx="8" fill="#16294a" stroke="#2b4270"/>
+          <text x="803" y="320" font-family="Arial" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">Priority Segment</text>
+          <text x="803" y="348" font-family="Poppins, Arial" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">402k</text>
+          <text x="730" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#93c5fd" text-anchor="start">&#9650; 1.1k processed per week</text>
+          <text x="877" y="362" font-family="Arial" font-size="7.5" font-weight="normal" fill="#64748b" text-anchor="end">target 2.4m</text>
+          <text x="877" y="373" font-family="Arial" font-size="7.5" font-weight="700" fill="#fca5a5" text-anchor="end">Required 4.8k/wk</text>
+          <line x1="728" y1="548" x2="879" y2="548" stroke="#233a63"/>
+          <polyline points="728,548 879,448" fill="none" stroke="#f87171" stroke-width="1.8"/>
+          <polyline points="728,548 879,406" fill="none" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <text x="728" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="start">wk 0</text>
+          <text x="879" y="561" font-family="Arial" font-size="7.5" font-weight="normal" fill="#4f6182" text-anchor="end">wk 47</text>
+          <text x="30" y="570" font-family="Arial" font-size="8.5" font-weight="normal" fill="#4f6182" text-anchor="start">Synthetic sample data · scenario model built for portfolio presentation</text>
+        </svg>
+      </div>
+
+      <hr class="section-divider" />
+
+
+      <!-- DASHBOARD 3 -->
+      <h2>Scanner Fleet Capacity &amp; Investment Analysis</h2>
+
+      <p>
+        Operations wanted to buy additional production scanners. The stated
+        reason was capacity: volumes felt heavy, the floor felt busy, and the
+        newest units were visibly faster than the oldest ones.
+      </p>
+
+      <p>
+        Before approving spend, the question worth answering was narrower than
+        the one being asked. Not "how many scanners should we buy?" but "is
+        throughput actually the binding constraint?" I built a production
+        dashboard across the ten-scanner fleet to find out.
+      </p>
+
+      <ul>
+        <li>
+          Tracks model, effective pages-per-minute, active days and page volume
+          for every scanner in the fleet, split by document type
+        </li>
+
+        <li>
+          Normalises a mixed fleet onto a single throughput unit so ten different
+          machines can be compared on one scale
+        </li>
+
+        <li>
+          Trends rolling twelve-month average volume at fleet and scanner level
+        </li>
+
+        <li>
+          Forecasts the scanner-equivalents required under a range of growth
+          assumptions, and reports the shortfall against the current fleet
+        </li>
+      </ul>
+
+      <div class="kpis">
+        <div class="kpi">
+          <span class="cap">Last-month volume</span>
+          <span class="val">5.2M</span>
+          <span class="unit">pages</span>
+        </div>
+        <div class="kpi">
+          <span class="cap">Historical peak volume</span>
+          <span class="val">6.8M</span>
+          <span class="unit">pages</span>
+        </div>
+        <div class="kpi">
+          <span class="cap">Remaining capacity</span>
+          <span class="val">1.6M</span>
+          <span class="unit">pages per month</span>
+        </div>
+        <div class="kpi">
+          <span class="cap">Scanner-equivalents to run current volume</span>
+          <span class="val accent">4.0</span>
+          <span class="unit">of a 10-unit fleet</span>
+        </div>
+      </div>
+
+      <div class="fig">
+        <h4>Current fleet against current demand</h4>
+        <p class="sub">
+          Every unit normalised to a common throughput equivalent. Filled units
+          are what today's volume actually consumes.
+        </p>
+
+        <svg viewBox="0 0 920 150" role="img" aria-label="Ten scanner units, of which four are consumed by current volume, leaving six idle.">
+          <rect x="10"  y="30" width="78" height="56" rx="9" fill="#c4b5fd"/>
+          <rect x="98"  y="30" width="78" height="56" rx="9" fill="#c4b5fd"/>
+          <rect x="186" y="30" width="78" height="56" rx="9" fill="#c4b5fd"/>
+          <rect x="274" y="30" width="78" height="56" rx="9" fill="#c4b5fd"/>
+          <rect x="362" y="30" width="78" height="56" rx="9" fill="#1d2f4d" stroke="#3a4c6e"/>
+          <rect x="450" y="30" width="78" height="56" rx="9" fill="#1d2f4d" stroke="#3a4c6e"/>
+          <rect x="538" y="30" width="78" height="56" rx="9" fill="#1d2f4d" stroke="#3a4c6e"/>
+          <rect x="626" y="30" width="78" height="56" rx="9" fill="#1d2f4d" stroke="#3a4c6e"/>
+          <rect x="714" y="30" width="78" height="56" rx="9" fill="#1d2f4d" stroke="#3a4c6e"/>
+          <rect x="802" y="30" width="78" height="56" rx="9" fill="#1d2f4d" stroke="#3a4c6e"/>
+
+          <text x="10"  y="20" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#c4b5fd">4.0 units consumed</text>
+          <text x="880" y="20" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#94a3b8" text-anchor="end">6.0 units idle</text>
+          <text x="10"  y="116" font-family="Arial" font-size="13" fill="#94a3b8">Current demand fits inside four units, and inside five even at the historical peak.</text>
+        </svg>
+      </div>
+
+      <div class="fig">
+        <h4>Fleet rolling twelve-month average monthly volume</h4>
+        <p class="sub">
+          Smoothed to remove month-end spikes. The trend is the finding: demand
+          has been falling for roughly a year.
+        </p>
+
+        <svg viewBox="0 0 920 280" role="img" aria-label="Line chart of rolling twelve month average monthly volume, rising from 5.5 to 5.8 million pages then declining steadily to 5.2 million.">
+          <line x1="60" y1="40"  x2="890" y2="40"  stroke="#22324a"/>
+          <line x1="60" y1="103" x2="890" y2="103" stroke="#1b2940"/>
+          <line x1="60" y1="166" x2="890" y2="166" stroke="#1b2940"/>
+          <line x1="60" y1="230" x2="890" y2="230" stroke="#22324a"/>
+          <text x="50" y="44"  font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">6.0M</text>
+          <text x="50" y="107" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">5.6M</text>
+          <text x="50" y="170" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">5.2M</text>
+          <text x="50" y="234" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">4.8M</text>
+
+          <polyline points="60,119 123,103 186,72" fill="none" stroke="#4ade80" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="186,72 249,88 312,88 375,103 439,119 502,135 565,135 628,151 691,151 754,167 817,167 880,167" fill="none" stroke="#f87171" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <circle cx="60"  cy="119" r="4.5" fill="#4ade80"/>
+          <circle cx="186" cy="72"  r="4.5" fill="#4ade80"/>
+          <circle cx="439" cy="119" r="4.5" fill="#f87171"/>
+          <circle cx="880" cy="167" r="5.5" fill="#f87171"/>
+
+          <text x="60"  y="108" font-family="Arial" font-size="12.5" font-weight="700" fill="#cbd5e1">5.5M</text>
+          <text x="186" y="61"  font-family="Arial" font-size="12.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">5.8M</text>
+          <text x="880" y="188" font-family="Arial" font-size="13.5" font-weight="700" fill="#f87171" text-anchor="end">5.2M</text>
+
+          <text x="60"  y="256" font-family="Arial" font-size="12" fill="#64748b">24 months ago</text>
+          <text x="470" y="256" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">12 months ago</text>
+          <text x="890" y="256" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">current month</text>
+        </svg>
+        <div class="legend">
+          <span><i style="background:#4ade80"></i>Volume rising</span>
+          <span><i style="background:#f87171"></i>Volume falling</span>
+        </div>
+      </div>
+
+      <div class="fig">
+        <h4>Fleet composition</h4>
+        <p class="sub">
+          Ten units across three hardware generations. The two oldest carry the
+          lowest rated throughput and the highest maintenance burden.
+        </p>
+
+        <svg viewBox="0 0 920 90" role="img" aria-label="Fleet composition: six mid-generation units, two current-generation units, two oldest units.">
+          <rect x="10"  y="18" width="516" height="30" rx="6" fill="#c4b5fd"/>
+          <text x="268" y="38" font-family="Arial" font-size="13" font-weight="700" fill="#1a1533" text-anchor="middle">6 mid-generation units</text>
+          <rect x="532" y="18" width="172" height="30" rx="6" fill="#4ade80"/>
+          <text x="618" y="38" font-family="Arial" font-size="13" font-weight="700" fill="#0a2415" text-anchor="middle">2 current</text>
+          <rect x="710" y="18" width="172" height="30" rx="6" fill="#f87171"/>
+          <text x="796" y="38" font-family="Arial" font-size="13" font-weight="700" fill="#2e0f0e" text-anchor="middle">2 oldest</text>
+          <text x="10"  y="74" font-family="Arial" font-size="13" fill="#94a3b8">Retiring the two oldest units removes the least productive assets without touching capacity headroom.</text>
+        </svg>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi">
+          <span class="cap">Projected monthly volume in 12 months</span>
+          <span class="val">5.1M</span>
+          <span class="unit">pages, at flat growth</span>
+        </div>
+        <div class="kpi">
+          <span class="cap">Scanner-equivalents needed then</span>
+          <span class="val accent">3.9</span>
+          <span class="unit">of a 10-unit fleet</span>
+        </div>
+        <div class="kpi">
+          <span class="cap">Forecast shortfall against fleet</span>
+          <span class="val good">0</span>
+          <span class="unit">units</span>
+        </div>
+        <div class="kpi">
+          <span class="cap">Year-on-year volume change</span>
+          <span class="val">&minus;18%</span>
+          <span class="unit">projected full year vs prior year</span>
+        </div>
+      </div>
+
+      <p>
+        The forecast is parameterised rather than fixed: growth is a slider, so a
+        reviewer can stress the assumption themselves. The shortfall stays at
+        zero across every plausible growth rate, which is a far more convincing
+        answer than a single number produced by an analyst.
+      </p>
+
+      <div class="limitation">
+        <p>
+          <strong>A finding that removed metrics rather than adding them.</strong>
+          The timestamp underpinning every hourly throughput figure turned out to
+          be a bulk system commit time, not the moment a page was actually
+          scanned. Pages-per-hour and utilisation were therefore not measurable
+          from this source, and I retired them from the executive view rather
+          than let a plausible-looking number carry a decision it could not
+          support.
+        </p>
+      </div>
+
+      <h3 style="font-size:19px;font-weight:700;color:#fff;margin:30px 0 10px 0;">What the analysis concluded</h3>
+
+      <p>
+        The fleet was not capacity-constrained. Current demand consumes roughly
+        four units of ten, twelve-month volume is declining rather than growing,
+        and the forecast shows no shortfall under any reasonable growth
+        assumption. Buying additional units would have added throughput the
+        business had no work for.
+      </p>
+
+      <p>
+        The real case was a fleet refresh and consolidation: retire the two
+        oldest, slowest units, concentrate volume on the current-generation
+        machines, and reduce the number of assets under maintenance. That is a
+        smaller cheque and a different business case than the one originally
+        proposed — and it came from reframing the question rather than answering
+        the one that was asked.
+      </p>
 
       <p class="note">
-        Note: All figures, metric names, and site names shown are synthetic.
-        Visuals are personal reconstructions created for portfolio presentation.
+        Note: All figures, metric names, model names and site names shown are
+        synthetic. Visuals are personal reconstructions created for portfolio
+        presentation and do not disclose proprietary information.
       </p>
 
     </div>
@@ -375,22 +1140,22 @@
         Explore Another Project
       </div>
 
-      <h3>Product Experimentation &amp; Growth Strategy</h3>
+      <h3>Digital Product Adoption &amp; Self-Service Analytics</h3>
 
       <p>
-        Explore my FinWise product case study, where I developed an activation
-        strategy, defined measurable Aha moments, designed retention mechanics,
-        and used experimentation to connect product behavior with growth and
-        conversion.
+        At American Express, two conversational support assistants resolved fewer
+        than 12% of conversations without a human. Explore how the drop-off was
+        traced, segmented by intent to self-serve, and turned into product
+        recommendations.
       </p>
 
       <div class="project-nav-buttons">
 
         <a
           class="project-button"
-          href="finwise-product-experimentation.html"
+          href="amex-product-analytics.html"
         >
-          View FinWise Product Case Study →
+          View American Express Case Study &rarr;
         </a>
 
         <a
