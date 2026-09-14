@@ -159,6 +159,38 @@ a{text-decoration:none}
 .wcard:hover .wlink span{transform:translateX(4px)}
 .wlink span{display:inline-block;transition:transform .2s ease}
 
+/* ---------- BRAND NOTES ---------- */
+.notes-card{
+  position:relative;display:block;overflow:hidden;
+  background:var(--card);border:1px solid var(--line);border-radius:22px;
+  padding:38px 40px 34px;color:inherit;margin-bottom:96px;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.notes-card:before{
+  content:"";position:absolute;left:0;top:0;right:0;height:2px;
+  background:linear-gradient(90deg,#c97a5c,transparent 72%);
+}
+.notes-card:after{
+  content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;
+  border-radius:50%;background:#c97a5c;opacity:.05;transition:opacity .25s ease;pointer-events:none;
+}
+.notes-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06)}
+.notes-card:hover:after{opacity:.11}
+.notes-card .worg{color:#e0a184}
+.notes-card h3{
+  font-size:clamp(23px,3vw,31px);font-weight:800;letter-spacing:-.025em;
+  line-height:1.16;color:#fff;margin-bottom:14px;max-width:22ch;
+}
+.notes-card p{font-size:16px;line-height:1.68;color:#cfdcec;max-width:64ch;margin:0 0 20px}
+.notes-card .wlink{color:#e0a184}
+.notes-card:hover .wlink span{transform:translateX(4px)}
+.live{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+}
+.live i{width:7px;height:7px;border-radius:50%;background:#46d6a0;display:inline-block}
+
 /* ---------- APPROACH ---------- */
 .approach{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;margin-bottom:90px}
 .approach div{border-top:2px solid var(--line);padding-top:20px}
@@ -311,6 +343,30 @@ footer .flinks a:hover{color:#fff;border-color:#fff}
     </a>
 
   </div>
+
+  <!-- ================= BRAND NOTES ================= -->
+  <div class="sec-head">
+    <h2>Brand Notes</h2>
+    <span class="live"><i></i>Updated weekly</span>
+  </div>
+
+  <a class="notes-card" href="brand-notes.html">
+    <span class="worg">Ongoing practice</span>
+    <h3>How brands decide what they&#39;re worth</h3>
+    <p>
+      Working notes on positioning, pricing and consumer behaviour. Each entry
+      starts with a question I can&#39;t already answer, separates evidence from
+      interpretation, and ends with a decision someone could act on. Currently:
+      Pandora&#39;s move upmarket as like-for-like growth falls to 2%.
+    </p>
+    <div class="tags">
+      <span class="tag">Positioning</span>
+      <span class="tag">Pricing</span>
+      <span class="tag">Consumer insight</span>
+      <span class="tag">Competitive analysis</span>
+    </div>
+    <span class="wlink">Read the notes <span>&rarr;</span></span>
+  </a>
 
   <!-- ================= APPROACH ================= -->
   <div class="sec-head">
