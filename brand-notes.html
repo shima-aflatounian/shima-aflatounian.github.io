@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brand Notes — Shima Aflatounian</title>
+<meta name="description" content="Working notes on brand strategy, positioning and consumer behaviour. Evidence, tension, and a point of view." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --paper:#FAF7F2;
+  --paper-2:#FFFFFF;
+  --ink:#1A1815;
+  --ink-soft:#4A4640;
+  --ink-mute:#8A8278;
+  --rule:#E3DCD1;
+  --accent:#A8543A;        /* evidence / rust */
+  --read:#2F5D50;          /* my read / green */
+  --pending:#B08A2E;       /* needs research */
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,247,242,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-in{
+  max-width:1100px;margin:auto;padding:14px 32px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+}
+.nav-in b{font-family:'Instrument Serif',serif;font-size:21px;font-weight:400;letter-spacing:.01em}
+.nav-links{display:flex;gap:26px}
+.nav-links a{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-mute);text-decoration:none;
+}
+.nav-links a:hover{color:var(--accent)}
+
+.wrap{max-width:1100px;margin:auto;padding:0 32px}
+
+/* ---------- hero ---------- */
+header.hero{padding:96px 0 72px;border-bottom:1px solid var(--rule)}
+.kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:26px;
+}
+header.hero h1{
+  font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:clamp(44px,6.4vw,80px);line-height:1.04;letter-spacing:-.015em;
+  margin:0 0 28px;max-width:15ch;
+}
+header.hero h1 em{font-style:italic;color:var(--accent)}
+.standfirst{font-size:20px;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0 0 18px}
+.byline{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;
+  color:var(--ink-mute);margin-top:36px;
+}
+
+/* ---------- method strip ---------- */
+.method{padding:64px 0;border-bottom:1px solid var(--rule)}
+.method h2,.sec-head h2{
+  font-family:'Instrument Serif',serif;font-weight:400;font-size:32px;
+  margin:0 0 10px;letter-spacing:-.01em;
+}
+.method .lede{color:var(--ink-soft);max-width:60ch;margin:0 0 38px}
+.chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0}
+.step{padding:0 20px 0 0;border-left:2px solid var(--rule);padding-left:18px}
+.step:first-child{border-left-color:var(--accent)}
+.step .n{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  color:var(--ink-mute);display:block;margin-bottom:8px;
+}
+.step h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0 0 6px}
+.step p{font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0}
+
+/* ---------- section heads ---------- */
+.sec-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  flex-wrap:wrap;padding:72px 0 8px;
+}
+.sec-head span{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-mute);
+}
+
+/* ---------- case ---------- */
+.case{padding:20px 0 80px;border-bottom:1px solid var(--rule)}
+.case-top{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-bottom:56px}
+.case-num{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+  color:var(--accent);margin-bottom:18px;
+}
+.case h2.case-title{
+  font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:clamp(34px,4.4vw,52px);line-height:1.08;letter-spacing:-.015em;margin:0 0 22px;
+}
+.q{
+  border-left:3px solid var(--ink);padding:4px 0 4px 20px;margin:0 0 8px;
+  font-family:'Instrument Serif',serif;font-size:23px;line-height:1.4;font-style:italic;
+}
+.meta-list{margin-top:34px;border-top:1px solid var(--rule)}
+.meta-list div{display:flex;gap:18px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.meta-list dt,.meta-list b{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-mute);min-width:104px;font-weight:400;
+}
+
+/* ---------- blocks ---------- */
+.block{margin:0 0 40px}
+.block-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.block-label:before{content:"";width:22px;height:2px;background:currentColor}
+.l-claim{color:var(--ink-mute)}
+.l-evid{color:var(--accent)}
+.l-tens{color:var(--ink)}
+.l-read{color:var(--read)}
+.l-so{color:var(--ink)}
+
+.block h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:27px;margin:0 0 14px;line-height:1.25}
+.block p{max-width:64ch;margin:0 0 14px;color:var(--ink-soft)}
+.block p strong{color:var(--ink);font-weight:600}
+
+/* evidence card */
+.evidence{
+  background:var(--paper-2);border:1px solid var(--rule);
+  border-left:3px solid var(--accent);border-radius:3px;
+  padding:22px 26px;margin:0 0 14px;
+}
+.evidence p{margin:0 0 10px;color:var(--ink)}
+.evidence p:last-child{margin:0}
+.source{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);
+  letter-spacing:.02em;display:block;margin-top:12px;
+}
+
+/* my read */
+.myread{
+  background:rgba(47,93,80,.055);border-left:3px solid var(--read);
+  border-radius:3px;padding:24px 28px;margin:0 0 14px;
+}
+.myread p{color:var(--ink);max-width:62ch}
+.myread .caveat{
+  font-size:14px;color:var(--ink-soft);font-style:italic;margin-top:14px;margin-bottom:0;
+}
+
+/* tension */
+.tension{
+  border:1px solid var(--ink);border-radius:3px;padding:30px 34px;margin:0 0 14px;
+  background:var(--paper-2);
+}
+.tension p{
+  font-family:'Instrument Serif',serif;font-size:25px;line-height:1.45;
+  color:var(--ink);margin:0;max-width:44ch;
+}
+.tension p span{color:var(--accent);font-style:italic}
+
+/* placeholder */
+.todo{
+  border:1px dashed var(--pending);border-radius:3px;background:rgba(176,138,46,.05);
+  padding:20px 24px;margin:0 0 14px;
+}
+.todo .tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--pending);display:block;margin-bottom:9px;
+}
+.todo p{font-size:14.5px;color:var(--ink-soft);margin:0 0 8px;max-width:62ch}
+.todo p:last-child{margin:0}
+.todo code{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+  background:rgba(176,138,46,.12);padding:1px 6px;border-radius:2px;
+}
+
+/* revenue bars */
+.bars{display:flex;align-items:flex-end;gap:14px;height:150px;margin:18px 0 8px}
+.bars div{flex:1;background:var(--accent);opacity:.82;border-radius:2px 2px 0 0;position:relative}
+.bars div span{position:absolute;top:-22px;left:0;right:0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft)}
+.bar-years{display:flex;gap:14px}
+.bar-years span{flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute)}
+.verify{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pending);border:1px solid var(--pending);border-radius:2px;padding:2px 7px;margin-left:8px;font-style:normal;white-space:nowrap}
+.evidence p:last-of-type{margin:0}
+
+/* two-col */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.figure-slot{
+  border:1px dashed var(--rule);border-radius:3px;background:var(--paper-2);
+  padding:34px 26px;text-align:center;
+}
+.figure-slot .tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-mute);display:block;margin-bottom:10px;
+}
+.figure-slot p{font-size:14px;color:var(--ink-soft);margin:0;max-width:36ch;margin-inline:auto}
+
+/* ---------- notes ---------- */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;padding-top:20px}
+.note{padding:34px 32px 34px 0;border-top:2px solid var(--ink);margin-right:-1px}
+.note .cat{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:12px;
+}
+.note h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:27px;margin:0 0 12px;line-height:1.2}
+.note p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:42ch}
+.note .stat{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;
+  color:var(--ink-mute);text-transform:uppercase;
+}
+
+/* ---------- next ---------- */
+.next{padding:70px 0 90px}
+.queue{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.queue span{
+  border:1px solid var(--rule);border-radius:999px;padding:8px 16px;
+  font-size:14px;color:var(--ink-soft);background:var(--paper-2);
+}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);padding:44px 0 64px}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.foot p{margin:0;font-size:14px;color:var(--ink-mute);max-width:44ch}
+.foot .links{display:flex;gap:22px}
+.foot .links a{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-soft);text-decoration:none;
+  border-bottom:1px solid var(--rule);padding-bottom:3px;
+}
+.foot .links a:hover{color:var(--accent);border-color:var(--accent)}
+
+@media(max-width:860px){
+  .wrap,.nav-in{padding-left:20px;padding-right:20px}
+  .nav-links{display:none}
+  .case-top,.cols{grid-template-columns:1fr;gap:32px}
+  header.hero{padding:56px 0 44px}
+  .note{padding-right:0}
+  .tension p{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <b>Brand Notes</b>
+    <div class="nav-links">
+      <a href="#method">Method</a>
+      <a href="#case-01">Case 01</a>
+      <a href="#notes">Notes</a>
+      <a href="#next">Next</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="kicker">Working notes · Updated weekly</div>
+    <h1>How brands decide what they're <em>worth</em>.</h1>
+    <p class="standfirst">
+      I grew up in a market where jewellery is bought by weight — the jeweller
+      weighs it, applies the day's gold price, and that is the value. Then I
+      spent years selling fine jewellery in a market where most of the price is
+      the name on the box.
+    </p>
+    <p class="standfirst">
+      That gap is what I write about here: what makes someone believe a thing is
+      worth what it costs. Each entry starts with a question I can't already
+      answer, separates evidence from interpretation, and ends with a decision
+      someone could act on.
+    </p>
+
+    <p class="byline">Shima Aflatounian · Brand &amp; consumer strategy · Los Angeles</p>
+  </header>
+
+  <!-- ============ METHOD ============ -->
+  <section class="method" id="method">
+    <h2>How each entry is built</h2>
+    <p class="lede">
+      The same chain every time. The value isn't the conclusion — it's whether
+      each link actually holds.
+    </p>
+    <div class="chain">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Question</h3>
+        <p>One sentence, genuinely open. If I already know the answer it isn't a question.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Claim</h3>
+        <p>What the brand says about itself, in its own words.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Evidence</h3>
+        <p>Verifiable facts, each attached to a source. Marked in rust throughout.</p>
+      </div>
+      <div class="step">
+        <span class="n">04</span>
+        <h3>Tension</h3>
+        <p>The conflict inside one customer's head, not between two companies.</p>
+      </div>
+      <div class="step">
+        <span class="n">05</span>
+        <h3>My read</h3>
+        <p>A position, stated plainly, with what would prove it wrong. Marked in green.</p>
+      </div>
+      <div class="step">
+        <span class="n">06</span>
+        <h3>So what</h3>
+        <p>One recommendation, and what it would cost or earn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASE 01 ============ -->
+  <div class="sec-head">
+    <h2>Case studies</h2>
+    <span>Long form · One at a time</span>
+  </div>
+
+  <article class="case" id="case-01">
+    <div class="case-top">
+      <div>
+        <div class="case-num">Case 01 — Jewellery · Premiumisation</div>
+        <h2 class="case-title">Pandora and the price of meaning</h2>
+        <p class="q">
+          Pandora is moving upmarket while its like-for-like growth falls to 2%.
+          Is the premium push a brand strategy, or a margin rescue?
+        </p>
+      </div>
+      <div>
+        <div class="figure-slot">
+          <span class="tag">Figure 01 — to build</span>
+          <p>
+            Price ladder. Cheapest charm, average bracket, entry diamond, top
+            piece — on one line. Makes the distance the customer is being asked
+            to travel visible in a single glance.
+          </p>
+        </div>
+        <div class="meta-list">
+          <div><b>Status</b><span>Evidence complete · position pending</span></div>
+          <div><b>Skill</b><span>Positioning · Segmentation · Pricing</span></div>
+          <div><b>Sources</b><span>2025 Annual Report · Reviews · Competitor pricing</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLAIM -->
+    <div class="block">
+      <div class="block-label l-claim">What the company says</div>
+      <h3>The stated strategy</h3>
+      <p>
+        Pandora's 2025 report sets out four growth pillars: <strong>Brand,
+        Design, Markets and Personalisation.</strong> The company states it wants
+        to stimulate demand rather than simply expand distribution, with
+        particular emphasis on North America, where it reports growth below
+        expectation.
+      </p>
+      <p>
+        Lab-grown diamonds sit inside the Design pillar, alongside a stated shift
+        away from many incremental product extensions toward fewer,
+        higher-impact launches.
+      </p>
+      <div class="todo">
+        <span class="tag">To add — 15 minutes</span>
+        <p>
+          Replace the paraphrase above with two or three direct quotations from
+          the report, in quotation marks, with page numbers. Their exact words
+          matter more than my summary of them.
+        </p>
+      </div>
+    </div>
+
+    <!-- EVIDENCE -->
+    <div class="block">
+      <div class="block-label l-evid">What's actually true</div>
+      <h3>Evidence</h3>
+      <p>All figures from Pandora's Annual Report 2025 unless stated.</p>
+
+      <div class="evidence">
+        <p><strong>Revenue grew, but the engine is slowing.</strong> Revenue reached DKK 32,549m in 2025. But like-for-like growth — the measure that strips out new stores — fell from 20% in 2021 to 2% in 2025.</p>
+        <div class="bars">
+          <div style="height:100%"><span>20%</span></div>
+          <div style="height:20%"><span>4%</span></div>
+          <div style="height:30%"><span>6%</span></div>
+          <div style="height:35%"><span>7%</span></div>
+          <div style="height:10%"><span>2%</span></div>
+        </div>
+        <div class="bar-years"><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div>
+        <span class="source">Five-year summary, p.14 · like-for-like growth, %</span>
+      </div>
+
+      <div class="evidence">
+        <p><strong>Pandora is guiding to a year of decline.</strong> 2026 guidance is organic growth of &minus;1% to +2%, with like-for-like of &minus;3% to 0%. EBIT margin is guided down to 21&ndash;22% from 23.9%.</p>
+        <p>Almost all of the guided revenue growth comes from opening stores, not from selling more per store.</p>
+        <span class="source">Outlook, p.15</span>
+      </div>
+
+      <div class="evidence">
+        <p><strong>The premium segment is not yet the growth story.</strong> The <em>Core</em> segment grew 1% like-for-like in 2025. <em>Fuel with more</em> — which contains Lab-Grown Diamonds and ESSENCE — grew 3%.</p>
+        <p>The company targets mid-to-high single digit LFL CAGR for that segment. It delivered 3%.</p>
+        <span class="source">Growth Pillar 2: Design, p.20&ndash;21</span>
+      </div>
+
+      <div class="evidence">
+        <p><strong>Silver is the pressure behind the strategy.</strong> The price of silver more than doubled in 2025, reaching USD 72/oz by year-end against USD 29 at the start of the year and USD 24 when long-term targets were set in 2023. Commodities, FX and US tariffs cost 220bps of gross margin and 300bps of EBIT margin.</p>
+        <span class="source">Letter to Shareholders, p.6 · Phoenix, p.20</span>
+      </div>
+
+      <div class="evidence">
+        <p><strong>The platinum shift is explicitly about reducing silver exposure.</strong> From 2026 Pandora introduces platinum-plated jewellery on its EVERSHINE alloy, stating improved everyday-wear performance compared to silver and high consumer acceptance in testing. Parts of the silver assortment will gradually shift across, with the stated aim of "reducing silver exposure and commodity sensitivity over time."</p>
+        <span class="source">Growth Pillar 2, p.21&ndash;22</span>
+      </div>
+
+      <div class="evidence">
+        <p><strong>The loyalty base is unusually large for jewellery.</strong> My Pandora launched 2022, now live in seven countries with 16.2 million members, covering more than half of revenue in participating channels.</p>
+        <p>Engraving capacity grew by 855 machines during 2025 to a total of 2,290, with 34 additional engravable pieces added.</p>
+        <span class="source">Growth Pillar 4: Personalisation, p.22</span>
+      </div>
+
+      <div class="evidence">
+        <p><strong>Scale, for context.</strong> 915 million visitors to stores and online in 2025. 112 million pieces crafted. More than three pieces of jewellery sold every second. Presence in over 100 countries.</p>
+        <span class="source">2025 at a Glance, p.7 · Growth Pillar 3, p.22</span>
+      </div>
+
+      <div class="todo">
+        <span class="tag">Still needed — 90 minutes, this weekend</span>
+        <p><strong>1. Price ladder.</strong> pandora.net — cheapest charm, cheapest lab-grown piece, most expensive piece. 20 min.</p>
+        <p><strong>2. Customer language.</strong> 25 reviews on lab-grown pieces. Four lists: occasion, comparison, worry, self-description. 40 min.</p>
+        <p><strong>3. Competitor check.</strong> What $300 buys at Brilliant Earth and Blue Nile. 30 min.</p>
+      </div>
+    </div>
+
+    <!-- TENSION -->
+    <div class="block">
+      <div class="block-label l-tens">The conflict</div>
+      <h3>Tension</h3>
+      <div class="tension">
+        <p>
+          <span>Draft — to be confirmed or replaced by the reviews.</span>
+          I bought into Pandora because it was affordable and it was mine. But
+          the last piece I owned lost its colour within a year. So when they show
+          me a diamond, I don't think "finally, one I can afford" — I think
+          "will this one last either?"
+        </p>
+      </div>
+      <div class="todo">
+        <span class="tag">Test this</span>
+        <p>
+          This came from my own experience, which makes it a hypothesis rather
+          than a finding. If thirty reviews don't surface something like it,
+          rewrite it to match what people actually say. Do not keep a tension
+          because it sounds good.
+        </p>
+      </div>
+    </div>
+
+    <!-- MY READ -->
+    <div class="block">
+      <div class="block-label l-read">My read</div>
+      <h3>Position</h3>
+      <div class="myread">
+        <p><strong>One sentence, written after the evidence. No "may", no "could", no "if".</strong></p>
+        <p class="caveat">What would prove me wrong: [the specific finding that would kill this].</p>
+      </div>
+      <div class="todo">
+        <span class="tag">Write this before building anything else</span>
+        <p>
+          If the sentence won't come, the evidence isn't finished. If it comes
+          but feels uncomfortable to commit to, that usually means it's the right
+          one.
+        </p>
+      </div>
+    </div>
+
+    <!-- SO WHAT -->
+    <div class="block">
+      <div class="block-label l-so">So what</div>
+      <h3>What I would do first</h3>
+      <div class="cols">
+        <div>
+          <div class="todo">
+            <span class="tag">To write last</span>
+            <p>
+              One recommendation. Who it is for, what it costs, what it earns,
+              and what happens if they do nothing.
+            </p>
+            <p>Five recommendations means I couldn't choose.</p>
+          </div>
+        </div>
+        <div>
+          <div class="figure-slot">
+            <span class="tag">Figure 02 — optional</span>
+            <p>
+              Positioning map. Price against perceived permanence. Pandora, a
+              mall jeweller, a fine jeweller, a lab-grown specialist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ NOTES ============ -->
+  <div class="sec-head" id="notes">
+    <h2>Notes</h2>
+    <span>Short form · Observation and hypothesis only</span>
+  </div>
+
+  <section class="notes">
+    <div class="note">
+      <div class="cat">Fitness · Segmentation</div>
+      <h3>Club Studio and the second brand</h3>
+      <p>
+        A mass-market operator running a premium concept alongside its core
+        chain. The interesting question isn't why premium — it's what the premium
+        brand is actually selling that the core one can't.
+      </p>
+      <p>
+        I've used both. I pay more for Club Studio and I can articulate why,
+        which is rarer than it sounds.
+      </p>
+      <p class="stat">Note 01 · Becomes Case 02</p>
+    </div>
+
+    <div class="note">
+      <div class="cat">Method</div>
+      <h3>Why my own reaction isn't evidence</h3>
+      <p>
+        I price things by material — a habit from a market where jewellery is
+        sold by weight. That makes me systematically undervalue brand premium.
+      </p>
+      <p>
+        Useful for generating questions. Never sufficient as an answer. Noting
+        the bias here so it stays visible.
+      </p>
+      <p class="stat">Note 02 · Standing</p>
+    </div>
+
+    <div class="note">
+      <div class="cat">Placeholder</div>
+      <h3>Note 03</h3>
+      <p>
+        Reserved.
+      </p>
+      <p class="stat">Unwritten</p>
+    </div>
+  </section>
+
+  <!-- ============ NEXT ============ -->
+  <section class="next" id="next">
+    <div class="sec-head" style="padding-top:0">
+      <h2>In the queue</h2>
+      <span>Not started · Listed honestly</span>
+    </div>
+    <p style="max-width:58ch;color:var(--ink-soft)">
+      Brands I intend to work through. Listing them unstarted is deliberate —
+      the point of this page is a practice, not a finished object.
+    </p>
+    <div class="queue">
+      <span>Club Studio — what the premium tier actually sells</span>
+      <span>Rivian — brand stretch beyond the adventure niche</span>
+      <span>Airbnb — from "where do I stay" to "how do I experience a place"</span>
+      <span>Calm — utility to ecosystem</span>
+      <span>Athletic Brewing — occasion expansion</span>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="foot">
+      <p>
+        Written by Shima Aflatounian. Every entry separates evidence from
+        interpretation. Where I don't know something yet, the page says so.
+      </p>
+      <div class="links">
+        <a href="index.html">Portfolio</a>
+        <a href="https://www.linkedin.com/in/shima-aflatounian/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/shima-aflatounian" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
