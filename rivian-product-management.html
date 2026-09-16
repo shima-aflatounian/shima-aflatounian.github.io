@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rivian Trailhead — Final Project | Shima Aflatounian</title>
+<meta name="description" content="Product Management final project. Rivian Trailhead: trip confidence software for first-time EV owners." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --bg:#0A0F0D; --surface:rgba(255,255,255,.035); --line:rgba(255,255,255,.09);
+  --fg:#F2F5F2; --soft:#B9C4BC; --mute:#7C8A80;
+  --yellow:#FED42B; --sage:#93B39A; --rust:#E08B5C;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;
+  font-size:16.5px;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(ellipse 70% 50% at 12% 0%,rgba(254,212,43,.07),transparent 60%),
+  radial-gradient(ellipse 60% 45% at 92% 22%,rgba(147,179,154,.08),transparent 62%),
+  radial-gradient(ellipse 70% 50% at 50% 104%,rgba(254,212,43,.045),transparent 60%)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900' viewBox='0 0 1200 900'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'%3E%3Cpath d='M-50 180 C 180 110, 380 250, 600 190 S 1020 90, 1250 170'/%3E%3Cpath d='M-50 235 C 180 168, 380 305, 600 245 S 1020 148, 1250 225'/%3E%3Cpath d='M-50 292 C 180 228, 380 360, 600 302 S 1020 208, 1250 282'/%3E%3Cpath d='M-50 352 C 180 290, 380 416, 600 362 S 1020 270, 1250 342'/%3E%3Cpath d='M-50 416 C 180 356, 380 474, 600 424 S 1020 336, 1250 404'/%3E%3Cpath d='M-50 484 C 180 428, 380 534, 600 488 S 1020 406, 1250 470'/%3E%3Cpath d='M-50 556 C 180 504, 380 598, 600 556 S 1020 480, 1250 540'/%3E%3Cpath d='M-50 632 C 180 584, 380 664, 600 626 S 1020 558, 1250 614'/%3E%3Cpath d='M-50 712 C 180 668, 380 734, 600 700 S 1020 640, 1250 692'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:1200px 900px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1040px;margin:auto;padding:0 32px}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(10,15,13,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1040px;margin:auto;padding:12px 32px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.nav-in b{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.01em}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.nav-links a:hover{color:var(--yellow)}
+
+header.hero{padding:92px 0 66px;border-bottom:1px solid var(--line)}
+.badge{display:inline-block;padding:7px 14px;border-radius:2px;border:1px solid rgba(254,212,43,.35);
+  background:rgba(254,212,43,.07);color:var(--yellow);font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px}
+header.hero h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(44px,7.6vw,88px);
+  line-height:.97;letter-spacing:-.04em;margin:0 0 24px;max-width:13ch}
+header.hero h1 em{font-style:normal;color:var(--yellow)}
+.standfirst{font-size:19.5px;line-height:1.58;color:var(--soft);max-width:60ch;margin:0 0 15px}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;color:var(--mute);margin-top:32px}
+
+section{padding:64px 0;border-bottom:1px solid var(--line);scroll-margin-top:58px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:13px}
+section h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(27px,4vw,42px);
+  line-height:1.1;letter-spacing:-.03em;margin:0 0 18px;max-width:21ch}
+section p{max-width:68ch;margin:0 0 14px;color:var(--soft)}
+section p strong{color:var(--fg);font-weight:600}
+h3.sub{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--fg);margin:30px 0 10px}
+
+.q{border-left:3px solid var(--yellow);padding:6px 0 6px 22px;margin:0 0 22px;
+  font-family:'Space Grotesk',sans-serif;font-size:21px;line-height:1.42;color:var(--fg);max-width:52ch}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 30px;margin:22px 0}
+.card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin:0 0 12px;color:var(--fg)}
+.card p{margin:0 0 12px}.card p:last-child{margin:0}
+.card ul{margin:0;padding-left:20px}
+.card li{margin-bottom:9px;color:var(--soft);max-width:64ch}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:15px;margin:28px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:21px}
+.stat b{display:block;font-family:'Space Grotesk',sans-serif;font-size:31px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--yellow)}
+.stat span{display:block;font-size:13px;line-height:1.5;color:var(--mute);margin-top:9px}
+
+svg{display:block;width:100%;height:auto}
+.figure{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px 22px 18px;margin:26px 0}
+.fig-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.fig-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--fg)}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;padding:4px 10px;border-radius:2px;white-space:nowrap}
+.chip.m{color:#9de0b4;background:rgba(147,179,154,.10);border:1px solid rgba(147,179,154,.38)}
+.chip.h{color:var(--soft);background:transparent;border:1px dashed rgba(255,255,255,.26)}
+.fig-sub{font-size:13px;color:var(--mute);margin:6px 0 18px;max-width:70ch}
+.src{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute);margin-top:14px;display:block}
+
+.pull{border-left:3px solid var(--rust);background:linear-gradient(90deg,rgba(224,139,92,.09),transparent 82%);
+  border-radius:0 6px 6px 0;padding:22px 26px;margin:26px 0}
+.pull p{margin:0;color:var(--fg);font-size:17.5px;max-width:58ch}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--mute);font-weight:400;padding:0 14px 10px 0;border-bottom:1px solid var(--line)}
+td{padding:12px 14px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--soft)}
+td:first-child{color:var(--fg);font-weight:600}
+tr:last-child td{border-bottom:0}
+.hi td{color:var(--yellow)}
+.assume{border:1px dashed rgba(255,255,255,.24);border-radius:6px;padding:17px 21px;margin:22px 0;font-size:14.5px;color:var(--soft)}
+.assume b{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:7px}
+
+footer{padding:42px 0 64px}
+.foot{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:flex-start}
+.foot p{margin:0;font-size:13.5px;color:var(--mute);max-width:48ch}
+.foot .links{display:flex;gap:18px;flex-wrap:wrap}
+.foot .links a{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--line);padding-bottom:3px}
+.foot .links a:hover{color:var(--yellow);border-color:var(--yellow)}
+
+@media(max-width:820px){
+  .wrap,.nav-in{padding-left:20px;padding-right:20px}
+  .nav-links{display:none}
+  .grid2{grid-template-columns:1fr}
+  header.hero{padding:54px 0 44px}
+  .card{padding:20px 18px}
+  table{font-size:13.5px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <b>Rivian Trailhead</b>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#customer">Customer</a>
+      <a href="#journey">Journey</a>
+      <a href="#solution">Solution</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#experiment">Experiment</a>
+      <a href="#gtm">GTM</a>
+      <a href="#evidence">Evidence</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="badge">Product Management · Final Project · 2026</div>
+    <h1>The trip that <em>never happens</em>.</h1>
+    <p class="standfirst">
+      Rivian began R2 deliveries in spring 2026, bringing the brand to a buyer
+      who is often purchasing their first EV. They bought a vehicle built for the
+      outdoors.
+    </p>
+    <p class="standfirst">
+      Then they plan the weekend, run the charging maths, decide it's too risky,
+      and take the other car. Nothing is logged. Nobody finds out.
+    </p>
+    <p class="byline">Shima Aflatounian · Built from public sources, September 2026</p>
+  </header>
+
+  <!-- 01 PROBLEM -->
+  <section id="problem">
+    <p class="eyebrow">01 — The problem</p>
+    <h2>A capable vehicle used at a fraction of its capability</h2>
+
+    <p class="q">
+      What stops a new owner from taking the trip they bought the vehicle for?
+    </p>
+
+    <p>
+      The obvious answer is range. The evidence points somewhere else. Across EV
+      owner communities, complaints cluster on charger <strong>reliability and
+      availability</strong> — the broken or occupied station — rather than on
+      insufficient vehicle range.
+    </p>
+
+    <p>
+      That distinction matters enormously, because range is a hardware problem
+      that takes years and billions to move. <strong>Uncertainty is a software
+      problem.</strong>
+    </p>
+
+    <div class="pull">
+      <p>
+        The failure is silent. A trip that was cancelled during planning produces
+        no event, no support ticket, and no data. It is the most expensive thing
+        Rivian cannot see.
+      </p>
+    </div>
+  </section>
+
+  <!-- 02 CUSTOMER -->
+  <section id="customer">
+    <p class="eyebrow">02 — Who changed</p>
+    <h2>R2 is not a cheaper R1. It is a different person.</h2>
+
+    <div class="stats">
+      <div class="stat"><b>$57,990</b><span>first R2 available, spring 2026</span></div>
+      <div class="stat"><b>$44,990</b><span>entry trim, scheduled 2027</span></div>
+      <div class="stat"><b>29%</b><span>gap between promise and first available price</span></div>
+      <div class="stat"><b>$100</b><span>refundable deposit — a low-commitment signal</span></div>
+    </div>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">The buyer shift</span>
+        <span class="chip h">Framework</span>
+      </div>
+      <p class="fig-sub">Inferred from price point and category behaviour, not from Rivian customer data.</p>
+      <table>
+        <tr><th>Dimension</th><th>R1 buyer</th><th>R2 buyer</th></tr>
+        <tr><td>Price point</td><td>$75,000–100,000+</td><td>$48,000–58,000</td></tr>
+        <tr><td>EV experience</td><td>Second or third EV</td><td>Often first EV</td></tr>
+        <tr><td>Home charging</td><td>Usually installed</td><td>Frequently not</td></tr>
+        <tr><td>Road-trip fluency</td><td>Already confident</td><td>Learning</td></tr>
+        <tr class="hi"><td>What they bought</td><td>Capability</td><td>Permission to try</td></tr>
+      </table>
+    </div>
+
+    <div class="assume">
+      <b>Stated as hypothesis</b>
+      Rivian has not published R2 buyer composition. The segment differences above
+      are inferred from the price gap and general EV adoption patterns. Internal
+      data would confirm or kill this in a week.
+    </div>
+  </section>
+
+  <!-- 03 JOURNEY -->
+  <section id="journey">
+    <p class="eyebrow">03 — The journey</p>
+    <h2>Six tools, one spreadsheet, no trip</h2>
+
+    <p>
+      There is no product for this, so owners assemble one: native navigation, a
+      charger app, a forum thread to ask whether a specific station actually
+      works, a weather app, a campsite app, and notes to hold it together.
+      <strong>People don't build spreadsheets for problems that are solved.</strong>
+    </p>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">Where the trip dies</span>
+        <span class="chip h">Framework</span>
+      </div>
+      <p class="fig-sub">Confidence through the planning journey. The drop is at contingency, not routing.</p>
+
+      <svg viewBox="0 0 920 330" role="img" aria-label="Journey map showing confidence falling sharply at the contingency stage, where no product support exists, leading to the trip being cancelled.">
+        <line x1="60" y1="252" x2="880" y2="252" stroke="rgba(255,255,255,.14)"/>
+        <text x="48" y="78" font-family="IBM Plex Mono" font-size="10.5" fill="#7C8A80" text-anchor="end">HIGH</text>
+        <text x="48" y="248" font-family="IBM Plex Mono" font-size="10.5" fill="#7C8A80" text-anchor="end">LOW</text>
+
+        <polyline points="100,86 236,100 372,150 508,226 644,242 780,246"
+                  fill="none" stroke="#FED42B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="100" cy="86" r="5" fill="#FED42B"/>
+        <circle cx="236" cy="100" r="5" fill="#FED42B"/>
+        <circle cx="372" cy="150" r="5" fill="#FED42B"/>
+        <circle cx="508" cy="226" r="7" fill="#E08B5C"/>
+        <circle cx="644" cy="242" r="5" fill="#E08B5C"/>
+        <circle cx="780" cy="246" r="5" fill="#E08B5C"/>
+
+        <line x1="508" y1="60" x2="508" y2="216" stroke="#E08B5C" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="508" y="50" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#E08B5C" text-anchor="middle">THE DROP</text>
+
+        <text x="100" y="278" font-family="Inter" font-size="12.5" fill="#B9C4BC" text-anchor="middle">Desire</text>
+        <text x="236" y="278" font-family="Inter" font-size="12.5" fill="#B9C4BC" text-anchor="middle">Scoping</text>
+        <text x="372" y="278" font-family="Inter" font-size="12.5" fill="#B9C4BC" text-anchor="middle">Charging maths</text>
+        <text x="508" y="278" font-family="Inter" font-size="12.5" font-weight="700" fill="#E08B5C" text-anchor="middle">Contingency</text>
+        <text x="644" y="278" font-family="Inter" font-size="12.5" fill="#B9C4BC" text-anchor="middle">Research spiral</text>
+        <text x="780" y="278" font-family="Inter" font-size="12.5" fill="#B9C4BC" text-anchor="middle">Cancelled</text>
+
+        <text x="100" y="302" font-family="IBM Plex Mono" font-size="10" fill="#7C8A80" text-anchor="middle">no support</text>
+        <text x="236" y="302" font-family="IBM Plex Mono" font-size="10" fill="#7C8A80" text-anchor="middle">nav</text>
+        <text x="372" y="302" font-family="IBM Plex Mono" font-size="10" fill="#7C8A80" text-anchor="middle">weak</text>
+        <text x="508" y="302" font-family="IBM Plex Mono" font-size="10" fill="#E08B5C" text-anchor="middle">NONE</text>
+        <text x="644" y="302" font-family="IBM Plex Mono" font-size="10" fill="#7C8A80" text-anchor="middle">forums</text>
+        <text x="780" y="302" font-family="IBM Plex Mono" font-size="10" fill="#7C8A80" text-anchor="middle">invisible</text>
+      </svg>
+    </div>
+
+    <p>
+      Intervening earlier is premature — routing already works. Intervening later
+      is too late — the decision has been made. <strong>Contingency is the
+      moment.</strong>
+    </p>
+  </section>
+
+  <!-- 04 SOLUTION -->
+  <section id="solution">
+    <p class="eyebrow">04 — The product</p>
+    <h2>Plan for the charger that isn't there</h2>
+
+    <p>
+      Every EV routing tool answers <em>where</em>. None answers <em>what if</em>.
+      Trailhead plans the failure before it happens.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 style="color:var(--yellow)">Contingency planning</h3>
+        <p>
+          Every charging stop carries a named alternative within reachable range,
+          and states how much buffer remains if the primary fails. No stop is
+          allowed to silently lack one.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--yellow)">Confidence in words</h3>
+        <p>
+          Not a percentage. One sentence naming the single largest risk:
+          <em>"one stop on this trip has no alternative within range."</em>
+          Specific enough to act on.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--sage)">Delivery-day onboarding</h3>
+        <p>
+          The owner plans one real trip with a specialist before they leave with
+          the vehicle. Highest-intent moment available, and currently unused.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--sage)">Intent capture</h3>
+        <p>
+          Plan creation records an intended date. Departure is tracked against it.
+          This is what makes the invisible failure measurable for the first time.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="sub">What the experience looks like</h3>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">Three screens — plan, spot the risk, see the fallback</span>
+        <span class="chip h">Concept</span>
+      </div>
+      <p class="fig-sub">
+        Low-fidelity on purpose. The point is the information hierarchy, not the
+        visual design: the fallback is never hidden behind a tap.
+      </p>
+
+      <svg viewBox="0 0 920 470" role="img" aria-label="Three concept screens. One: trip input with destination and dates. Two: the plan, with one charging stop flagged as having no alternative. Three: the fallback detail showing an alternative charger and remaining buffer.">
+
+        <!-- SCREEN 1 -->
+        <rect x="52" y="34" width="228" height="392" rx="22" fill="#111714" stroke="rgba(255,255,255,.16)"/>
+        <rect x="130" y="48" width="72" height="6" rx="3" fill="rgba(255,255,255,.16)"/>
+        <text x="74" y="92" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#F2F5F2">Plan a trip</text>
+        <rect x="74" y="110" width="184" height="42" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+        <text x="86" y="127" font-family="IBM Plex Mono" font-size="9" fill="#7C8A80">WHERE TO</text>
+        <text x="86" y="143" font-family="Inter" font-size="12.5" fill="#F2F5F2">Alabama Hills, CA</text>
+        <rect x="74" y="162" width="184" height="42" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+        <text x="86" y="179" font-family="IBM Plex Mono" font-size="9" fill="#7C8A80">WHEN</text>
+        <text x="86" y="195" font-family="Inter" font-size="12.5" fill="#F2F5F2">Fri 12 – Sun 14</text>
+        <rect x="74" y="214" width="184" height="42" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+        <text x="86" y="231" font-family="IBM Plex Mono" font-size="9" fill="#7C8A80">CHARGE AT DEPARTURE</text>
+        <text x="86" y="247" font-family="Inter" font-size="12.5" fill="#F2F5F2">82%  ·  from vehicle</text>
+        <rect x="74" y="278" width="184" height="36" rx="18" fill="#FED42B"/>
+        <text x="166" y="301" font-family="Space Grotesk" font-size="12.5" font-weight="700" fill="#141712" text-anchor="middle">Build the plan</text>
+        <text x="166" y="452" font-family="IBM Plex Mono" font-size="10.5" letter-spacing="1.4" fill="#7C8A80" text-anchor="middle">01 · INPUT</text>
+
+        <!-- SCREEN 2 -->
+        <rect x="346" y="34" width="228" height="392" rx="22" fill="#111714" stroke="rgba(255,255,255,.16)"/>
+        <rect x="424" y="48" width="72" height="6" rx="3" fill="rgba(255,255,255,.16)"/>
+        <text x="368" y="92" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#F2F5F2">Your plan</text>
+        <text x="368" y="110" font-family="Inter" font-size="11" fill="#93B39A">3 charging stops · 6h 40m</text>
+
+        <rect x="368" y="124" width="184" height="52" rx="7" fill="rgba(147,179,154,.10)" stroke="rgba(147,179,154,.40)"/>
+        <circle cx="384" cy="150" r="5" fill="#93B39A"/>
+        <text x="398" y="145" font-family="Inter" font-size="12" font-weight="600" fill="#F2F5F2">Bakersfield</text>
+        <text x="398" y="163" font-family="Inter" font-size="10.5" fill="#B9C4BC">fallback 14 mi away</text>
+
+        <rect x="368" y="184" width="184" height="52" rx="7" fill="rgba(147,179,154,.10)" stroke="rgba(147,179,154,.40)"/>
+        <circle cx="384" cy="210" r="5" fill="#93B39A"/>
+        <text x="398" y="205" font-family="Inter" font-size="12" font-weight="600" fill="#F2F5F2">Mojave</text>
+        <text x="398" y="223" font-family="Inter" font-size="10.5" fill="#B9C4BC">fallback 9 mi away</text>
+
+        <rect x="368" y="244" width="184" height="58" rx="7" fill="rgba(224,139,92,.14)" stroke="#E08B5C" stroke-width="1.5"/>
+        <circle cx="384" cy="273" r="5" fill="#E08B5C"/>
+        <text x="398" y="266" font-family="Inter" font-size="12" font-weight="700" fill="#F2F5F2">Lone Pine</text>
+        <text x="398" y="284" font-family="Inter" font-size="10.5" font-weight="600" fill="#E08B5C">no alternative in range</text>
+        <text x="398" y="298" font-family="Inter" font-size="10" fill="#B9C4BC">tap to see options</text>
+
+        <rect x="368" y="318" width="184" height="42" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)"/>
+        <text x="380" y="336" font-family="IBM Plex Mono" font-size="9" fill="#7C8A80">CONFIDENCE</text>
+        <text x="380" y="352" font-family="Inter" font-size="11.5" fill="#F2F5F2">One stop has no backup</text>
+        <text x="460" y="452" font-family="IBM Plex Mono" font-size="10.5" letter-spacing="1.4" fill="#E08B5C" text-anchor="middle">02 · THE RISK</text>
+
+        <!-- SCREEN 3 -->
+        <rect x="640" y="34" width="228" height="392" rx="22" fill="#111714" stroke="rgba(255,255,255,.16)"/>
+        <rect x="718" y="48" width="72" height="6" rx="3" fill="rgba(255,255,255,.16)"/>
+        <text x="662" y="92" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#F2F5F2">Lone Pine</text>
+        <text x="662" y="110" font-family="Inter" font-size="11" fill="#B9C4BC">Stop 3 of 3</text>
+
+        <rect x="662" y="126" width="184" height="66" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+        <text x="674" y="144" font-family="IBM Plex Mono" font-size="9" fill="#7C8A80">IF THIS CHARGER IS DOWN</text>
+        <text x="674" y="164" font-family="Inter" font-size="12.5" font-weight="600" fill="#F2F5F2">Independence — 41 mi</text>
+        <text x="674" y="182" font-family="Inter" font-size="10.5" fill="#93B39A">reachable at 22% remaining</text>
+
+        <rect x="662" y="202" width="184" height="52" rx="7" fill="rgba(254,212,43,.10)" stroke="rgba(254,212,43,.34)"/>
+        <text x="674" y="220" font-family="IBM Plex Mono" font-size="9" fill="#7C8A80">BUFFER IF BOTH FAIL</text>
+        <text x="674" y="242" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#FED42B">0 mi — plan around this</text>
+
+        <rect x="662" y="264" width="184" height="46" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)"/>
+        <text x="674" y="282" font-family="IBM Plex Mono" font-size="9" fill="#7C8A80">LAST REPORTED WORKING</text>
+        <text x="674" y="299" font-family="Inter" font-size="11.5" fill="#F2F5F2">6 days ago · 2 owners</text>
+
+        <rect x="662" y="322" width="184" height="36" rx="18" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)"/>
+        <text x="754" y="345" font-family="Space Grotesk" font-size="12.5" font-weight="700" fill="#F2F5F2" text-anchor="middle">Re-plan this leg</text>
+        <text x="754" y="452" font-family="IBM Plex Mono" font-size="10.5" letter-spacing="1.4" fill="#93B39A" text-anchor="middle">03 · THE ANSWER</text>
+
+        <path d="M292 230 L334 230" stroke="#7C8A80" stroke-width="1.5"/>
+        <path d="M328 225 L334 230 L328 235" stroke="#7C8A80" stroke-width="1.5" fill="none"/>
+        <path d="M586 230 L628 230" stroke="#7C8A80" stroke-width="1.5"/>
+        <path d="M622 225 L628 230 L622 235" stroke="#7C8A80" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span class="src">Screen 3 shows the honest case: a stop where the fallback exists but leaves no margin. The product's job is to say so before departure, not after.</span>
+    </div>
+
+    <h3 class="sub">What it would take to build</h3>
+    <p>
+      Trailhead is not a thin layer over existing navigation. To produce a
+      fallback that anyone should trust, it needs vehicle state of charge and
+      consumption history, route data with elevation and forecast temperature,
+      charger location and connector type, and — the hard one — charger
+      reliability and availability, either live or modelled from historical
+      uptime. Rivian holds the first two natively through vehicle telemetry; the
+      third comes from network partners; the fourth is the dependency that
+      determines whether this is a one-quarter build or a one-year one.
+    </p>
+    <p>
+      That dependency shapes the roadmap above. It is the reason live charger
+      status sits in <em>Next</em> rather than <em>Now</em>, and why the first
+      release must be honest about data age rather than implying a certainty the
+      underlying feeds cannot support.
+    </p>
+
+    <h3 class="sub">Why Rivian should care commercially</h3>
+    <p>
+      The North Star is deliberately behavioural rather than financial. The
+      commercial bridge, stated as hypothesis rather than measured effect:
+    </p>
+    <div class="card">
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:17px;color:var(--fg);margin-bottom:14px">
+        Confidence &rarr; utilisation &rarr; satisfaction &rarr; advocacy and retained value
+      </p>
+      <ul>
+        <li>An owner who completes trips uses the vehicle the way it was sold to them, which is the condition for satisfaction rather than a synonym for it</li>
+        <li>Higher utilisation is the precondition for accessory attach — a rooftop tent sells to someone who camps, not to someone who intends to</li>
+        <li>Owners who take the trips are the ones who recommend the brand, which matters disproportionately for a company still building consideration against incumbents</li>
+      </ul>
+      <p style="font-size:14.5px;color:var(--mute);margin:0">
+        Each link is a hypothesis. I have no Rivian internal data on any of them,
+        and the first release should be instrumented to test the first link before
+        anyone argues for the last.
+      </p>
+    </div>
+
+    <h3 class="sub">Deliberately not building</h3>
+    <p>
+      A social feed, gamified trips, or a separate app. The first two are
+      adjacent and move nothing. The third puts a download in front of a product
+      whose entire purpose is removing barriers.
+    </p>
+  </section>
+
+  <!-- 05 METRICS -->
+  <section id="metrics">
+    <p class="eyebrow">05 — Measurement</p>
+    <h2>One number that cannot be gamed</h2>
+
+    <div class="card">
+      <h3>North Star</h3>
+      <p style="font-size:20px;color:var(--yellow);font-family:'Space Grotesk',sans-serif;font-weight:600">
+        Multi-day trips completed per owner, first 12 months
+      </p>
+      <p>
+        Not app sessions. Not planner opens. Not time in app. Those measure
+        whether a product is interesting. This measures whether it worked — and
+        it cannot be moved by making the product stickier.
+      </p>
+    </div>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">Funnel and targets</span>
+        <span class="chip h">Targets, not results</span>
+      </div>
+      <p class="fig-sub">First release. No baseline exists, so these exist to force a decision rather than to be celebrated.</p>
+      <table>
+        <tr><th>Metric</th><th>Target</th><th>Why</th></tr>
+        <tr><td>Plan creation rate, 90 days</td><td>40%</td><td>Entry to the funnel</td></tr>
+        <tr><td>Contingency view rate</td><td>70% of plans</td><td>Proof the core feature is found</td></tr>
+        <tr class="hi"><td>Plan-to-departure rate</td><td>55%</td><td>The conversion that matters</td></tr>
+        <tr><td>Trip completion rate</td><td>90%</td><td>Trust-building</td></tr>
+        <tr><td>Time-to-first-trip</td><td>&lt;45 days</td><td>Onboarding effectiveness</td></tr>
+      </table>
+      <span class="src">Guardrails: support contacts per trip · charging session failure on recommended stops · plan abandonment mid-creation</span>
+    </div>
+  </section>
+
+  <!-- 06 ROADMAP -->
+  <section id="roadmap">
+    <p class="eyebrow">06 — Prioritization</p>
+    <h2>RICE changed my mind</h2>
+
+    <p>
+      I assumed the contingency engine was the product and onboarding was
+      packaging. Scoring said otherwise.
+    </p>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">RICE scores</span>
+        <span class="chip h">My estimates</span>
+      </div>
+      <p class="fig-sub">Reach × Impact × Confidence ÷ Effort. Reach is share of new R2 owners affected.</p>
+
+      <svg viewBox="0 0 920 300" role="img" aria-label="RICE scores. Delivery-day onboarding 71, confidence score 60, contingency planning 42, live charger status 17.5, community reports 16, offline maps 7, accessory recommendations 6.7, campsite booking 5.3.">
+        <text x="250" y="26" font-family="Inter" font-size="13" fill="#F2F5F2" text-anchor="end">Delivery-day onboarding</text>
+        <rect x="260" y="12" width="460" height="20" rx="3" fill="#FED42B"/>
+        <text x="730" y="27" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#FED42B">71</text>
+
+        <text x="250" y="60" font-family="Inter" font-size="13" fill="#F2F5F2" text-anchor="end">Confidence score</text>
+        <rect x="260" y="46" width="389" height="20" rx="3" fill="#FED42B" opacity=".85"/>
+        <text x="659" y="61" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#FED42B">60</text>
+
+        <text x="250" y="94" font-family="Inter" font-size="13" fill="#F2F5F2" text-anchor="end">Contingency planning</text>
+        <rect x="260" y="80" width="272" height="20" rx="3" fill="#FED42B" opacity=".7"/>
+        <text x="542" y="95" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#FED42B">42</text>
+
+        <line x1="260" y1="112" x2="880" y2="112" stroke="rgba(255,255,255,.14)" stroke-dasharray="4 4"/>
+        <text x="880" y="126" font-family="IBM Plex Mono" font-size="10" fill="#7C8A80" text-anchor="end">FIRST RELEASE CUT</text>
+
+        <text x="250" y="152" font-family="Inter" font-size="13" fill="#B9C4BC" text-anchor="end">Live charger status</text>
+        <rect x="260" y="138" width="113" height="20" rx="3" fill="#93B39A" opacity=".55"/>
+        <text x="383" y="153" font-family="Space Grotesk" font-size="13" font-weight="600" fill="#93B39A">17.5</text>
+
+        <text x="250" y="186" font-family="Inter" font-size="13" fill="#B9C4BC" text-anchor="end">Community reports</text>
+        <rect x="260" y="172" width="104" height="20" rx="3" fill="#93B39A" opacity=".55"/>
+        <text x="374" y="187" font-family="Space Grotesk" font-size="13" font-weight="600" fill="#93B39A">16</text>
+
+        <text x="250" y="220" font-family="Inter" font-size="13" fill="#7C8A80" text-anchor="end">Offline maps</text>
+        <rect x="260" y="206" width="45" height="20" rx="3" fill="#7C8A80" opacity=".45"/>
+        <text x="315" y="221" font-family="Space Grotesk" font-size="13" fill="#7C8A80">7</text>
+
+        <text x="250" y="254" font-family="Inter" font-size="13" fill="#7C8A80" text-anchor="end">Accessory recommendations</text>
+        <rect x="260" y="240" width="43" height="20" rx="3" fill="#7C8A80" opacity=".45"/>
+        <text x="313" y="255" font-family="Space Grotesk" font-size="13" fill="#7C8A80">6.7</text>
+
+        <text x="250" y="288" font-family="Inter" font-size="13" fill="#7C8A80" text-anchor="end">Campsite booking</text>
+        <rect x="260" y="274" width="34" height="20" rx="3" fill="#7C8A80" opacity=".45"/>
+        <text x="304" y="289" font-family="Space Grotesk" font-size="13" fill="#7C8A80">5.3</text>
+      </svg>
+    </div>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">The inputs behind the scores</span>
+        <span class="chip h">My estimates</span>
+      </div>
+      <p class="fig-sub">
+        Reach is share of new R2 owners affected. Impact is a 0&ndash;3 scale on the
+        North Star. Confidence reflects how much evidence sits behind the
+        estimate. Effort is engineering months.
+      </p>
+      <table>
+        <tr><th>Initiative</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>Score</th></tr>
+        <tr class="hi"><td>Delivery-day onboarding</td><td>95%</td><td>2.0</td><td>75%</td><td>2</td><td>71</td></tr>
+        <tr><td>Confidence score</td><td>80%</td><td>2.5</td><td>60%</td><td>2</td><td>60</td></tr>
+        <tr><td>Contingency planning</td><td>80%</td><td>3.0</td><td>70%</td><td>4</td><td>42</td></tr>
+        <tr><td>Live charger status</td><td>70%</td><td>3.0</td><td>50%</td><td>6</td><td>17.5</td></tr>
+        <tr><td>Community reports</td><td>40%</td><td>2.0</td><td>60%</td><td>3</td><td>16</td></tr>
+        <tr><td>Offline maps</td><td>30%</td><td>2.0</td><td>70%</td><td>6</td><td>7</td></tr>
+        <tr><td>Accessory recommendations</td><td>50%</td><td>1.0</td><td>40%</td><td>3</td><td>6.7</td></tr>
+        <tr><td>Campsite booking</td><td>35%</td><td>1.5</td><td>50%</td><td>5</td><td>5.3</td></tr>
+      </table>
+      <span class="src">Confidence is lowest on live charger status because the data dependency is external and unproven, and highest on onboarding because the intervention point is already staffed.</span>
+    </div>
+
+    <div class="pull">
+      <p>
+        A brilliant feature nobody opens is worth less than a simple one everybody
+        sees. I had been optimising for sophistication because sophistication is
+        more interesting to build.
+      </p>
+    </div>
+  </section>
+
+  <!-- 07 EXPERIMENT -->
+  <section id="experiment">
+    <p class="eyebrow">07 — Experimentation</p>
+    <h2>The decision rule, written before launch</h2>
+
+    <div class="card">
+      <h3>Primary experiment</h3>
+      <p>
+        Randomised at owner level, at delivery. Control gets routing and charging
+        stops. Variant gets the same plus named fallbacks and a confidence rating.
+        Primary metric is plan-to-departure rate within the stated date window.
+        Minimum 90 days — trip planning is seasonal, and a two-week read would be
+        noise.
+      </p>
+    </div>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">Decision rule</span>
+        <span class="chip m">Agreed in advance</span>
+      </div>
+      <table>
+        <tr><th>Result</th><th>Action</th></tr>
+        <tr><td style="color:#9de0b4">Plan-to-departure +10pts, no guardrail breach</td><td>Ship to all deliveries</td></tr>
+        <tr><td style="color:var(--yellow)">Positive but under 10pts</td><td>Iterate on the design, re-run</td></tr>
+        <tr><td style="color:var(--rust)">No difference</td><td><strong>Stop building. Re-open discovery.</strong></td></tr>
+      </table>
+      <span class="src">Written down in advance so it cannot be renegotiated later by whoever is most attached to the feature.</span>
+      <p style="margin-top:16px">
+        The 10-point threshold is a starting position, not a statistical claim. The
+        final minimum detectable effect and required sample size would be set once
+        baseline plan-to-departure behaviour is observed &mdash; which is itself one
+        of the reasons the first release functions as a measurement instrument
+        before it functions as a feature.
+      </p>
+    </div>
+
+    <p>
+      A qualitative round runs <em>first</em> — eight to ten moderated sessions
+      testing whether a trip rated "one stop has no alternative" prompts
+      re-planning or abandonment. It is the highest-risk unknown in the design and
+      the cheapest thing to check.
+    </p>
+  </section>
+
+  <!-- 08 GTM -->
+  <section id="gtm">
+    <p class="eyebrow">08 — Go to market</p>
+    <h2>Nobody has to buy it. Someone has to open it.</h2>
+
+    <p>
+      Trailhead ships with a vehicle the customer already bought. That removes
+      acquisition entirely and replaces it with adoption — which moves the budget
+      from media to the delivery experience.
+    </p>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">Channel roles</span>
+        <span class="chip h">Plan</span>
+      </div>
+      <table>
+        <tr><th>Channel</th><th>Role</th><th>Not its job</th></tr>
+        <tr class="hi"><td>Delivery specialist</td><td>Plans the first trip with the owner</td><td>Selling accessories in the same breath</td></tr>
+        <tr><td>In-vehicle</td><td>Surfacing the plan at the moment of use</td><td>First-time education</td></tr>
+        <tr><td>Rivian app</td><td>Planning at the kitchen table, where the decision happens</td><td>Notifications that create pressure</td></tr>
+        <tr><td>Owner community</td><td>Proof that trips succeed</td><td>Company-authored enthusiasm</td></tr>
+        <tr><td>Paid media</td><td>None at launch</td><td>Everyone already owns the product</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub">The narrative</h3>
+    <p>
+      Not "new trip planning features" — that's a changelog, and nobody's
+      behaviour changes because of a changelog. The story is that
+      <strong>the vehicle was always capable of the trip; now the plan is
+      too.</strong> Completing a promise rather than adding a function.
+    </p>
+
+    <h3 class="sub">The 90-day question</h3>
+    <p>
+      Did plan-to-departure move? If yes, expand. If no, stop and re-open
+      discovery.
+    </p>
+  </section>
+
+  <!-- EVIDENCE -->
+  <section id="evidence">
+    <p class="eyebrow">09 — Evidence &amp; assumptions</p>
+    <h2>What I verified, and what I bet on</h2>
+
+    <p>
+      This project was built entirely from public sources. Separating what is
+      checkable from what is inference is the difference between an analysis and
+      an opinion, so both are listed.
+    </p>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">Verified — traceable to a source</span>
+        <span class="chip m">Published</span>
+      </div>
+      <table>
+        <tr><th>Claim</th><th>Source</th></tr>
+        <tr><td>R2 revealed March 2024 at an announced $45,000</td><td>Rivian reveal coverage, March 2024</td></tr>
+        <tr><td>Performance $57,990, deliveries spring 2026</td><td>Rivian configurator, May 2026 · Electrek · InsideEVs</td></tr>
+        <tr><td>Premium $53,990, late 2026</td><td>Rivian configurator · autoevolution</td></tr>
+        <tr><td>Standard Long Range $48,490, 2027</td><td>Rivian configurator · Electrek</td></tr>
+        <tr><td>Entry Standard $44,990, 275 mi, 2027</td><td>rivian.com/r2, September 2026</td></tr>
+        <tr><td>Reservations opened with a $100 refundable deposit</td><td>Rivian, March 2024</td></tr>
+        <tr><td>Staggered trim release is deliberate margin protection</td><td>Electrek analysis, May 2026</td></tr>
+        <tr><td>EV owner complaints cluster on charger reliability and availability rather than vehicle range</td><td>EV owner community discussion; trade coverage</td></tr>
+      </table>
+    </div>
+
+    <div class="figure">
+      <div class="fig-head">
+        <span class="fig-title">Hypotheses — my inference, not established fact</span>
+        <span class="chip h">Unverified</span>
+      </div>
+      <table>
+        <tr><th>Assumption</th><th>What would confirm or kill it</th></tr>
+        <tr><td>R2 buyers are more often first-time EV owners than R1 buyers</td><td>Rivian purchase-history data by trim</td></tr>
+        <tr><td>R2 buyers are less likely to have home charging installed</td><td>Owner survey at delivery</td></tr>
+        <tr><td>The reservation list contains two distinct segments — people who reserved the vehicle and people who reserved the price</td><td>Conversion rate by trim against original reservation date</td></tr>
+        <tr><td>Trips are cancelled during planning rather than abandoned en route</td><td>Owner interviews; intent capture instrumented in v1</td></tr>
+        <tr><td>Contingency uncertainty is the binding constraint, not time or cost</td><td><strong>This is what the primary experiment tests</strong></td></tr>
+        <tr><td>Confidence &rarr; utilisation &rarr; advocacy chain holds commercially</td><td>Cohort analysis of trip frequency against NPS and accessory attach</td></tr>
+      </table>
+      <span class="src">No Rivian internal data was used and none is implied. Targets shown elsewhere in this deck are targets, not results.</span>
+    </div>
+
+    <p>
+      <strong>The largest gap:</strong> no primary research with owners. Ten
+      conversations would have strengthened or killed the central hypothesis in a
+      week. That absence is why the experimentation plan runs its qualitative
+      round first rather than last.
+    </p>
+  </section>
+
+  <!-- 09 REFLECTION -->
+  <section id="reflection">
+    <p class="eyebrow">10 — What I learned</p>
+    <h2>Measuring something that doesn't happen</h2>
+
+    <p>
+      My first instinct was that the R2's problem was price — the $45,000 promise
+      arriving three and a half years late. That is real, but it is a marketing
+      problem, and I had been asked for a product one. The distinction took me
+      longer to see than it should have.
+    </p>
+
+    <p>
+      The hardest part was measurement. A cancelled trip generates no event. The
+      whole product exists to prevent a non-occurrence, which is close to
+      unmeasurable. Capturing intent at plan creation — asking when someone is
+      thinking of going, then checking whether they went — was the only mechanism
+      I could find that makes the failure visible. It is imperfect, and I would
+      rather have an imperfect number than an honest blank.
+    </p>
+
+    <p>
+      <strong>What I would do differently:</strong> talk to owners earlier.
+      Everything here is built from public sources, which is honest but thin. Ten
+      conversations would have strengthened the central hypothesis or killed it in
+      a week — which is exactly why the qualitative round runs first in the
+      experimentation plan.
+    </p>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <p>
+        Product School Product Management final project. Built from public sources:
+        Rivian newsroom, TechCrunch, InsideEVs, Electrive, September 2026. No
+        internal or proprietary information is used. Hypotheses are labelled as
+        hypotheses; targets are labelled as targets.
+      </p>
+      <div class="links">
+        <a href="https://github.com/shima-aflatounian/Product-Management" target="_blank" rel="noopener">Repo</a>
+        <a href="https://www.linkedin.com/in/shima-aflatounian/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
