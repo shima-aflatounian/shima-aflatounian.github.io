@@ -11,7 +11,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root{
-  --bg:#0A0F0D; --surface:rgba(255,255,255,.035); --line:rgba(255,255,255,.09);
+  --bg:#0D1512; --surface:rgba(255,255,255,.035); --line:rgba(255,255,255,.09);
   --fg:#F2F5F2; --soft:#B9C4BC; --mute:#7C8A80;
   --yellow:#FED42B; --sage:#93B39A; --rust:#E08B5C;
 }
@@ -20,11 +20,11 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;
   font-size:16.5px;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background:radial-gradient(ellipse 70% 50% at 12% 0%,rgba(254,212,43,.07),transparent 60%),
-  radial-gradient(ellipse 60% 45% at 92% 22%,rgba(147,179,154,.08),transparent 62%),
-  radial-gradient(ellipse 70% 50% at 50% 104%,rgba(254,212,43,.045),transparent 60%)}
-body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900' viewBox='0 0 1200 900'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'%3E%3Cpath d='M-50 180 C 180 110, 380 250, 600 190 S 1020 90, 1250 170'/%3E%3Cpath d='M-50 235 C 180 168, 380 305, 600 245 S 1020 148, 1250 225'/%3E%3Cpath d='M-50 292 C 180 228, 380 360, 600 302 S 1020 208, 1250 282'/%3E%3Cpath d='M-50 352 C 180 290, 380 416, 600 362 S 1020 270, 1250 342'/%3E%3Cpath d='M-50 416 C 180 356, 380 474, 600 424 S 1020 336, 1250 404'/%3E%3Cpath d='M-50 484 C 180 428, 380 534, 600 488 S 1020 406, 1250 470'/%3E%3Cpath d='M-50 556 C 180 504, 380 598, 600 556 S 1020 480, 1250 540'/%3E%3Cpath d='M-50 632 C 180 584, 380 664, 600 626 S 1020 558, 1250 614'/%3E%3Cpath d='M-50 712 C 180 668, 380 734, 600 700 S 1020 640, 1250 692'/%3E%3C/g%3E%3C/svg%3E");
+  background:radial-gradient(ellipse 65% 48% at 8% -6%,rgba(254,212,43,.16),transparent 58%),
+  radial-gradient(ellipse 55% 42% at 88% 14%,rgba(147,179,154,.15),transparent 60%),
+  radial-gradient(ellipse 60% 45% at 45% 102%,rgba(254,212,43,.07),transparent 58%)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.85;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900' viewBox='0 0 1200 900'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.075' stroke-width='1'%3E%3Cpath d='M-50 180 C 180 110, 380 250, 600 190 S 1020 90, 1250 170'/%3E%3Cpath d='M-50 235 C 180 168, 380 305, 600 245 S 1020 148, 1250 225'/%3E%3Cpath d='M-50 292 C 180 228, 380 360, 600 302 S 1020 208, 1250 282'/%3E%3Cpath d='M-50 352 C 180 290, 380 416, 600 362 S 1020 270, 1250 342'/%3E%3Cpath d='M-50 416 C 180 356, 380 474, 600 424 S 1020 336, 1250 404'/%3E%3Cpath d='M-50 484 C 180 428, 380 534, 600 488 S 1020 406, 1250 470'/%3E%3Cpath d='M-50 556 C 180 504, 380 598, 600 556 S 1020 480, 1250 540'/%3E%3Cpath d='M-50 632 C 180 584, 380 664, 600 626 S 1020 558, 1250 614'/%3E%3Cpath d='M-50 712 C 180 668, 380 734, 600 700 S 1020 640, 1250 692'/%3E%3C/g%3E%3C/svg%3E");
   background-size:1200px 900px}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1040px;margin:auto;padding:0 32px}
@@ -36,17 +36,27 @@ nav{position:sticky;top:0;z-index:50;background:rgba(10,15,13,.88);backdrop-filt
 .nav-links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .nav-links a:hover{color:var(--yellow)}
 
-header.hero{padding:92px 0 66px;border-bottom:1px solid var(--line)}
+header.hero{padding:52px 0 48px;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.hero-copy{min-width:0}
 .badge{display:inline-block;padding:7px 14px;border-radius:2px;border:1px solid rgba(254,212,43,.35);
   background:rgba(254,212,43,.07);color:var(--yellow);font-family:'IBM Plex Mono',monospace;
   font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px}
-header.hero h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(44px,7.6vw,88px);
-  line-height:.97;letter-spacing:-.04em;margin:0 0 24px;max-width:13ch}
+header.hero h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,5.4vw,64px);
+  line-height:1.02;letter-spacing:-.035em;margin:0 0 22px;max-width:15ch}
 header.hero h1 em{font-style:normal;color:var(--yellow)}
-.standfirst{font-size:19.5px;line-height:1.58;color:var(--soft);max-width:60ch;margin:0 0 15px}
+.standfirst{font-size:18px;line-height:1.6;color:var(--soft);max-width:54ch;margin:0 0 14px}
 .byline{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;color:var(--mute);margin-top:32px}
 
-section{padding:64px 0;border-bottom:1px solid var(--line);scroll-margin-top:58px}
+.hero-panel{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:26px 26px 20px}
+.hero-panel .hp-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+.hp-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+.hp-row:last-of-type{border-bottom:0}
+.hp-row b{font-family:'Space Grotesk',sans-serif;font-size:25px;font-weight:700;letter-spacing:-.02em;color:var(--yellow);line-height:1}
+.hp-row span{font-size:12.5px;color:var(--soft);text-align:right;max-width:19ch;line-height:1.4}
+.hp-foot{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+
+section{padding:54px 0;border-bottom:1px solid var(--line);scroll-margin-top:58px}
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:13px}
 section h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(27px,4vw,42px);
   line-height:1.1;letter-spacing:-.03em;margin:0 0 18px;max-width:21ch}
@@ -103,7 +113,7 @@ footer{padding:42px 0 64px}
   .wrap,.nav-in{padding-left:20px;padding-right:20px}
   .nav-links{display:none}
   .grid2{grid-template-columns:1fr}
-  header.hero{padding:54px 0 44px}
+  header.hero{padding:38px 0 38px;grid-template-columns:1fr;gap:34px}
   .card{padding:20px 18px}
   table{font-size:13.5px}
 }
@@ -131,18 +141,32 @@ footer{padding:42px 0 64px}
 <div class="wrap">
 
   <header class="hero">
-    <div class="badge">Product Management · Final Project · 2026</div>
-    <h1>The trip that <em>never happens</em>.</h1>
-    <p class="standfirst">
-      Rivian began R2 deliveries in spring 2026, bringing the brand to a buyer
-      who is often purchasing their first EV. They bought a vehicle built for the
-      outdoors.
-    </p>
-    <p class="standfirst">
-      Then they plan the weekend, run the charging maths, decide it's too risky,
-      and take the other car. Nothing is logged. Nobody finds out.
-    </p>
-    <p class="byline">Shima Aflatounian · Built from public sources, September 2026</p>
+    <div class="hero-copy">
+      <div class="badge">Product Management · Final Project · 2026</div>
+
+      <h1>The trip that <em>never happens</em>.</h1>
+
+      <p class="standfirst">
+        Rivian began R2 deliveries in spring 2026, bringing the brand to a buyer
+        who is often purchasing their first EV. They bought a vehicle built for
+        the outdoors.
+      </p>
+      <p class="standfirst">
+        Then they plan the weekend, run the charging maths, decide it's too
+        risky, and take the other car. Nothing is logged. Nobody finds out.
+      </p>
+
+      <p class="byline">Shima Aflatounian · Built from public sources, September 2026</p>
+    </div>
+
+    <div class="hero-panel">
+      <div class="hp-label">The case in four numbers</div>
+      <div class="hp-row"><b>$57,990</b><span>first R2 you could actually buy</span></div>
+      <div class="hp-row"><b>$44,990</b><span>the trim that sold the reservations, 2027</span></div>
+      <div class="hp-row"><b>29%</b><span>gap between promise and availability</span></div>
+      <div class="hp-row"><b>0</b><span>events logged when a trip is cancelled</span></div>
+      <div class="hp-foot">The last one is the product problem</div>
+    </div>
   </header>
 
   <!-- 01 PROBLEM -->
@@ -180,13 +204,6 @@ footer{padding:42px 0 64px}
   <section id="customer">
     <p class="eyebrow">02 — Who changed</p>
     <h2>R2 is not a cheaper R1. It is a different person.</h2>
-
-    <div class="stats">
-      <div class="stat"><b>$57,990</b><span>first R2 available, spring 2026</span></div>
-      <div class="stat"><b>$44,990</b><span>entry trim, scheduled 2027</span></div>
-      <div class="stat"><b>29%</b><span>gap between promise and first available price</span></div>
-      <div class="stat"><b>$100</b><span>refundable deposit — a low-commitment signal</span></div>
-    </div>
 
     <div class="figure">
       <div class="fig-head">
