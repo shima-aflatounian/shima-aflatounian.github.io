@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Membership Question — Oura GTM | Shima Aflatounian</title>
+<meta name="description" content="A six-module go-to-market strategy for Oura: every rival ring now ships subscription-free. Who buys, why, at what price, and how it launches." />
+<meta property="og:title" content="The Membership Question — Oura GTM Case Study" />
+<meta property="og:description" content="Every rival ring now ships subscription-free. What does the membership have to become?" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--bg:#12100F;--surf:rgba(255,255,255,.04);--surf2:rgba(255,255,255,.065);
+--line:rgba(255,255,255,.10);--fg:#F4F1ED;--soft:#C3BAB2;--mute:#8A8079;
+--rose:#E0A38A;--sage:#9FB8A6;--amber:#D9B26A;--slate:#7E8FA3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;
+font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+background:radial-gradient(ellipse 60% 45% at 8% -6%,rgba(224,163,138,.17),transparent 60%),
+radial-gradient(ellipse 55% 40% at 94% 14%,rgba(159,184,166,.12),transparent 62%),
+radial-gradient(ellipse 60% 45% at 45% 104%,rgba(224,163,138,.07),transparent 60%)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1040px;margin:auto;padding:0 30px}
+nav{position:sticky;top:0;z-index:50;background:rgba(18,16,15,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1040px;margin:auto;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-in b{font-family:'Fraunces',serif;font-size:15px;font-weight:600}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--mute)}
+.nav-links a:hover{color:var(--rose)}
+header.hero{padding:70px 0 54px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.15fr .85fr;gap:46px;align-items:center}
+.badge{display:inline-block;padding:6px 13px;border-radius:2px;border:1px solid rgba(224,163,138,.36);
+background:rgba(224,163,138,.08);color:var(--rose);font-family:'IBM Plex Mono',monospace;font-size:10px;
+letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px}
+header.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(34px,4.6vw,56px);
+line-height:1.05;letter-spacing:-.025em;margin:0 0 18px;max-width:16ch}
+header.hero h1 em{font-style:italic;color:var(--rose)}
+.lead{font-size:17px;line-height:1.6;color:var(--soft);max-width:52ch;margin:0 0 12px}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--mute);margin-top:24px}
+section{padding:52px 0;border-bottom:1px solid var(--line);scroll-margin-top:56px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);margin-bottom:10px}
+section h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(25px,3.4vw,36px);line-height:1.15;letter-spacing:-.02em;margin:0 0 16px;max-width:22ch}
+section p{max-width:64ch;margin:0 0 12px;color:var(--soft)}
+section p strong{color:var(--fg);font-weight:600}
+h3.sub{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--fg);margin:30px 0 8px}
+.q{border-left:3px solid var(--rose);padding:5px 0 5px 20px;margin:0 0 18px;font-family:'Fraunces',serif;font-size:19px;line-height:1.45;color:var(--fg);max-width:50ch}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0}
+.card h3{font-family:'Fraunces',serif;font-size:16px;font-weight:600;margin:0 0 10px;color:var(--fg)}
+.card p{margin:0 0 10px;font-size:15px}.card p:last-child{margin:0}
+.card ul{margin:0;padding-left:18px}.card li{margin-bottom:7px;color:var(--soft);font-size:15px}
+.stmt{font-family:'Fraunces',serif;font-size:18px;line-height:1.55;color:var(--fg);max-width:54ch}
+.stmt span{color:var(--rose);font-style:italic}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.fig{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:20px 20px 14px;margin:20px 0}
+.fh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.ft{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--fg)}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;padding:3px 9px;border-radius:2px;white-space:nowrap}
+.chip.m{color:#a8d9b8;background:rgba(159,184,166,.10);border:1px solid rgba(159,184,166,.36)}
+.chip.h{color:var(--soft);border:1px dashed rgba(255,255,255,.24)}
+.fs{font-size:12.5px;color:var(--mute);margin:4px 0 14px;max-width:68ch}
+.src{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mute);margin-top:12px;display:block}
+svg{display:block;width:100%;height:auto}
+.pull{border-left:3px solid var(--amber);background:linear-gradient(90deg,rgba(217,178,106,.09),transparent 82%);border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0}
+.pull p{margin:0;color:var(--fg);font-size:17px;max-width:56ch}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--mute);font-weight:400;padding:0 12px 9px 0;border-bottom:1px solid var(--line)}
+td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--soft)}
+td:first-child{color:var(--fg);font-weight:600}
+tr:last-child td{border-bottom:0}
+.hi td{color:var(--rose)}
+.assume{border:1px dashed rgba(255,255,255,.24);border-radius:10px;padding:16px 20px;margin:18px 0;font-size:14px;color:var(--soft)}
+.assume b{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:6px}
+.tier{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:20px}
+.tier.star{border-color:var(--rose);background:rgba(224,163,138,.07)}
+.tier .tn{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.tier .tp{font-family:'Fraunces',serif;font-size:25px;font-weight:600;color:var(--fg);margin-bottom:4px}
+.tier.star .tp{color:var(--rose)}
+.tier .tw{font-size:13px;color:var(--mute);margin-bottom:12px}
+.tier ul{margin:0;padding-left:16px}.tier li{font-size:13.5px;color:var(--soft);margin-bottom:5px}
+footer{padding:38px 0 60px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.foot p{margin:0;font-size:13px;color:var(--mute);max-width:50ch}
+.foot .links{display:flex;gap:16px;flex-wrap:wrap}
+.foot .links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--line);padding-bottom:3px}
+.foot .links a:hover{color:var(--rose);border-color:var(--rose)}
+@media(max-width:860px){.wrap,.nav-in{padding-left:18px;padding-right:18px}.nav-links{display:none}
+header.hero{padding:38px 0 34px;grid-template-columns:1fr;gap:28px}.g2,.g3{grid-template-columns:1fr}
+.card{padding:18px 16px}table{font-size:13px}}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-in">
+  <b>The Membership Question</b>
+  <div class="nav-links">
+    <a href="#m1">01 Strategy</a><a href="#m2">02 Competition</a><a href="#m3">03 Positioning</a>
+    <a href="#m4">04 Messaging</a><a href="#m5">05 Pricing</a><a href="#m6">06 Launch</a><a href="#ev">Evidence</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="badge">Go-to-Market Strategy · Six Modules · 2026</div>
+    <h1>Every rival ring is now <em>free</em>. So what is the membership?</h1>
+    <p class="lead">Samsung, RingConn, Ultrahuman and Amazfit all ship with no ongoing fee. Oura charges $5.99 a month on top of a $349 ring.</p>
+    <p class="lead">The obvious read is that Oura is the last company charging rent. Its owners say something different — and the difference is the strategy.</p>
+    <p class="byline">Shima Aflatounian · Public sources and owner research, September 2026</p>
+  </div>
+  <div>
+    <svg viewBox="0 0 320 320" role="img" aria-label="Illustration of a smart ring.">
+      <circle cx="160" cy="150" r="105.0" fill="#E0A38A" opacity=".07"/><circle cx="160" cy="150" r="86" fill="none" stroke="#E0A38A" stroke-width="20" opacity=".92"/><circle cx="160" cy="150" r="77.2" fill="none" stroke="#12100F" stroke-width="1.6" opacity=".55"/><path d="M 106.68 96.68 A 86 86 0 0 1 177.2 70.88" fill="none" stroke="#FFFFFF" stroke-width="5.6000000000000005" opacity=".30" stroke-linecap="round"/>
+      <text x="160" y="284" font-family="IBM Plex Mono" font-size="11" letter-spacing="2" fill="#8A8079" text-anchor="middle">THE RING IS THE SENSOR</text>
+      <text x="160" y="304" font-family="IBM Plex Mono" font-size="11" letter-spacing="2" fill="#E0A38A" text-anchor="middle">THE MEMBERSHIP IS THE PRODUCT</text>
+    </svg>
+  </div>
+</header>
+
+<!-- ================= MODULE 1 ================= -->
+<section id="m1">
+  <p class="eyebrow">Module 1 — GTM Strategy</p>
+  <h2>One launch, one segment, one question</h2>
+
+  <p class="q">Every credible rival now ships subscription-free. What does Oura's membership have to become?</p>
+
+  <div class="card">
+    <h3 style="color:var(--rose)">The specific launch</h3>
+    <p>Not a strategy for everyone who cares about health. <strong>Reposition and relaunch the Oura Membership to first-time smart ring buyers aged 28–45 who want sleep and recovery guidance without wearing a screen to bed.</strong></p>
+  </div>
+
+  <div class="fig"><div class="fh"><span class="ft">The competitive shelf</span><span class="chip m">Published prices</span></div><p class="fs">What a buyer actually sees when comparing at the same price point.</p><svg viewBox="0 0 920 272" role="img" aria-label="Three smart rings compared: Oura at 349 dollars plus 70 a year works on iOS and Android, Samsung Galaxy Ring at 399 with no fee is Android only, RingConn has no fee but gives raw data.">
+  <circle cx="160" cy="100" r="72.0" fill="#E0A38A" opacity=".07"/><circle cx="160" cy="100" r="56" fill="none" stroke="#E0A38A" stroke-width="14" opacity=".92"/><circle cx="160" cy="100" r="50.2" fill="none" stroke="#12100F" stroke-width="1.6" opacity=".55"/><path d="M 125.28 65.28 A 56 56 0 0 1 171.2 48.48" fill="none" stroke="#FFFFFF" stroke-width="3.9200000000000004" opacity=".30" stroke-linecap="round"/>
+  <circle cx="460" cy="100" r="72.0" fill="#9FB8A6" opacity=".07"/><circle cx="460" cy="100" r="56" fill="none" stroke="#9FB8A6" stroke-width="14" opacity=".92"/><circle cx="460" cy="100" r="50.2" fill="none" stroke="#12100F" stroke-width="1.6" opacity=".55"/><path d="M 425.28 65.28 A 56 56 0 0 1 471.2 48.48" fill="none" stroke="#FFFFFF" stroke-width="3.9200000000000004" opacity=".30" stroke-linecap="round"/>
+  <circle cx="760" cy="100" r="72.0" fill="#7E8FA3" opacity=".07"/><circle cx="760" cy="100" r="56" fill="none" stroke="#7E8FA3" stroke-width="14" opacity=".92"/><circle cx="760" cy="100" r="50.2" fill="none" stroke="#12100F" stroke-width="1.6" opacity=".55"/><path d="M 725.28 65.28 A 56 56 0 0 1 771.2 48.48" fill="none" stroke="#FFFFFF" stroke-width="3.9200000000000004" opacity=".30" stroke-linecap="round"/>
+
+  <text x="160" y="200" font-family="Inter" font-size="14" font-weight="600" fill="#F4F1ED" text-anchor="middle">Oura Ring</text>
+  <text x="460" y="200" font-family="Inter" font-size="14" font-weight="600" fill="#F4F1ED" text-anchor="middle">Samsung Galaxy Ring</text>
+  <text x="760" y="200" font-family="Inter" font-size="14" font-weight="600" fill="#F4F1ED" text-anchor="middle">RingConn</text>
+
+  <text x="160" y="224" font-family="IBM Plex Mono" font-size="11.5" fill="#E0A38A" text-anchor="middle">$349 + $70/yr</text>
+  <text x="460" y="224" font-family="IBM Plex Mono" font-size="11.5" fill="#9FB8A6" text-anchor="middle">$399 · no fee</text>
+  <text x="760" y="224" font-family="IBM Plex Mono" font-size="11.5" fill="#7E8FA3" text-anchor="middle">no fee</text>
+
+  <text x="160" y="250" font-family="Inter" font-size="12.5" fill="#C3BAB2" text-anchor="middle">iOS + Android</text>
+  <text x="460" y="250" font-family="Inter" font-size="12.5" fill="#D9B26A" text-anchor="middle">Android only</text>
+  <text x="760" y="250" font-family="Inter" font-size="12.5" fill="#C3BAB2" text-anchor="middle">Raw data, generic advice</text>
+</svg><span class="src">Source: Google Shopping comparison, September 2026</span></div>
+
+  <h3 class="sub">DISCOVER framework</h3>
+  <div class="fig">
+    <div class="fh"><span class="ft">Seven lenses</span><span class="chip h">My analysis</span></div>
+    <table>
+      <tr><th>Lens</th><th>Read</th></tr>
+      <tr><td>Demand</td><td>Strong for the category, weakening for the fee. People want the guidance and resent the meter.</td></tr>
+      <tr><td>Ideal customer</td><td>28–45, already spends on wellness, cares about sleep and stress, won't wear a watch to bed.</td></tr>
+      <tr class="hi"><td>Positioning angle</td><td>Not sensors. Owners describe sensors across brands as comparable. The angle is interpretation and continued ownership.</td></tr>
+      <tr><td>Channels</td><td>Sleep and recovery creators · retail demo at the shelf · owner referral. Three, not ten.</td></tr>
+      <tr><td>Offer</td><td>Ring, app, daily guidance, and a membership reframed as an ongoing service rather than a paywall.</td></tr>
+      <tr><td>Validation</td><td>Owners publicly defending the fee on replacement and guidance. Wear consistency past night 30.</td></tr>
+      <tr><td>Economics</td><td>$160 more than Samsung over three years. Less than one out-of-warranty replacement ring.</td></tr>
+      <tr><td>Risks</td><td>Price parity at the shelf · battery degradation across the category · a rival copying the service promise.</td></tr>
+    </table>
+  </div>
+
+  <div class="fig"><div class="fh"><span class="ft">The GTM motion</span><span class="chip h">Framework</span></div><p class="fs">Hybrid, because the hardware is bought before the value is felt.</p><svg viewBox="0 0 920 210" role="img" aria-label="Hybrid go to market motion: marketing led acquisition, product led activation, membership led expansion.">
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8A8079"/></marker></defs>
+  <rect x="14" y="58" width="262" height="92" rx="10" fill="rgba(159,184,166,.10)" stroke="#9FB8A6"/>
+  <text x="145" y="88" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="#9FB8A6" text-anchor="middle">MARKETING LED</text>
+  <text x="145" y="112" font-family="Inter" font-size="14" font-weight="600" fill="#F4F1ED" text-anchor="middle">Acquisition</text>
+  <text x="145" y="132" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">Creators, reviews, shelf</text>
+
+  <line x1="284" y1="104" x2="320" y2="104" stroke="#8A8079" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="330" y="58" width="262" height="92" rx="10" fill="rgba(224,163,138,.10)" stroke="#E0A38A"/>
+  <text x="461" y="88" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="#E0A38A" text-anchor="middle">PRODUCT LED</text>
+  <text x="461" y="112" font-family="Inter" font-size="14" font-weight="600" fill="#F4F1ED" text-anchor="middle">Activation</text>
+  <text x="461" y="132" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">First insight that lands</text>
+
+  <line x1="600" y1="104" x2="636" y2="104" stroke="#8A8079" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="646" y="58" width="262" height="92" rx="10" fill="rgba(217,178,106,.10)" stroke="#D9B26A"/>
+  <text x="777" y="88" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="#D9B26A" text-anchor="middle">MEMBERSHIP LED</text>
+  <text x="777" y="112" font-family="Inter" font-size="14" font-weight="600" fill="#F4F1ED" text-anchor="middle">Expansion</text>
+  <text x="777" y="132" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">Renewal, not sign-up</text>
+
+  <text x="461" y="34" font-family="Inter" font-size="13.5" fill="#C3BAB2" text-anchor="middle">Hardware must be bought before value is felt, so this cannot be purely product led.</text>
+  <text x="461" y="184" font-family="IBM Plex Mono" font-size="11" letter-spacing="1.2" fill="#8A8079" text-anchor="middle">THE MEMBERSHIP IS WON IN THE FIRST 90 DAYS OF OWNERSHIP</text>
+</svg></div>
+
+  <div class="card">
+    <h3>One-sentence GTM thesis</h3>
+    <p class="stmt"><span>Oura will relaunch the membership</span> to screen-averse sleep-focused buyers through sleep creators and retail demonstration, on a hardware-plus-included-membership model — <span>and success will be proven</span> not by sign-ups, but by owners choosing to renew in year two.</p>
+  </div>
+</section>
+
+<!-- ================= MODULE 2 ================= -->
+<section id="m2">
+  <p class="eyebrow">Module 2 — Competition &amp; Strategic Bet</p>
+  <h2>The competitor isn't another ring</h2>
+
+  <div class="fig"><div class="fh"><span class="ft">Owner satisfaction</span><span class="chip m">Published ratings</span></div><p class="fs">Same price bracket, different reception.</p><svg viewBox="0 0 920 170" role="img" aria-label="Owner ratings: Oura 4.5 out of 5 from 5000 ratings, Samsung Galaxy Ring 3.9 out of 5 from 4800 ratings.">
+  <path d="M 146 118 A 84 84 0 0 1 314 118" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="12" stroke-linecap="round"/><path d="M 146 118 A 84 84 0 0 1 314 118" fill="none" stroke="#E0A38A" stroke-width="12" stroke-linecap="round" stroke-dasharray="237.5 263.9"/><text x="230" y="112" font-family="Fraunces" font-size="27" font-weight="600" fill="#E0A38A" text-anchor="middle">4.5</text><text x="230" y="136" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">Oura · 5K ratings</text>
+  <path d="M 606 118 A 84 84 0 0 1 774 118" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="12" stroke-linecap="round"/><path d="M 606 118 A 84 84 0 0 1 774 118" fill="none" stroke="#9FB8A6" stroke-width="12" stroke-linecap="round" stroke-dasharray="205.8 263.9"/><text x="690" y="112" font-family="Fraunces" font-size="27" font-weight="600" fill="#9FB8A6" text-anchor="middle">3.9</text><text x="690" y="136" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">Galaxy Ring · 4.8K ratings</text>
+  <line x1="460" y1="30" x2="460" y2="140" stroke="rgba(255,255,255,.10)"/>
+</svg><span class="src">Source: aggregated product ratings, September 2026</span></div>
+
+  <div class="fig"><div class="fh"><span class="ft">Platform reach</span><span class="chip m">Published specs</span></div><p class="fs">The fee objection only exists for buyers who could actually buy the alternative.</p><svg viewBox="0 0 920 230" role="img" aria-label="Platform reach: Oura supports both iOS and Android; Galaxy Ring supports Android only, and full features require a Galaxy phone.">
+  <circle cx="200" cy="112" r="66" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="22"/><circle cx="200" cy="112" r="66" fill="none" stroke="#E0A38A" stroke-width="22" stroke-dasharray="414.69 414.69" stroke-dashoffset="-0.00" transform="rotate(-90 200 112)"/>
+  <text x="200" y="106" font-family="Fraunces" font-size="24" font-weight="600" fill="#E0A38A" text-anchor="middle">2 of 2</text>
+  <text x="200" y="128" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">platforms</text>
+  <text x="200" y="212" font-family="Inter" font-size="13.5" font-weight="600" fill="#F4F1ED" text-anchor="middle">Oura · iOS + Android</text>
+
+  <circle cx="500" cy="112" r="66" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="22"/><circle cx="500" cy="112" r="66" fill="none" stroke="#D9B26A" stroke-width="22" stroke-dasharray="207.35 414.69" stroke-dashoffset="-0.00" transform="rotate(-90 500 112)"/>
+  <text x="500" y="106" font-family="Fraunces" font-size="24" font-weight="600" fill="#D9B26A" text-anchor="middle">1 of 2</text>
+  <text x="500" y="128" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">platforms</text>
+  <text x="500" y="212" font-family="Inter" font-size="13.5" font-weight="600" fill="#F4F1ED" text-anchor="middle">Galaxy Ring · Android only</text>
+
+  <text x="660" y="86" font-family="Inter" font-size="14" fill="#C3BAB2">Every iPhone owner who compares</text>
+  <text x="660" y="108" font-family="Inter" font-size="14" fill="#C3BAB2">the two rings on price is not</text>
+  <text x="660" y="130" font-family="Inter" font-size="14" fill="#C3BAB2">actually choosing between them.</text>
+  <text x="660" y="158" font-family="IBM Plex Mono" font-size="11" fill="#E0A38A">THE FEE OBJECTION NEVER APPLIES TO THEM</text>
+</svg><span class="src">Galaxy Ring requires Android 11+, and full features require a Galaxy phone.</span></div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Who really competes for this job</span><span class="chip h">Includes doing nothing</span></div>
+    <table>
+      <tr><th>Alternative</th><th>Why they choose it</th><th>Weakness</th></tr>
+      <tr><td>Samsung Galaxy Ring</td><td>$399 once, nothing after</td><td>Android only; lower owner ratings</td></tr>
+      <tr><td>RingConn</td><td>Comfortable, cheaper, strong battery</td><td>Raw data, generic guidance; charges for replacement</td></tr>
+      <tr><td>Ultrahuman</td><td>Aggressive price, no fee</td><td>Poor retention; owners returning within weeks</td></tr>
+      <tr class="hi"><td>The watch already on their wrist</td><td>Free, owned, trusted</td><td>Nobody wants to sleep in it. This is the real fight.</td></tr>
+      <tr><td>Nothing at all</td><td>Costs zero, decides nothing</td><td>No consistency, no pattern, no signal</td></tr>
+    </table>
+  </div>
+
+  <div class="pull"><p>The hardest competitor is the person who reads every comparison, decides none of them justify the price, and keeps wearing the watch they already own.</p></div>
+
+  <div class="card"><h3 style="color:var(--rose)">The strategic bet</h3>
+    <p class="stmt"><span>We are betting that</span> the membership is bought as a service relationship rather than as access to data, <span>because</span> the sensors have converged and what is left to differentiate is interpretation and what happens when the hardware fails.</p>
+    <ul style="margin-top:14px">
+      <li><strong>Why now:</strong> every credible rival went subscription-free, so the fee can no longer be defended as the category norm.</li>
+      <li><strong>What we are deliberately not doing:</strong> competing on sensor counts, chasing elite athletes, making medical claims, or dropping the fee to match.</li>
+      <li><strong>What proves it right in 90 days:</strong> members who receive a replacement or an anomaly alert renew at a materially higher rate.</li>
+    </ul>
+  </div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Battlecard</span><span class="chip m">Drawn from owner language</span></div>
+    <p class="fs">One-line advantage: <strong style="color:var(--rose)">Oura tells you what it means, and replaces the ring when it fails.</strong><br>Question to plant: <em>"What happens in year two, when the battery stops holding a charge?"</em></p>
+    <table>
+      <tr><th>They say</th><th>They mean</th><th>Response</th></tr>
+      <tr><td>"$70 a year on top?"</td><td>I'm paying twice</td><td>$160 more over three years — less than replacing one failed ring</td></tr>
+      <tr><td>"Sensors are the same"</td><td>You charge for parity</td><td>Agree immediately, then move to interpretation and support</td></tr>
+      <tr><td>"Samsung's is free"</td><td>Why pay at all?</td><td>Check the phone in their hand. Android only, Galaxy for full features</td></tr>
+      <tr class="hi"><td>"I'll keep my Apple Watch"</td><td>No ring is worth it</td><td>Don't argue value. Ask whether they sleep in it</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= MODULE 3 ================= -->
+<section id="m3">
+  <p class="eyebrow">Module 3 — Positioning</p>
+  <h2>Screen-free guidance, not another tracker</h2>
+
+  <div class="g2">
+    <div class="card"><h3 style="color:var(--mute)">Category we're leaving</h3>
+      <p>Fitness tracker. Competes on sensors, metrics and accuracy claims — a fight where everyone now looks the same.</p></div>
+    <div class="card"><h3 style="color:var(--rose)">Category we're claiming</h3>
+      <p>An ongoing sleep and recovery guidance service, worn without a screen, that turns overnight signals into one clear action each morning.</p></div>
+  </div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Positioning framework</span><span class="chip h">My analysis</span></div>
+    <table>
+      <tr><th>Component</th><th>Answer</th></tr>
+      <tr><td>Target customer</td><td>28–45, wellness spender, wants sleep and recovery guidance, won't wear a watch to bed</td></tr>
+      <tr class="hi"><td>Market category</td><td>Screen-free health guidance service — not a fitness tracker</td></tr>
+      <tr><td>Key benefit</td><td>You find out something changed before you feel it</td></tr>
+      <tr><td>Alternative</td><td>Subscription-free rings, and the watch already owned</td></tr>
+      <tr><td>Differentiator</td><td>Interpretation you act on, on any phone, with the ring kept working</td></tr>
+      <tr><td>Proof</td><td>Owners defending the fee unprompted on guidance and replacement</td></tr>
+    </table>
+  </div>
+
+  <div class="card"><h3>Positioning statement</h3>
+    <p class="stmt"><span>For</span> people who want better sleep and recovery without wearing a screen, <span>Oura is</span> a passive guidance service that turns overnight signals into one clear action each morning. <span>Unlike</span> subscription-free rings that hand over raw data and a battery on borrowed time, <span>Oura</span> keeps interpreting, works on any phone, and keeps the ring on your finger.</p>
+  </div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Pressure tests</span><span class="chip h">Honest scoring</span></div>
+    <table>
+      <tr><th>Test</th><th>Pass?</th><th>Note</th></tr>
+      <tr><td>Ownable</td><td style="color:var(--amber)">Partly</td><td>Rivals offer guidance too; owners just find it generic. Replacement is harder to copy quickly.</td></tr>
+      <tr><td>Believable</td><td style="color:var(--amber)">Conditional</td><td>Rests on replacement being tied to membership. Verify before external use.</td></tr>
+      <tr><td>Relevant</td><td style="color:#a8d9b8">Yes</td><td>It's what owners cite themselves, unprompted.</td></tr>
+      <tr><td>Durable</td><td style="color:#a8d9b8">Yes</td><td>Interpretation improves with years of data. Sensor leads don't.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= MODULE 4 ================= -->
+<section id="m4">
+  <p class="eyebrow">Module 4 — Messaging</p>
+  <h2>From counting things to noticing things</h2>
+
+  <div class="g2">
+    <div class="card"><h3 style="color:var(--mute)">From — life before</h3>
+      <p>More scores every morning, and no idea which one matters or what to do about it.</p></div>
+    <div class="card"><h3 style="color:var(--rose)">To — life after</h3>
+      <p>It stays quiet until something changes, then tells you what changed and what to do today.</p></div>
+  </div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Pillar — the shelf comparer</span><span class="chip h">Proposed</span></div>
+    <table>
+      <tr><th>Layer</th><th>Message</th></tr>
+      <tr><td>Value</td><td>Every ring measures. Only one keeps telling you what it means.</td></tr>
+      <tr><td>Capabilities</td><td>Passive overnight sensing · guidance rather than readouts · iOS and Android · ongoing hardware support</td></tr>
+      <tr><td>Evidence</td><td>Higher owner ratings than the subscription-free alternative at a comparable price</td></tr>
+    </table>
+  </div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Pillar — the renewing member</span><span class="chip h">Proposed</span></div>
+    <table>
+      <tr><th>Layer</th><th>Message</th></tr>
+      <tr><td>Value</td><td>This year, it noticed things before you did.</td></tr>
+      <tr><td>Capabilities</td><td>Anomaly detection · trend interpretation · a ring that stays supported</td></tr>
+      <tr><td>Evidence</td><td>Their own year: the alerts received, the patterns surfaced, the support used</td></tr>
+    </table>
+  </div>
+
+  <div class="g3">
+    <div class="card"><h3 style="font-size:13px;color:var(--mute);font-family:'IBM Plex Mono'">HOMEPAGE</h3>
+      <p style="font-family:'Fraunces',serif;font-size:17px;color:var(--fg)">Wake up knowing what your body needs today.</p></div>
+    <div class="card"><h3 style="font-size:13px;color:var(--mute);font-family:'IBM Plex Mono'">RENEWAL NOTICE</h3>
+      <p style="font-family:'Fraunces',serif;font-size:17px;color:var(--fg)">This year Oura flagged 4 changes before you felt them.</p></div>
+    <div class="card" style="border-color:rgba(224,163,138,.4)"><h3 style="font-size:13px;color:var(--rose);font-family:'IBM Plex Mono'">RETAIL SHELF CARD</h3>
+      <p style="font-family:'Fraunces',serif;font-size:17px;color:var(--fg)">Ask what happens when the battery stops holding a charge.</p></div>
+  </div>
+
+  <div class="card"><h3>What we deliberately do not say</h3>
+    <ul>
+      <li><strong>"More accurate."</strong> Owners say sensors are comparable. This invites a fight we'd lose and don't need.</li>
+      <li><strong>"Only $5.99 a month."</strong> Minimising the fee concedes it's a cost rather than a service.</li>
+      <li><strong>"Unlock your full data."</strong> Exactly the paywall framing that makes the fee feel like a hostage situation.</li>
+      <li><strong>Anything medical.</strong> Wellness guidance, not diagnosis. This is a hard line, not a preference.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= MODULE 5 ================= -->
+<section id="m5">
+  <p class="eyebrow">Module 5 — Pricing &amp; Packaging</p>
+  <h2>Stop selling access. Start selling the service.</h2>
+
+  <p><strong>Pricing goal:</strong> defend a position, not maximise revenue. The fee is not too high — $160 over three years is a small gap. The problem is that nobody can tell what it buys.</p>
+
+  <div class="fig"><div class="fh"><span class="ft">Three-year cost of ownership</span><span class="chip m">Published prices</span></div><p class="fs">The gap is smaller than the objection suggests.</p><svg viewBox="0 0 920 250" role="img" aria-label="Three year cost of ownership: Samsung 399 dollars, Oura 559 dollars of which 210 is membership.">
+  <text x="200" y="58" font-family="Inter" font-size="13.5" fill="#F4F1ED" text-anchor="end">Samsung Galaxy Ring</text>
+  <rect x="212" y="38" width="300" height="32" rx="5" fill="#9FB8A6" opacity=".78"/>
+  <text x="232" y="59" font-family="Inter" font-size="12.5" fill="#12100F">hardware $399</text>
+  <text x="526" y="59" font-family="Fraunces" font-size="16" font-weight="600" fill="#9FB8A6">$399</text>
+
+  <text x="200" y="128" font-family="Inter" font-size="13.5" fill="#F4F1ED" text-anchor="end">Oura + membership</text>
+  <rect x="212" y="108" width="262" height="32" rx="5" fill="#E0A38A" opacity=".9"/>
+  <text x="232" y="129" font-family="Inter" font-size="12.5" fill="#12100F">hardware $349</text>
+  <rect x="478" y="108" width="158" height="32" rx="5" fill="#E0A38A" opacity=".40"/>
+  <text x="496" y="129" font-family="Inter" font-size="12.5" fill="#12100F">3 yrs x $70</text>
+  <text x="650" y="129" font-family="Fraunces" font-size="16" font-weight="600" fill="#E0A38A">$559</text>
+
+  <line x1="212" y1="172" x2="880" y2="172" stroke="rgba(255,255,255,.12)"/>
+  <rect x="212" y="188" width="424" height="3" rx="1.5" fill="#D9B26A"/>
+  <text x="212" y="216" font-family="Fraunces" font-size="19" font-weight="600" fill="#D9B26A">$160 apart over three years</text>
+  <text x="212" y="238" font-family="Inter" font-size="13.5" fill="#C3BAB2">Less than the price of replacing one ring that failed.</text>
+</svg></div>
+
+  <h3 class="sub">Recommended packaging</h3>
+  <p>Hardware purchase includes twelve months of membership. Basic tracking stays permanently. Guidance, trends and support renew annually. <strong>This removes the feeling that an expensive ring turns into jewellery when you stop paying</strong> — the objection that kills the sale at the shelf.</p>
+
+  <div class="g3">
+    <div class="tier">
+      <div class="tn">Core — included forever</div>
+      <div class="tp">$0</div>
+      <div class="tw">Anyone who bought the ring</div>
+      <ul><li>Nightly sleep and readiness scores</li><li>Basic history</li><li>Never expires</li></ul>
+    </div>
+    <div class="tier star">
+      <div class="tn">Membership ★ route most here</div>
+      <div class="tp">$70<span style="font-size:14px;color:var(--mute)">/yr</span></div>
+      <div class="tw">First 12 months included with the ring</div>
+      <ul><li>Personalised daily guidance</li><li>Anomaly alerts and long-term trends</li><li>Ongoing hardware support</li></ul>
+    </div>
+    <div class="tier">
+      <div class="tn">Wellness — partner</div>
+      <div class="tp">Per seat</div>
+      <div class="tw">Employers and wellness programs</div>
+      <ul><li>Member management</li><li>Aggregate, de-identified reporting</li><li>Onboarding support</li></ul>
+    </div>
+  </div>
+
+  <div class="card"><h3>Research I would commission</h3>
+    <p><strong>Conjoint analysis</strong>, because the real question isn't "what price" — it's which combination of hardware price, included months and feature split people actually choose. Van Westendorp would only tell us what feels expensive; MaxDiff would tell us which features matter. Neither answers the trade-off.</p>
+    <p style="color:var(--rose)"><strong>The assumption being tested:</strong> that including twelve months raises year-two renewal rather than simply delaying the same churn.</p>
+  </div>
+
+  <div class="card"><h3>What each stakeholder needs to hear</h3>
+    <table>
+      <tr><th>Stakeholder</th><th>The line that matters to them</th></tr>
+      <tr><td>Finance</td><td>Same lifetime revenue, moved from month one to year two, in exchange for a higher attach rate at the shelf.</td></tr>
+      <tr><td>Sales &amp; retail</td><td>The fee objection disappears at the point of sale. Nothing to defend on the shelf.</td></tr>
+      <tr><td>Product marketing</td><td>One story instead of two: the ring and the service stop competing for the customer's attention.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= MODULE 6 ================= -->
+<section id="m6">
+  <p class="eyebrow">Module 6 — Launch</p>
+  <h2>Prove it on one segment before touching anything else</h2>
+
+  <div class="fig"><div class="fh"><span class="ft">Launch plan</span><span class="chip h">Proposed</span></div><p class="fs">Three phases, one gate.</p><svg viewBox="0 0 920 270" role="img" aria-label="Launch plan across three phases: pre-launch, launch, and post-launch, with activities and gates.">
+  <line x1="40" y1="60" x2="880" y2="60" stroke="rgba(255,255,255,.12)"/>
+  <circle cx="150" cy="60" r="7" fill="#9FB8A6"/><circle cx="460" cy="60" r="7" fill="#E0A38A"/><circle cx="770" cy="60" r="7" fill="#D9B26A"/>
+
+  <text x="150" y="38" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="#9FB8A6" text-anchor="middle">PRE-LAUNCH</text>
+  <text x="460" y="38" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="#E0A38A" text-anchor="middle">LAUNCH</text>
+  <text x="770" y="38" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="#D9B26A" text-anchor="middle">POST-LAUNCH</text>
+
+  <text x="46" y="96" font-family="Inter" font-size="13" fill="#C3BAB2">Beta cohort of 200 owners</text>
+  <text x="46" y="118" font-family="Inter" font-size="13" fill="#C3BAB2">Verify replacement terms</text>
+  <text x="46" y="140" font-family="Inter" font-size="13" fill="#C3BAB2">Test both messages</text>
+  <text x="46" y="162" font-family="Inter" font-size="13" fill="#C3BAB2">Train support and retail</text>
+
+  <text x="356" y="96" font-family="Inter" font-size="13" fill="#C3BAB2">Rewrite membership page</text>
+  <text x="356" y="118" font-family="Inter" font-size="13" fill="#C3BAB2">Shelf card with the question</text>
+  <text x="356" y="140" font-family="Inter" font-size="13" fill="#C3BAB2">Sleep creators, not fitness</text>
+  <text x="356" y="162" font-family="Inter" font-size="13" fill="#C3BAB2">Onboarding to first insight</text>
+
+  <text x="666" y="96" font-family="Inter" font-size="13" fill="#C3BAB2">Renewal recap by member</text>
+  <text x="666" y="118" font-family="Inter" font-size="13" fill="#C3BAB2">Watch retention by cohort</text>
+  <text x="666" y="140" font-family="Inter" font-size="13" fill="#C3BAB2">Referral once retention holds</text>
+  <text x="666" y="162" font-family="Inter" font-size="13" fill="#C3BAB2">Only then, next segment</text>
+
+  <rect x="40" y="198" width="840" height="52" rx="8" fill="rgba(224,163,138,.08)" stroke="rgba(224,163,138,.32)"/>
+  <text x="60" y="222" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.3" fill="#E0A38A">THE GATE</text>
+  <text x="60" y="241" font-family="Inter" font-size="13.5" fill="#F4F1ED">Do not expand beyond the first segment until 12-month membership retention beats the pre-launch cohort.</text>
+</svg></div>
+
+  <div class="fig"><div class="fh"><span class="ft">Success metrics</span><span class="chip h">Targets, not results</span></div><p class="fs">Activation and retention. Sign-ups are bundled with hardware and tell us nothing.</p><svg viewBox="0 0 920 180" role="img" aria-label="Three target metrics: 70 percent wearing six of first seven nights, 55 percent reviewing a weekly insight, 12 month retention as the north star.">
+  <path d="M 74 120 A 76 76 0 0 1 226 120" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="12" stroke-linecap="round"/><path d="M 74 120 A 76 76 0 0 1 226 120" fill="none" stroke="#9FB8A6" stroke-width="12" stroke-linecap="round" stroke-dasharray="167.1 238.8"/><text x="150" y="114" font-family="Fraunces" font-size="27" font-weight="600" fill="#9FB8A6" text-anchor="middle">70%</text><text x="150" y="138" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">worn 6 of first 7 nights</text>
+  <path d="M 384 120 A 76 76 0 0 1 536 120" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="12" stroke-linecap="round"/><path d="M 384 120 A 76 76 0 0 1 536 120" fill="none" stroke="#E0A38A" stroke-width="12" stroke-linecap="round" stroke-dasharray="131.3 238.8"/><text x="460" y="114" font-family="Fraunces" font-size="27" font-weight="600" fill="#E0A38A" text-anchor="middle">55%</text><text x="460" y="138" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">reviews a weekly insight</text>
+  <path d="M 694 120 A 76 76 0 0 1 846 120" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="12" stroke-linecap="round"/><path d="M 694 120 A 76 76 0 0 1 846 120" fill="none" stroke="#D9B26A" stroke-width="12" stroke-linecap="round" stroke-dasharray="148.0 238.8"/><text x="770" y="114" font-family="Fraunces" font-size="27" font-weight="600" fill="#D9B26A" text-anchor="middle">NORTH</text><text x="770" y="138" font-family="Inter" font-size="12" fill="#C3BAB2" text-anchor="middle">12-month retention</text>
+  <text x="460" y="26" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="#8A8079" text-anchor="middle">PROPOSED TARGETS, NOT RESULTS</text>
+</svg></div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Full metric set</span><span class="chip h">Proposed</span></div>
+    <table>
+      <tr><th>Stage</th><th>Metric</th><th>Why</th></tr>
+      <tr><td>Acquisition</td><td>Shelf conversion · creator-referred purchase rate · CAC</td><td>Does the reframed offer survive a side-by-side comparison?</td></tr>
+      <tr><td>Activation</td><td>Worn 6 of first 7 nights · first insight opened</td><td>The product only works if it's worn to bed</td></tr>
+      <tr class="hi"><td>Retention — north star</td><td>12-month membership renewal</td><td>The only real vote. Everything else is a leading indicator</td></tr>
+      <tr><td>Guardrails</td><td>Return rate · sizing exchanges · support contacts about the fee · share finding guidance untrustworthy</td><td>If reframing creates confusion, we've made it worse</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= EVIDENCE ================= -->
+<section id="ev">
+  <p class="eyebrow">Evidence &amp; assumptions</p>
+  <h2>What I verified, and what I bet on</h2>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Verified</span><span class="chip m">Traceable</span></div>
+    <table>
+      <tr><th>Claim</th><th>Source</th></tr>
+      <tr><td>Oura from $349; membership $5.99/mo or $69.99/yr; iOS and Android</td><td>Product comparison, Sept 2026</td></tr>
+      <tr><td>Galaxy Ring $399, no subscription, Android 11+ only, Galaxy phone for full features</td><td>Same</td></tr>
+      <tr><td>Owner ratings: Oura 4.5 (5K), Galaxy Ring 3.9 (4.8K)</td><td>Same</td></tr>
+      <tr><td>Long-term owner describing sensors as <em>"basically the same"</em> across brands</td><td>r/SmartRings thread</td></tr>
+      <tr><td>Oura replaced a failed ring at no cost; a competitor required payment</td><td>Same thread</td></tr>
+      <tr><td>Owners preferring Oura's guidance as actionable, a rival's as generic</td><td>Same thread</td></tr>
+      <tr><td>A prospective buyer rejecting all rings and keeping their existing watch</td><td>Same thread</td></tr>
+    </table>
+  </div>
+
+  <div class="assume"><b>The assumption I'm most worried about</b>
+    That ring replacement is genuinely part of the membership rather than standard warranty. Owner accounts describe Oura replacing a failed ring while a competitor charged, but whether that is tied to an active membership is not verifiable from outside. <strong style="color:var(--rose)">If it is just warranty, the central bet collapses</strong> — the service promise would not be something the fee buys. First thing I would check.
+  </div>
+
+  <div class="fig">
+    <div class="fh"><span class="ft">Other hypotheses</span><span class="chip h">Unverified</span></div>
+    <table>
+      <tr><th>Assumption</th><th>What would confirm or kill it</th></tr>
+      <tr><td>A handful of owner accounts represent a broader pattern</td><td>Review analysis at scale, plus Oura's churn-reason data</td></tr>
+      <tr><td>The primary competitor is the watch already owned</td><td>Purchase-consideration research at point of sale</td></tr>
+      <tr><td>Including 12 months raises year-two renewal rather than delaying churn</td><td>Conjoint, then a held-out cohort</td></tr>
+      <tr><td>Screen aversion at night is a real segment, not a rationalisation</td><td>Survey of why ring buyers rejected a watch</td></tr>
+    </table>
+    <span class="src">No Oura internal data was used and none is implied. Targets are proposals, not results.</span>
+  </div>
+
+  <p><strong>The largest gap:</strong> no primary research with people who bought a competitor. The owner evidence skews toward those who stayed with Oura — the sample most likely to defend it. Ten conversations with Samsung or RingConn buyers would test this harder than anything else here.</p>
+</section>
+
+<footer><div class="foot">
+  <p>Built by Shima Aflatounian using the Product School go-to-market framework. Public sources and owner community research, September 2026. Ring illustrations are original; hypotheses are labelled as hypotheses.</p>
+  <div class="links">
+    <a href="index.html">Portfolio</a><a href="brand-notes.html">Brand Notes</a>
+    <a href="https://www.linkedin.com/in/shima-aflatounian/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div></footer>
+
+</div>
+</body>
+</html>
